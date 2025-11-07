@@ -7,8 +7,8 @@ export default function Home() {
 	const [useGradient, setUseGradient] = useState(true);
 
 	return (
-		<section id="section-intro" className="onscroll fitscreen seen loaded">
-			<div className="layer back">
+		<section id="section-intro" className="onscroll fitscreen seen loaded min-h-[100dvh]">
+			{/* <div className="layer back">
 				<div className="rope sketch" path-speed="4" path-offset="0">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ export default function Home() {
 						<path id="path-line1" d="M 1.331692,540 V 1080"></path>
 					</svg>
 				</div>
-			</div>
+			</div> */}
 
 			{/* Ant Design toggle */}
 			<div className="o-toggle">
@@ -109,7 +109,7 @@ export default function Home() {
 
 			<div className="layer loading"></div>
 
-			<a href="#" className="next-screen a-input scrollto" data-target="section-about">
+			{/* <a href="#" className="next-screen a-input scrollto" data-target="section-about">
 				<span className="in">Scroll</span>
 			</a>
 
@@ -118,7 +118,7 @@ export default function Home() {
 				<div className="total">07</div>
 			</div>
 
-			<div></div>
+			<div></div> */}
 
 			<style jsx>{`
 				@keyframes drawCircle {
