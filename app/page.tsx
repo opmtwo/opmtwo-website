@@ -1,3 +1,5 @@
+"use client"
+
 export default function Home() {
 	return (
 		<section id="section-intro" className="onscroll fitscreen seen loaded">
@@ -25,9 +27,8 @@ export default function Home() {
 							fill="none"
 							strokeLinecap="round"
 							strokeLinejoin="round"
-							// Full O, centered in the viewBox
 							d="M 150 50 A 100 100 0 1 1 149.999 50 Z"
-							className="triggered"
+							className="o-path o-path-back"
 						></path>
 					</svg>
 				</div>
@@ -43,7 +44,7 @@ export default function Home() {
 							strokeLinecap="round"
 							strokeLinejoin="round"
 							d="M 150 50 A 100 100 0 1 1 149.999 50 Z"
-							className="triggered"
+							className="o-path o-path-mid"
 						></path>
 					</svg>
 					<div className="video">
@@ -66,6 +67,59 @@ export default function Home() {
 			</div>
 
 			<div></div>
+
+			<style jsx>{`
+				/* Stroke-draw animation */
+				@keyframes drawCircle {
+					from {
+						stroke-dashoffset: 700;
+					}
+					to {
+						stroke-dashoffset: 0;
+					}
+				}
+
+				/* Subtle pop-in / scale for the front O */
+				@keyframes popIn {
+					from {
+						transform: scale(0.9);
+						opacity: 0;
+					}
+					to {
+						transform: scale(1);
+						opacity: 1;
+					}
+				}
+
+				.letter svg {
+					overflow: visible;
+				}
+
+				/* Base O stroke animation */
+				.o-path {
+					stroke-dasharray: 700;
+					stroke-dashoffset: 700;
+					animation: drawCircle 1.8s ease-out forwards;
+				}
+
+				/* Back O (white) starts immediately */
+				.o-path-back {
+					animation-delay: 0s;
+				}
+
+				/* Front O (black) starts slightly later for a layered effect */
+				.o-path-mid {
+					animation-delay: 0.25s;
+				}
+
+				/* Optional: pop-in effect on the mid layer as a whole */
+				.letter-mid {
+					opacity: 0;
+					transform: scale(0.96);
+					animation: popIn 0.6s ease-out 0.25s forwards;
+					transform-origin: center;
+				}
+			`}</style>
 		</section>
 	);
 }
