@@ -1,15 +1,50 @@
-import classNames from 'classnames';
-import { SVGProps, useEffect } from 'react';
+'use client';
 
-const SvgComponent = ({ visibility, ...props }: SVGProps<SVGSVGElement>) => {
+import classNames from 'classnames';
+import { SVGProps, useEffect, useRef, useState } from 'react';
+
+const SvgComponent = ({ ...props }: SVGProps<SVGSVGElement>) => {
+	const [visibility, setVisibility] = useState(false);
+	const svgRef = useRef<SVGSVGElement | null>(null);
+
 	useEffect(() => {
+		if (typeof window === 'undefined' || !svgRef.current || !('IntersectionObserver' in window)) {
+			return;
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					// When at least 50% visible → true
+					if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+						setVisibility(true);
+					}
+					// When fully out of view → false
+					if (!entry.isIntersecting || entry.intersectionRatio === 0) {
+						setVisibility(false);
+					}
+				});
+			},
+			{
+				threshold: [0, 0.5], // fire at 0% and 50%
+			}
+		);
+
+		observer.observe(svgRef.current);
+
 		return () => {
-			//
+			observer.disconnect();
 		};
 	}, []);
 
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" viewBox="0 0 240 1080" {...props}>
+		<svg
+			ref={svgRef}
+			xmlns="http://www.w3.org/2000/svg"
+			preserveAspectRatio="xMidYMax meet"
+			viewBox="0 0 240 1080"
+			{...props}
+		>
 			<path
 				d="m150.25 658.25-30.5-31-30.5 31M89.25 423.25l30.49 31 30.51-31"
 				style={{
@@ -128,7 +163,7 @@ const SvgComponent = ({ visibility, ...props }: SVGProps<SVGSVGElement>) => {
 				className={visibility ? 'triggered' : undefined}
 			/>
 
-			{/* 🔥 Vertical line with its own animation class */}
+			{/* Vertical line with its own animation class */}
 			<path
 				d="M120 0v1080"
 				style={{
@@ -140,7 +175,7 @@ const SvgComponent = ({ visibility, ...props }: SVGProps<SVGSVGElement>) => {
 					strokeDasharray: '1080px,1080px',
 					strokeDashoffset: '1080px', // start fully hidden
 				}}
-				className={classNames('v-line', visibility ? 'triggered' : undefined)}
+				className={classNames('', visibility ? 'triggered' : undefined)}
 			/>
 
 			<path
