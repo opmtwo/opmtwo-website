@@ -32,7 +32,27 @@ export default function RootLayout({
 					rel="stylesheet"
 				/>
 			</head>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				{/* SVG filter defs */}
+				<svg width="0" height="0" style={{ position: 'absolute' }}>
+					<defs>
+						<filter id="sketch-filter">
+							{/* desaturate */}
+							<feColorMatrix type="saturate" values="0" result="desat" />
+							{/* edge detection */}
+							<feConvolveMatrix in="desat" order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" result="edges" />
+							{/* boost contrast */}
+							<feComponentTransfer>
+								<feFuncR type="linear" slope="2" />
+								<feFuncG type="linear" slope="2" />
+								<feFuncB type="linear" slope="2" />
+							</feComponentTransfer>
+						</filter>
+					</defs>
+				</svg>
+
+				{children}
+			</body>
 		</html>
 	);
 }
