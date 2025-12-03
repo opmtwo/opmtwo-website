@@ -1,12 +1,19 @@
 'use client';
 
-import SketchImage from '@/components/SketchImage';
 import React, { useState } from 'react';
-import { Cpu, Bot, Database, Zap, Code, Palette, Settings } from 'lucide-react';
-import { TechStackShowcase } from '@/components/TechStackShowcase';
-import Hero from '@/components/Hero';
-import ReadyToTrySection from '@/components/Footer';
+
+import CaseStudiesSection from '@/components/CaseStudiesSection';
 import CoreOffers from '@/components/CoreOffers';
+import CoreOffersSection from '@/components/CoreOffersSection';
+import FaqSection from '@/components/FaqSection';
+import ReadyToTrySection from '@/components/Footer';
+import Hero from '@/components/Hero';
+import ProblemSolutionSection from '@/components/ProblemSolutionSection';
+import { ReelsSection } from '@/components/ReelsSection';
+import ServicesSection from '@/components/ServicesSection';
+import ServicesShowcase from '@/components/ServicesShowcase';
+import { TechStackShowcase } from '@/components/TechStackShowcase';
+import TestimonialsSection from '@/components/TestimonialsSection';
 
 const navLinks = [
 	{ href: '#hero', label: 'Home' },
@@ -91,6 +98,22 @@ export default function Home() {
 					</nav>
 				</div>
 			</header>
+
+			<TestimonialsSection />
+
+			<CaseStudiesSection />
+
+			<ProblemSolutionSection />
+
+			<FaqSection />
+
+			<ServicesShowcase />
+
+			<ServicesSection />
+
+			<CoreOffersSection />
+
+			<ReelsSection />
 
 			<Hero />
 
