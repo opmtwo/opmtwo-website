@@ -1,10 +1,29 @@
 // app/components/ReelsSection.tsx
 'use client';
 
+import { MailIcon } from 'lucide-react';
 import React from 'react';
-import Image from 'next/image';
 
-export const ReelsSection: React.FC = () => {
+import FiverrIcon from '@/icons/FiverrIcon';
+import WhatsappIcon from '@/icons/WhatsappIcon';
+
+interface ReelsSectionProps {
+	emailLabel?: string;
+	whatsappLabel?: string;
+	fiverrLabel?: string;
+	email?: string;
+	whatsapp?: string;
+	fiverr?: string;
+}
+
+export const ReelsSection: React.FC<ReelsSectionProps> = ({
+	emailLabel = 'Book a Free 15-Minute Call',
+	whatsappLabel = 'Chat on WhatsApp',
+	fiverrLabel = 'View My Fiverr Profile',
+	email = 'you@example.com',
+	whatsapp,
+	fiverr = 'onepunchmantwo',
+}) => {
 	return (
 		<section className="relative flex items-center min-h-dvh px-20">
 			<div className="flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
@@ -25,13 +44,12 @@ export const ReelsSection: React.FC = () => {
 
 					{/* Heading */}
 					<div className="space-y-5">
-						
-                        {/* <h1 className="font-serif text-6xl leading-none text-slate-900 sm:text-7xl">Serverless</h1> */}
-                        <h1 className="text-6xl leading-none text-slate-900 bg-linear-to-r from-emerald-300 via-cyan-300 to-sky-300 bg-clip-text text-transparent">
-									Serverless AWS &amp; AI Automation
-								</h1>
-						
-                        <p className="max-w-lg text-base leading-relaxed text-slate-700 sm:text-lg">
+						{/* <h1 className="font-serif text-6xl leading-none text-slate-900 sm:text-7xl">Serverless</h1> */}
+						<h1 className="text-6xl leading-none text-slate-900 bg-linear-to-r from-emerald-300 via-cyan-300 to-sky-300 bg-clip-text text-transparent">
+							Serverless AWS &amp; AI Automation
+						</h1>
+
+						<p className="max-w-lg text-base leading-relaxed text-slate-700 sm:text-lg">
 							Optimize, automate, and scale your backend with AWS Lambda, DynamoDB & AI —{' '}
 							<span className="font-semibold">10× faster and up to 70% cheaper.</span>
 						</p>
@@ -64,13 +82,40 @@ export const ReelsSection: React.FC = () => {
 
 					{/* Buttons */}
 					<div className="flex flex-wrap items-center gap-4 pt-2">
-						<button className="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition hover:translate-y-0.5 hover:bg-slate-900">
-							Book a Free 15-Minute Call
-						</button>
-
-						<button className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/70 px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm backdrop-blur transition hover:border-slate-400 hover:bg-white">
-							View My Fiverr Profile
-						</button>
+						{/* Email Button */}
+						{email && (
+							<a
+								href={`mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}
+								className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white border-2 border-transparent transition hover:bg-transparent hover:text-black hover:border-black"
+							>
+								<MailIcon className="h-4 w-4" />
+								{emailLabel}
+							</a>
+						)}
+						{/* WhatsApp Button */}
+						{whatsapp && (
+							<a
+								href={`https://wa.me/${whatsapp}`}
+								target="_blank"
+								rel="noreferrer"
+								className="inline-flex items-center gap-2 rounded-full border border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:text-white dark:hover:border-[#25D366]"
+							>
+								<WhatsappIcon className="h-4 w-4" />
+								{whatsappLabel}
+							</a>
+						)}
+						{/* Fiverr Button */}
+						{fiverr && (
+							<a
+								href={`https://www.fiverr.com/${fiverr}`}
+								target="_blank"
+								rel="noreferrer"
+								className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-black dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
+							>
+								<FiverrIcon className="h-4 w-4" />
+								{fiverrLabel}
+							</a>
+						)}
 					</div>
 				</div>
 
