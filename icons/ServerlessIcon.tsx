@@ -1,11 +1,16 @@
 export function ServerlessIcon(props: React.SVGProps<SVGSVGElement>) {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" {...props}>
+		<svg xmlns="http://www.w3.org/2000/svg" width={800} height={800} viewBox="0 0 32 32" {...props}>
+			<title>{'file_type_serverless'}</title>
 			<path
-				d="M0 46.85h11.328l-3.5 10.6H0zM0 26.7h18l-3.5 10.6H0zM0 6.55h24.673l-3.5 10.6H0zm35.838 0H64v10.6H32.328zM25.656 37.3l3.5-10.6H64v10.6zm-3.163 9.552H64v10.6H18.983z"
-				fill="#fd5750"
-				fillRule="evenodd"
+				d="M2 22.419h4.956L5.42 27H2Zm0-8.709h7.875L8.34 18.29H2ZM2 5h10.794l-1.535 4.581H2Zm15.679 0H30v4.581H16.143Zm-4.455 13.291 1.536-4.581H30v4.581Zm-1.383 4.128H30V27H10.305Z"
+				style={{
+					fill: '#fd5750',
+					fillRule: 'evenodd',
+				}}
 			/>
 		</svg>
 	);
 }
+
+export default ServerlessIcon;
