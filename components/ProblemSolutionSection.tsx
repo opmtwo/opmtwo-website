@@ -16,7 +16,7 @@ export const ProblemSolutionSection: React.FC = () => {
 			</div>
 
 			{/* Section heading */}
-			<div className="max-w-3xl space-y-3">
+			<div className="space-y-3">
 				<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 shadow-sm backdrop-blur-sm dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
 					<span className="mr-2 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-emerald-400 to-sky-500" />
 					Serverless &amp; AI, without the chaos
@@ -64,7 +64,7 @@ export const ProblemSolutionSection: React.FC = () => {
 								</p>
 							</div>
 
-							<ul className="space-y-2.5 text-sm text-slate-800 dark:text-slate-100">
+							<ul className="space-y-2.5- text-sm text-slate-800 dark:text-slate-100">
 								<li className="flex gap-3">
 									<span className="mt-0.5 text-base">❌</span>
 									<span>Rising AWS costs with no visibility</span>
@@ -79,15 +79,15 @@ export const ProblemSolutionSection: React.FC = () => {
 								</li>
 								<li className="flex gap-3">
 									<span className="mt-0.5 text-base">❌</span>
-									<span>Support teams overwhelmed by repetitive tickets</span>
-								</li>
-								<li className="flex gap-3">
-									<span className="mt-0.5 text-base">❌</span>
 									<span>Lack of in-house AI expertise</span>
 								</li>
 								<li className="flex gap-3">
 									<span className="mt-0.5 text-base">❌</span>
 									<span>Difficulty integrating ChatGPT, Bedrock, or Llama</span>
+								</li>
+								<li className="flex gap-3">
+									<span className="mt-0.5 text-base">❌</span>
+									<span>Support teams overwhelmed by repetitive tickets</span>
 								</li>
 							</ul>
 
@@ -124,7 +124,7 @@ export const ProblemSolutionSection: React.FC = () => {
 
 							<div className="space-y-3">
 								<h3 className="text-lg font-semibold leading-snug text-slate-900 sm:text-xl dark:text-slate-50">
-									I help you build lean, scalable, AI-powered systems with AWS Serverless and modern
+									I help build lean, scalable, AI-powered systems with AWS Serverless and modern
 									AI models.
 								</h3>
 								<p className="text-sm font-semibold text-emerald-700 sm:text-[15px] dark:text-emerald-100">
@@ -132,11 +132,12 @@ export const ProblemSolutionSection: React.FC = () => {
 								</p>
 							</div>
 
-							<ul className="space-y-2.5 text-sm text-slate-900 dark:text-slate-50">
+							<ul className="space-y-2.5- text-sm text-slate-900 dark:text-slate-50">
 								<li className="flex gap-3">
 									<span className="mt-0.5 text-base">✔</span>
 									<span>
-										Ultra-scalable backend with Lambda, API Gateway, DynamoDB, SQS, EventBridge
+										{/* Ultra-scalable backend with Lambda, API Gateway, DynamoDB, SQS, EventBridge */}
+										Ultra-scalable serverless backends
 									</span>
 								</li>
 								<li className="flex gap-3">
@@ -146,7 +147,8 @@ export const ProblemSolutionSection: React.FC = () => {
 								<li className="flex gap-3">
 									<span className="mt-0.5 text-base">✔</span>
 									<span>
-										AI automation workflows powered by ChatGPT / Llama 3 / Bedrock / Gemini
+										{/* AI automation workflows powered by ChatGPT / Llama 3 / Bedrock / Gemini */}
+										AI automation workflows powered by ChatGPT, Bedrock or Llama
 									</span>
 								</li>
 								<li className="flex gap-3">
