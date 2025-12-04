@@ -45,7 +45,6 @@ const testimonials: Testimonial[] = [
 
 export const CustomerTestimonials: React.FC = () => {
 	const [activeIndex, setActiveIndex] = React.useState(0);
-
 	const len = testimonials.length;
 	const active = testimonials[activeIndex];
 	const prev = testimonials[(activeIndex - 1 + len) % len];
@@ -54,8 +53,31 @@ export const CustomerTestimonials: React.FC = () => {
 	const goPrev = () => setActiveIndex((i) => (i - 1 + len) % len);
 	const goNext = () => setActiveIndex((i) => (i + 1) % len);
 
+	// Swiping support
+	const touchStartX = React.useRef<number | null>(null);
+	const touchEndX = React.useRef<number | null>(null);
+
+	const handleTouchStart = (e: React.TouchEvent) => {
+		touchStartX.current = e.changedTouches[0].clientX;
+	};
+	const handleTouchMove = (e: React.TouchEvent) => {
+		touchEndX.current = e.changedTouches[0].clientX;
+	};
+	const handleTouchEnd = () => {
+		if (touchStartX.current !== null && touchEndX.current !== null) {
+			const distance = touchStartX.current - touchEndX.current;
+			if (distance > 50) {
+				goNext(); // swipe left
+			} else if (distance < -50) {
+				goPrev(); // swipe right
+			}
+		}
+		touchStartX.current = null;
+		touchEndX.current = null;
+	};
+
 	return (
-		<section className="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-emerald-50 px-4 py-16 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+		<section className="relative overflow-hidden px-4 py-16 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
 			<div className="mx-auto max-w-6xl">
 				{/* Header */}
 				{/* Updated Heading + Subtitle */}
@@ -63,10 +85,9 @@ export const CustomerTestimonials: React.FC = () => {
 					<h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl dark:text-slate-50">
 						Teams around the world trust me with their{' '}
 						<span className="relative inline-block">
-							<span className="relative z-10 bg-gradient-to-r from-emerald-400 via-lime-400 to-emerald-500 bg-clip-text text-transparent">
+							<span className="relative z-10 bg-linear-to-r from-sky-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
 								Serverless & AI transformation
 							</span>
-							<span className="absolute inset-x-0 bottom-0 h-4 translate-y-1 rounded-md bg-emerald-200/70 blur-[4px] dark:bg-emerald-500/30" />
 						</span>
 					</h2>
 
@@ -77,10 +98,14 @@ export const CustomerTestimonials: React.FC = () => {
 				</header>
 
 				{/* Slider area */}
-				<div className="relative mt-10 sm:mt-12 overflow-hidden">
+				<div className="relative mt-10 sm:mt-12 overflow-hidden"
+					onTouchStart={handleTouchStart}
+					onTouchMove={handleTouchMove}
+					onTouchEnd={handleTouchEnd}
+				>
 					{/* Left side card (fixed height, ~25% visible, only on md+) */}
 					<div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 -translate-x-[65%] opacity-40 md:block">
-						<div className="flex h-64 w-[360px] items-center rounded-[32px] border border-slate-100 bg-white/80 shadow-[0_18px_60px_rgba(0,0,0,0.06)] dark:border-slate-700 dark:bg-slate-900/70">
+						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
 							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">
 								{prev.quote}
 							</p>
@@ -89,7 +114,7 @@ export const CustomerTestimonials: React.FC = () => {
 
 					{/* Right side card (fixed height, ~25% visible, only on md+) */}
 					<div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[65%] opacity-40 md:block">
-						<div className="flex h-64 w-[360px] items-center rounded-[32px] border border-slate-100 bg-white/80 shadow-[0_18px_60px_rgba(0,0,0,0.06)] dark:border-slate-700 dark:bg-slate-900/70">
+						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
 							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">
 								{next.quote}
 							</p>
@@ -97,9 +122,9 @@ export const CustomerTestimonials: React.FC = () => {
 					</div>
 
 					{/* Gradient border wrapper for main card */}
-					<div className="relative mx-auto max-w-3xl bg-gradient-to-r from-emerald-300 via-lime-300 to-emerald-400 p-[1px] rounded-[34px] shadow-[0_24px_80px_rgba(0,0,0,0.14)] dark:from-emerald-500 dark:via-emerald-400 dark:to-lime-400">
+					<div className="relative mx-auto max-w-3xl bg-linear-to-r from-emerald-300 via-lime-300 to-emerald-400 p-px rounded-[34px] dark:from-emerald-500 dark:via-emerald-400 dark:to-lime-400">
 						{/* Main center card */}
-						<div className="relative rounded-[32px] bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:px-10 md:py-14 dark:bg-slate-900">
+						<div className="relative rounded-4xl bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:px-10 md:py-14 dark:bg-slate-900">
 							{/* Stars pill */}
 							<div className="mx-auto mb-6 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-5 py-2 text-emerald-500 sm:mb-8 sm:px-7 sm:py-3 dark:bg-emerald-500/10 dark:text-emerald-300">
 								{Array.from({ length: 5 }).map((_, i) => (
@@ -164,7 +189,7 @@ export const CustomerTestimonials: React.FC = () => {
 							<button
 								type="button"
 								onClick={goPrev}
-								className="absolute left-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-emerald-500 text-lg text-white shadow-lg transition hover:scale-105 hover:shadow-xl md:flex"
+								className="absolute left-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-lg text-black dark:text-white transition hover:scale-105 md:flex"
 								aria-label="Previous testimonial"
 							>
 								←
@@ -172,7 +197,7 @@ export const CustomerTestimonials: React.FC = () => {
 							<button
 								type="button"
 								onClick={goNext}
-								className="absolute right-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-lime-400 text-lg text-white shadow-lg transition hover:scale-105 hover:shadow-xl md:flex"
+								className="absolute right-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-lg text-black dark:text-white transition hover:scale-105 md:flex"
 								aria-label="Next testimonial"
 							>
 								→
@@ -185,7 +210,7 @@ export const CustomerTestimonials: React.FC = () => {
 						<button
 							type="button"
 							onClick={goPrev}
-							className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-emerald-500 text-white shadow-md active:scale-95"
+							className="flex h-10 w-10 items-center justify-center rounded-2xl text-black dark:text-white active:scale-95"
 							aria-label="Previous testimonial"
 						>
 							←
@@ -193,7 +218,7 @@ export const CustomerTestimonials: React.FC = () => {
 						<button
 							type="button"
 							onClick={goNext}
-							className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-lime-400 text-white shadow-md active:scale-95"
+							className="flex h-10 w-10 items-center justify-center rounded-2xl text-black dark:text-white active:scale-95"
 							aria-label="Next testimonial"
 						>
 							→
