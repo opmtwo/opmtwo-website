@@ -37,7 +37,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
 				<div className="flex flex-wrap gap-3">
 					<a
 						href={`mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}
-						className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-500/30 transition hover:bg-emerald-400"
+						className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white border-2 border-transparent transition hover:bg-transparent hover:text-black hover:border-black"
 					>
 						<MailIcon className="h-4 w-4" />
 						{emailLabel}
@@ -46,7 +46,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
 						href={`https://wa.me/${whatsapp}`}
 						target="_blank"
 						rel="noreferrer"
-						className="inline-flex items-center gap-2 rounded-full border border-emerald-400/60 bg-slate-950 px-5 py-2.5 text-sm font-semibold text-emerald-300 shadow-inner shadow-emerald-500/20 transition hover:bg-emerald-500/10"
+						className="inline-flex items-center gap-2 rounded-full border border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:text-white dark:hover:border-[#25D366]"
 					>
 						<WhatsappIcon className="h-4 w-4" />
 						{whatsappLabel}
@@ -55,7 +55,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
 						href={`https://www.fiverr.com/${fiverr}`}
 						target="_blank"
 						rel="noreferrer"
-						className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-5 py-2.5 text-sm font-semibold text-slate-100 shadow-inner shadow-slate-900 transition hover:border-emerald-400 hover:text-emerald-300"
+						className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-black dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
 					>
 						<FiverrIcon className="h-4 w-4" />
 						{fiverrLabel}
