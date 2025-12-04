@@ -91,7 +91,7 @@ export const ReadyToTrySection: React.FC<ReadyToTrySectionProps> = ({
 				</div>
 
 				{/* Subtext */}
-				<p className="my-6 text-sm text-slate-500 dark:text-slate-300">
+				<p className="mt-6 text-sm text-slate-500 dark:text-slate-300">
 					{description.split('\n').map((line, i) => (
 						<React.Fragment key={i}>{line}<br /></React.Fragment>
 					))}
