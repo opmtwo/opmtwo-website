@@ -210,20 +210,20 @@ export const TechStackShowcase: React.FC = () => {
 		<section id="tech-stack" className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
 			{/* Background flair */}
 			<div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-				<div className="absolute -top-40 left-10 h-72 w-72 rounded-full bg-gradient-to-br from-sky-500/20 via-emerald-400/10 to-violet-500/20 blur-3xl" />
-				<div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-gradient-to-tr from-fuchsia-500/10 via-sky-500/10 to-emerald-400/10 blur-3xl" />
+				<div className="absolute -top-40 left-10 h-72 w-72 rounded-full bg-gradient-radial from-sky-400/30 via-emerald-300/20 to-violet-400/30 dark:from-sky-500/40 dark:via-emerald-400/30 dark:to-violet-500/40 blur-3xl" />
+				<div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-gradient-radial from-fuchsia-300/10 via-sky-300/10 to-emerald-300/10 dark:from-fuchsia-500/20 dark:via-sky-500/20 dark:to-emerald-400/20 blur-3xl" />
 			</div>
 
 			{/* Header */}
 			<div className="mb-10 text-center">
-				<p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-sky-200">
+				<p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-sky-400 dark:text-sky-200">
 					Tech Stack & Capabilities
 				</p>
-				<h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+				<h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
 					Battle-tested stack for{' '}
 					<span className="bg-gradient-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent">AI & Serverless</span>
 				</h2>
-				<p className="mt-3 max-w-2xl mx-auto text-sm text-slate-300/80">
+				<p className="mt-3 max-w-2xl mx-auto text-sm text-slate-700/80 dark:text-slate-300/80">
 					From idea to production: AI models, vector search, serverless backends, and smooth frontends – all wired together on AWS.
 				</p>
 			</div>
@@ -239,25 +239,15 @@ export const TechStackShowcase: React.FC = () => {
 								onClick={() => setActiveSectionId(section.id)}
 								className={`group w-full text-left rounded-2xl border px-4 py-4 transition-all duration-300 ${
 									isActive
-										? 'border-sky-500/60 bg-slate-900/80 shadow-lg shadow-sky-500/20'
-										: 'border-slate-700/40 bg-slate-900/40 hover:border-slate-500/60 hover:bg-slate-900/80'
+										? 'border-sky-400/80 bg-gradient-to-r from-sky-200 via-emerald-200 to-violet-200 shadow-lg shadow-sky-400/20 dark:border-sky-500/80 dark:bg-gradient-to-r dark:from-sky-900 dark:via-emerald-900 dark:to-violet-900 dark:shadow-sky-500/30'
+										: 'border-slate-300/40 bg-slate-100/40 hover:border-slate-400/60 hover:bg-gradient-to-r hover:from-slate-100 hover:via-sky-100 hover:to-violet-100 dark:border-slate-700/40 dark:bg-slate-900/40 dark:hover:border-slate-500/60 dark:hover:bg-gradient-to-r dark:hover:from-slate-900 dark:hover:via-sky-900 dark:hover:to-violet-900'
 								}`}
 							>
 								<div className="flex items-center justify-between gap-3">
 									<div>
-										{/* <p className="text-xs uppercase tracking-[0.18em] text-slate-400">{section.label}</p> */}
-										<h4 className="mt-1 text-sm font-semibold text-slate-50">{section.title}</h4>
-										<p className="mt-1 text-xs text-slate-300/80 line-clamp-2">{section.description}</p>
+										<h4 className="mt-1 text-sm font-semibold text-slate-900 dark:text-slate-50">{section.title}</h4>
+										<p className="mt-1 text-xs text-slate-700/80 dark:text-slate-300/80 line-clamp-2">{section.description}</p>
 									</div>
-									{/* <span
-										className={`h-8 w-8 shrink-0 rounded-full border text-[10px] flex items-center justify-center tracking-[0.12em] uppercase ${
-											isActive
-												? 'border-sky-400/70 bg-sky-500/10 text-sky-200'
-												: 'border-slate-600/60 bg-slate-800/70 text-slate-300 group-hover:border-sky-400/70 group-hover:text-sky-200'
-										}`}
-									>
-										{section.items.length}
-									</span> */}
 								</div>
 							</button>
 						);
@@ -266,19 +256,19 @@ export const TechStackShowcase: React.FC = () => {
 
 				{/* Right: Active section detail */}
 				<div className="relative">
-					<div className="pointer-events-none absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-sky-500/40 via-emerald-400/30 to-violet-500/40 opacity-70 blur-xl" />
-					<div className="relative rounded-3xl border border-slate-700/60 bg-slate-950/80 p-6 shadow-xl backdrop-blur">
+					<div className="pointer-events-none absolute -inset-0.5 rounded-3xl bg-gradient-radial from-sky-200/60 via-emerald-200/40 to-violet-200/60 opacity-80 blur-xl dark:from-sky-500/60 dark:via-emerald-400/40 dark:to-violet-500/60" />
+					<div className="relative rounded-3xl border border-slate-300/60 bg-gradient-radial from-slate-100 via-sky-100 to-violet-100 p-6 shadow-xl backdrop-blur dark:border-slate-700/60 dark:bg-gradient-radial dark:from-slate-950 dark:via-sky-950 dark:to-violet-950">
 						<div className="flex flex-wrap items-center justify-between gap-4">
 							<div>
-								<p className="text-xs uppercase tracking-[0.22em] text-slate-400">Currently Showing</p>
-								<h3 className="mt-2 text-xl font-semibold text-white">{activeSection.title}</h3>
-								<p className="mt-1 max-w-xl text-sm text-slate-200/90">{activeSection.description}</p>
+								<p className="text-xs uppercase tracking-[0.22em] text-slate-700 dark:text-slate-400">Currently Showing</p>
+								<h3 className="mt-2 text-xl font-semibold text-slate-900 dark:text-white">{activeSection.title}</h3>
+								<p className="mt-1 max-w-xl text-sm text-slate-700/90 dark:text-slate-200/90">{activeSection.description}</p>
 							</div>
-							<div className="flex items-center gap-2 text-[11px] text-slate-300">
-								<span className="rounded-full bg-emerald-500/10 px-2 py-1 text-emerald-300 border border-emerald-500/40">
+							<div className="flex items-center gap-2 text-[11px] text-slate-700 dark:text-slate-300">
+								<span className="rounded-full bg-emerald-200/10 px-2 py-1 text-emerald-700 border border-emerald-200/40 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/40">
 									Real-world projects
 								</span>
-								<span className="rounded-full bg-sky-500/10 px-2 py-1 text-sky-300 border border-sky-500/40">Production ready</span>
+								<span className="rounded-full bg-sky-200/10 px-2 py-1 text-sky-700 border border-sky-200/40 dark:bg-sky-500/10 dark:text-sky-300 dark:border-sky-500/40">Production ready</span>
 							</div>
 						</div>
 
@@ -287,20 +277,19 @@ export const TechStackShowcase: React.FC = () => {
 							{activeSection.items.map((item) => (
 								<div
 									key={item.name}
-									className="group flex flex-col rounded-2xl border border-slate-700/60 bg-slate-900/60 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/70 hover:bg-slate-900 shadow-sm hover:shadow-sky-900/40"
+									className="group flex flex-col rounded-2xl border border-slate-300/60 bg-gradient-radial from-slate-100 via-sky-100 to-violet-100 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-sky-200/70 hover:bg-gradient-radial hover:from-sky-100 hover:via-emerald-100 hover:to-violet-100 shadow-sm hover:shadow-sky-200/40 dark:border-slate-700/60 dark:bg-gradient-radial dark:from-slate-900 dark:via-sky-900 dark:to-violet-900 dark:hover:border-sky-400/70 dark:hover:bg-gradient-radial dark:hover:from-sky-900 dark:hover:via-emerald-900 dark:hover:to-violet-900 dark:hover:shadow-sky-900/40"
 								>
 									<div className="flex items-center gap-3">
-										<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900/90 ring-1 ring-slate-700/70 group-hover:ring-sky-400/70 transition">
-											<item.Icon className="h-6 w-6" />
+										<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-radial from-sky-100 via-emerald-100 to-violet-100 ring-1 ring-slate-300/70 group-hover:ring-sky-200/70 transition dark:from-sky-900 dark:via-emerald-900 dark:to-violet-900 dark:ring-slate-700/70 dark:group-hover:ring-sky-400/70">
+											<item.Icon className="h-6 w-6 text-transparent bg-gradient-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text" />
 										</div>
 										<div>
-											<h4 className="text-sm font-semibold text-slate-50">{item.name}</h4>
-											{/* <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">Core Tool</p> */}
+											<h4 className="text-sm font-semibold text-slate-900 dark:text-slate-50">{item.name}</h4>
 										</div>
 									</div>
-									<p className="mt-3 text-xs text-slate-200/90 leading-relaxed">{item.description}</p>
-									<div className="mt-3 flex items-center gap-2 text-[11px] text-slate-400">
-										<span className="h-1.5 w-1.5 rounded-full bg-emerald-400 group-hover:bg-sky-400" />
+									<p className="mt-3 text-xs text-slate-700/90 dark:text-slate-200/90 leading-relaxed">{item.description}</p>
+									<div className="mt-3 flex items-center gap-2 text-[11px] text-slate-700 dark:text-slate-400">
+										<span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-emerald-200 via-sky-200 to-violet-200 group-hover:bg-sky-200 dark:from-emerald-400 dark:via-sky-400 dark:to-violet-400 dark:group-hover:bg-sky-400" />
 										<span>Used in multiple client projects</span>
 									</div>
 								</div>
@@ -308,13 +297,13 @@ export const TechStackShowcase: React.FC = () => {
 						</div>
 
 						{/* Sub-footer */}
-						<div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-4 text-[11px] text-slate-400">
+						<div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 dark:border-slate-800 pt-4 text-[11px] text-slate-700 dark:text-slate-400">
 							<p>
-								Every tool here is chosen for <span className="text-sky-300">scalability, cost-efficiency, and reliability</span> in real
+								Every tool here is chosen for <span className="text-sky-700 dark:text-sky-300">scalability, cost-efficiency, and reliability</span> in real
 								production workloads.
 							</p>
-							<p className="text-slate-300">
-								Want a stack review? <span className="text-sky-300">Let&apos;s benchmark it against this setup.</span>
+							<p className="text-slate-700 dark:text-slate-300">
+								Want a stack review? <span className="text-sky-700 dark:text-sky-300">Let&apos;s benchmark it against this setup.</span>
 							</p>
 						</div>
 					</div>
