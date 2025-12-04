@@ -203,7 +203,7 @@ const techSections: TechSection[] = [
 
 export const TechStack: React.FC = () => {
 	return (
-		<section className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+		<section className="relative mx-auto max-w-6xl py-16">
 			{/* Gradient background flair */}
 			<div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
 				<div className="absolute -top-32 left-10 h-64 w-64 rounded-full bg-gradient-radial from-sky-200/30 via-emerald-200/20 to-violet-200/30 dark:from-sky-500/30 dark:via-emerald-400/20 dark:to-violet-500/30 blur-2xl" />
@@ -235,9 +235,9 @@ export const TechStack: React.FC = () => {
 							{section.items.map((item) => (
 								<div
 									key={item.name}
-									className="flex items-center gap-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-4"
+									className="flex items-center gap-3 rounded-xl border border-slate-400 p-4"
 								>
-									<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 dark:bg-slate-800">
+									<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full border border-slate-400">
 										<item.Icon className="h-6 w-6 text-sky-500 dark:text-violet-300" />
 									</div>
 									<div>
