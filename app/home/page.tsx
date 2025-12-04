@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 
+import CallToAction from '@/components/CallToAction';
 import CaseStudiesSection from '@/components/CaseStudiesSection';
 import CoreOffers from '@/components/CoreOffers';
 import CoreOffersSection from '@/components/CoreOffersSection';
@@ -12,6 +13,7 @@ import ProblemSolutionSection from '@/components/ProblemSolutionSection';
 import { ReelsSection } from '@/components/ReelsSection';
 import ServicesSection from '@/components/ServicesSection';
 import ServicesShowcase from '@/components/ServicesShowcase';
+import { TechStack } from '@/components/TechStack';
 import { TechStackShowcase } from '@/components/TechStackShowcase';
 import TestimonialsSection from '@/components/TestimonialsSection';
 
@@ -99,6 +101,8 @@ export default function Home() {
 				</div>
 			</header>
 
+			<ReelsSection />
+
 			<TestimonialsSection />
 
 			<CaseStudiesSection />
@@ -109,141 +113,18 @@ export default function Home() {
 
 			<ServicesShowcase />
 
-			<ServicesSection />
+			{/* <ServicesSection /> */}
 
 			<CoreOffersSection />
 
-			<ReelsSection />
+			{/* <Hero /> */}
 
-			<Hero />
-
-			<ReadyToTrySection />
+			{/* <ReadyToTrySection /> */}
 
 			{/* Page content */}
 
 			{/* Hero Section */}
-			<section
-				id="hero"
-				// className="relative overflow-hidden min-h-dvh flex items-center rounded-3xl border border-slate-800  from-slate-900 via-slate-950 to-slate-900 px-6 py-12 sm:px-10 sm:py-16 shadow-2xl"
-				// className="relative overflow-hidden min-h-dvh flex items-center bg-background px-6 py-12 sm:px-10 sm:py-16"
-				className="relative overflow-hidden min-h-dvh flex items-center bg-background"
-			>
-				<div
-					className="absolute top-0 right-0 bottom-0 left-0 w-full h-full bg-cover md:w-[40%] ml-auto"
-					style={{
-						// backgroundColor: '#fbf5e3',
-						// backgroundBlendMode: 'hard-light',
-						// backgroundBlendMode: 'color-dodge',
-						// backgroundColor: '#1d27bd',
-						backgroundImage: 'url(/sketch.png)',
-						backgroundPosition: 'top right',
-						backgroundRepeat: 'no-repeat',
-						// filter: 'blur(1px)',
-						// filter: 'opacity(60%)',
-						// filter: 'grayscale(50%)',
-					}}
-				></div>
-				{/* <SketchImage
-						src="/sketch.png"
-						alt="My awesome sketch-style hero image"
-						width={400}
-						height={400}
-						className="rounded-xl shadow-lg"
-						durationMs={1000}
-					/> */}
-
-				<div className="pointer-events-none absolute inset-0">
-					<div className="absolute -top-32 -right-32 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
-					<div className="absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-				</div>
-
-				<div className="relative z-10 grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] bg-white/80 dark:bg-black/80 md:bg-transparen dark:md:bg-transparen rounded-2xl p-12">
-					<div className="space-y-8">
-						<div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-slate-900/70 px-3 py-1 text-xs font-medium uppercase tracking-wide text-emerald-300 animate-fade-in-up">
-							<span className="h-2 w-2 animate-ping rounded-full bg-emerald-400" />
-							Serverless AWS • AI Automation • Cost Optimization
-						</div>
-
-						<div className="space-y-4">
-							<h1 className="animate-fade-in-up-delay text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
-								Transform Your Business with{' '}
-								<span className="bg-linear-to-r from-emerald-300 via-cyan-300 to-sky-300 bg-clip-text text-transparent">
-									Serverless AWS &amp; AI Automation
-								</span>
-							</h1>
-
-							<p className="animate-fade-in-up-delay-2 max-w-2xl text-sm sm:text-base">
-								Faster development. Lower costs. Higher productivity. I help teams ship modern serverless backends and AI workflows without the
-								overhead of managing infrastructure.
-							</p>
-
-							<p className="animate-fade-in-up-delay-3 text-sm text-slate-400">
-								<span className="font-semibold text-emerald-300">120+ 5-star reviews</span> • Trusted by startups &amp; enterprises worldwide
-							</p>
-						</div>
-
-						<div className="flex flex-wrap items-center gap-4">
-							<a
-								href="#contact"
-								className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							>
-								Book a Free 15-Minute Consultation
-							</a>
-							<p className="text-xs text-slate-400 sm:text-sm">No obligation. Get a clear plan and ballpark savings in one call.</p>
-						</div>
-
-						{/* SVG animated accent text */}
-						<div className="mt-4">
-							<svg viewBox="0 0 420 60" className="w-full animate-stroke-draw">
-								<defs>
-									<linearGradient id="accentStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-										<stop offset="0%" stopColor="#22c55e" />
-										<stop offset="50%" stopColor="#22d3ee" />
-										<stop offset="100%" stopColor="#38bdf8" />
-									</linearGradient>
-								</defs>
-								<text
-									x="0"
-									y="40"
-									fontSize="26"
-									fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text'"
-									fill="none"
-									stroke="url(#accentStroke)"
-									strokeWidth={1.5}
-									className="hero-stroke-text"
-								>
-									Serverless • AI • Automation
-								</text>
-							</svg>
-						</div>
-					</div>
-
-					{/* Social proof card */}
-					{/* <div className="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-950/70 p-5 shadow-xl animate-fade-in-left">
-						<div className="space-y-3 text-sm text-slate-200">
-							<p className="flex items-center gap-2 text-emerald-300">
-								<span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/10">⭐</span>
-								Top-rated AWS Architect
-							</p>
-							<p>⭐ 120+ Five Star Reviews</p>
-							<p>⭐ AWS Serverless + AI Expert</p>
-							<p>⭐ 10+ Years of Cloud Experience</p>
-							<p>⭐ Trusted by teams in US, Europe, India</p>
-						</div>
-
-						<div className="mt-5">
-							<p className="mb-3 text-xs uppercase tracking-wide text-slate-500">Preferred Platforms</p>
-							<div className="flex flex-wrap gap-2 text-xs text-slate-200">
-								<LogoPill label="AWS" />
-								<LogoPill label="OpenAI" />
-								<LogoPill label="Next.js" />
-								<LogoPill label="Node.js" />
-								<LogoPill label="Python" />
-							</div>
-						</div>
-					</div> */}
-				</div>
-			</section>
+			
 			<div className="mx-auto max-w-6xl px-4 pb-16 pt-24 sm:px-6 lg:px-8 lg:pt-28 space-y-20">
 				{/* Core Offers */}
 				<section id="offers" className="space-y-8">
@@ -292,52 +173,16 @@ export default function Home() {
 					</div>
 				</section>
 
-
 				<CoreOffers />
 
-				<TechStackShowcase />
+				<TechStack />
 
-				{/* Contact / CTA */}
-				<section id="contact" className="border-t border-slate-800 pt-10 mt-4 space-y-6">
-					<div className="space-y-3">
-						<h3 className="animate-fade-in-up text-lg font-semibold">Ready to explore serverless &amp; AI for your team?</h3>
-						<p className="animate-fade-in-up-delay max-w-xl text-sm text-slate-400">
-							Send a quick note with your current stack and challenges. I&apos;ll reply with a short, actionable plan and possible next steps.
-						</p>
-					</div>
+				<CallToAction />
 
-					<div className="flex flex-wrap gap-3">
-						<a
-							href="mailto:you@example.com?subject=Serverless%20%2B%20AI%20Consultation"
-							className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-md shadow-emerald-500/30 transition hover:bg-emerald-400"
-						>
-							<MailIcon className="h-4 w-4" />
-							Email Me Your Use Case
-						</a>
-						<a
-							href="https://wa.me/1234567890"
-							target="_blank"
-							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border border-emerald-400/60 bg-slate-950 px-5 py-2.5 text-sm font-semibold text-emerald-300 shadow-inner shadow-emerald-500/20 transition hover:bg-emerald-500/10"
-						>
-							<WhatsappIcon className="h-4 w-4" />
-							Chat on WhatsApp
-						</a>
-						<a
-							href="https://www.fiverr.com/onepunchmantwo"
-							target="_blank"
-							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-5 py-2.5 text-sm font-semibold text-slate-100 shadow-inner shadow-slate-900 transition hover:border-emerald-400 hover:text-emerald-300"
-						>
-							<FiverrIcon className="h-4 w-4" />
-							View My Fiverr Profile
-						</a>
-					</div>
-				</section>
 			</div>
 
 			{/* Creative footer */}
-			<footer className="border-t border-slate-800 bg-slate-950/95">
+			{/* <footer className="border-t border-slate-800 bg-slate-950/95">
 				<div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
 					<p className="flex items-center gap-2">
 						<span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300">⚡</span>
@@ -347,7 +192,9 @@ export default function Home() {
 						© {new Date().getFullYear()} Serverless &amp; AI Studio. Built with Next.js, Tailwind, and lots of ☕.
 					</p>
 				</div>
-			</footer>
+			</footer> */}
+
+			<ReadyToTrySection />
 
 			{/* Animations & keyframes */}
 			<style jsx global>{`
@@ -441,9 +288,11 @@ export default function Home() {
 
 function OfferCard({ title, subtitle, points }: { title: string; subtitle: string; points: string[] }) {
 	return (
-		<div className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-lg animate-fade-in-up">
-			<h3 className="text-lg font-semibold">{title}</h3>
-			<p className="mt-2 text-sm">{subtitle}</p>
+		<div className="flex flex-col rounded-2xl bg-slate-900/60 animate-fade-in-up">
+			<h3 className="text-lg font-semibold bg-linear-to-r from-emerald-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
+				{title}
+			</h3>
+			<p className="mt-2 text-sm text-slate-200">{subtitle}</p>
 			<ul className="mt-4 space-y-2 text-sm">
 				{points.map((p) => (
 					<li key={p} className="flex items-start gap-2">
