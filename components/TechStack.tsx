@@ -5,9 +5,11 @@ import { AmplifyIcon } from '@/icons/AmplifyIcon';
 import { ApiGatewayIcon } from '@/icons/ApiGatewayIcon';
 import { BedrockIcon } from '@/icons/BedrockIcon';
 import { ClaudeIcon } from '@/icons/ClaudeIcon';
+import CloudWatchIcon from '@/icons/CloudWatchIcon';
 import { CognitoIcon } from '@/icons/CognitoIcon';
 import { DynamoDbIcon } from '@/icons/DynamoDbIcon';
 import { ElasticsearchIcon } from '@/icons/ElasticsearchIcon';
+import { EventBridgeIcon } from '@/icons/EventBridgeIcon';
 import { GeminiIcon } from '@/icons/GeminiIcon';
 import { LambdaIcon } from '@/icons/LambdaIcon';
 import { LlamaIcon } from '@/icons/LlamaIcon';
@@ -152,6 +154,16 @@ const techSections: TechSection[] = [
 				Icon: S3Icon,
 				description: 'Durable, cost-effective storage for uploads, backups, data lakes, and static asset hosting.',
 			},
+			{
+				name: 'EventBridge',
+				Icon: EventBridgeIcon,
+				description: 'Serverless event bus for decoupled, scalable integrations across AWS services.',
+			},
+			{
+				name: 'CloudWatch',
+				Icon: CloudWatchIcon,
+				description: 'Monitoring, logging & alerting for AWS resources & applications to keep everything running smoothly.',
+			},
 		],
 	},
 	{
@@ -168,7 +180,7 @@ const techSections: TechSection[] = [
 			{
 				name: 'Serverless Framework',
 				Icon: ServerlessIcon,
-				description: 'Infrastructure-as-code for Lambda-first architectures that stay organized and easy to deploy.',
+				description: 'Infrastructure-as-code for Lambda-first architectures that stay organized.',
 			},
 			// {
 			// 	name: 'Terraform',
