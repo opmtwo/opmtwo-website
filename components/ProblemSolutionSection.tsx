@@ -3,6 +3,9 @@
 
 import React from 'react';
 
+import HappyIcon from '@/icons/HappyIcon';
+import SadIcon from '@/icons/SadIcon';
+
 export const ProblemSolutionSection: React.FC = () => {
 	return (
 		<section
@@ -36,8 +39,8 @@ export const ProblemSolutionSection: React.FC = () => {
 							{/* Header row — unified style */}
 							<div className="inline-flex items-center justify-between gap-3">
 								<div className="inline-flex items-center gap-2">
-									<span className="inline-flex h-7 w-7 items-center justify-center rounded-[1.45rem] border-2 border-red-500 text-sm text-white dark:border-red-500">
-										😣
+									<span className="inline-flex h-7 w-7 items-center justify-center rounded-[1.45rem] text-sm text-white">
+										<SadIcon />
 									</span>
 									<span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-rose-600 dark:text-rose-200">
 										Problem
@@ -100,8 +103,8 @@ export const ProblemSolutionSection: React.FC = () => {
 							{/* Header row — EXACT same structure & font as Problem */}
 							<div className="inline-flex items-center justify-between gap-3">
 								<div className="inline-flex items-center gap-2">
-									<span className="inline-flex h-7 w-7 items-center justify-center rounded-[1.45rem] border-2 border-emerald-400 text-sm text-white dark:border-emerald-400">
-										🚀
+									<span className="inline-flex h-7 w-7 items-center justify-center rounded-[1.45rem] text-sm text-white">
+										<HappyIcon />
 									</span>
 									<span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-emerald-700 dark:text-emerald-200">
 										Solution
