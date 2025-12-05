@@ -30,7 +30,7 @@ const faqs = [
 
 export const FaqSection: React.FC = () => {
 	return (
-		<section id="faq" className="py-16 sm:py-20">
+		<section id="faq" className="py-16 sm:py-20 bg-slate-50/70 dark:bg-slate-900/80">
 			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 				{/* Header */}
 				<div className="mb-10">
