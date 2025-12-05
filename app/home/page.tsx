@@ -115,7 +115,7 @@ export default function Home() {
 
 			{/* <ServicesSection /> */}
 
-			<CoreOffersSection />
+			{/* <CoreOffersSection /> */}
 
 			{/* <Hero /> */}
 
@@ -124,61 +124,13 @@ export default function Home() {
 			{/* Page content */}
 
 			{/* Hero Section */}
-			
+
 			<div className="mx-auto max-w-6xl px-4 pb-16 pt-24 sm:px-6 lg:px-8 lg:pt-28 space-y-20">
-				{/* Core Offers */}
-				<section id="offers" className="space-y-8">
-					<div className="space-y-2">
-						<h2 className="animate-fade-in-up text-xl font-semibold sm:text-2xl">My Core Offers</h2>
-						<p className="animate-fade-in-up-delay text-sm text-slate-400 sm:text-base max-w-2xl">
-							Pick a focused engagement or combine them into a full serverless + AI transformation roadmap.
-						</p>
-					</div>
-
-					<div className="grid gap-6 md:grid-cols-2">
-						{/* Offer 1 */}
-						<OfferCard
-							title="1. Serverless Backend Transformation Kit"
-							subtitle="Modernize your backend with AWS Lambda, API Gateway, and DynamoDB."
-							points={[
-								'40–70% AWS cost reduction',
-								'No servers, no DevOps, no scaling issues',
-								'Ultra-fast feature delivery',
-								'Clean, modern architecture',
-							]}
-						/>
-						{/* Offer 2 */}
-						<OfferCard
-							title="2. AI Support Suite (ChatGPT + Llama 3)"
-							subtitle="Automate customer support with AI-driven deflection & auto-reply."
-							points={[
-								'AI chatbot trained on your data',
-								'Auto-triage & suggested replies',
-								'AI IVR voice assistant',
-								'50–70% reduction in support volume',
-							]}
-						/>
-						{/* Offer 3 */}
-						<OfferCard
-							title="3. AI Automation Pipeline"
-							subtitle="AI-driven data processing, document extraction, and log intelligence."
-							points={['Automated document ingestion', 'Incident summarization', 'Review & feedback analysis', 'Data cleanup & enrichment']}
-						/>
-						{/* Offer 4 */}
-						<OfferCard
-							title="4. Custom AI Tools for Teams"
-							subtitle="AI tools tailored to marketing, sales, engineering, HR, and legal."
-							points={['AI code reviewer', 'AI SEO/blog generator', 'AI contract analyzer', 'AI email writer & training assistant']}
-						/>
-					</div>
-				</section>
-
-				<CoreOffers />
+				{/* <CoreOffers /> */}
 
 				<TechStack />
 
 				{/* <CallToAction /> */}
-
 			</div>
 
 			{/* Creative footer */}
@@ -286,27 +238,6 @@ export default function Home() {
 
 /* Reusable components */
 
-function OfferCard({ title, subtitle, points }: { title: string; subtitle: string; points: string[] }) {
-	return (
-		<div className="flex flex-col rounded-2xl bg-slate-900/60 animate-fade-in-up">
-			<h3 className="text-lg font-semibold bg-linear-to-r from-emerald-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
-				{title}
-			</h3>
-			<p className="mt-2 text-sm text-slate-200">{subtitle}</p>
-			<ul className="mt-4 space-y-2 text-sm">
-				{points.map((p) => (
-					<li key={p} className="flex items-start gap-2">
-						<span className="mt-0.5 inline-flex h-4 w-4 flex-none items-center justify-center rounded-full bg-emerald-500/20 text-[10px] text-emerald-300">
-							✓
-						</span>
-						<span>{p}</span>
-					</li>
-				))}
-			</ul>
-		</div>
-	);
-}
-
 function LogoPill({ label }: { label: string }) {
 	return <span className="rounded-full bg-slate-900 px-3 py-1 text-[11px] text-slate-200">{label}</span>;
 }
@@ -357,58 +288,6 @@ function MobileMenuIcon({ open }: { open: boolean }) {
 					fill="currentColor"
 				/>
 			</g>
-		</svg>
-	);
-}
-
-/* Minimal branded SVG icons (simple, not official logos) */
-
-function SQSSimpleIcon(props: React.SVGProps<SVGSVGElement>) {
-	return (
-		<svg viewBox="0 0 24 24" {...props}>
-			<rect x="4" y="6" width="16" height="12" rx="2" fill="none" stroke="currentColor" strokeWidth="1.4" />
-			<polyline points="7 12 10 12 12 9 14 15 17 15" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-		</svg>
-	);
-}
-
-/* Footer icons */
-
-function MailIcon(props: React.SVGProps<SVGSVGElement>) {
-	return (
-		<svg viewBox="0 0 24 24" {...props}>
-			<rect x="3.5" y="5" width="17" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.4" />
-			<polyline points="4.5 7.5 12 12 19.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-		</svg>
-	);
-}
-
-function WhatsappIcon(props: React.SVGProps<SVGSVGElement>) {
-	return (
-		<svg viewBox="0 0 24 24" {...props}>
-			<path
-				d="M4.5 19.5 5.3 16A7.1 7.1 0 0 1 12 4.8a7.2 7.2 0 0 1 7.2 7.2A7.2 7.2 0 0 1 12 19.2 7.3 7.3 0 0 1 8 18.1Z"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="1.4"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M10.2 9.5c-.1-.4-.3-.4-.5-.4h-.4a.9.9 0 0 0-.7.3 1.8 1.8 0 0 0-.5 1.3 3.1 3.1 0 0 0 .6 1.7 6.3 6.3 0 0 0 2.4 2.2 4.9 4.9 0 0 0 1.5.6 1.8 1.8 0 0 0 1.2-.3 1.4 1.4 0 0 0 .5-.9c.1-.3 0-.5-.1-.6l-.6-.3c-.2-.1-.5-.2-.6 0l-.3.4c-.1.1-.2.2-.4.1a4.8 4.8 0 0 1-2.1-1.8c-.1-.1 0-.2.1-.3l.3-.4c.1-.2.1-.3.1-.5Z"
-				fill="currentColor"
-			/>
-		</svg>
-	);
-}
-
-function FiverrIcon(props: React.SVGProps<SVGSVGElement>) {
-	return (
-		<svg viewBox="0 0 24 24" {...props}>
-			<rect x="3.5" y="4" width="17" height="16" rx="3" fill="none" stroke="currentColor" strokeWidth="1.4" />
-			<text x="8" y="15.2" fontSize="7" fontFamily="system-ui, sans-serif" fontWeight="700" fill="currentColor">
-				fi
-			</text>
 		</svg>
 	);
 }
