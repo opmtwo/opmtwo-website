@@ -15,31 +15,49 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
 	{
-		id: 1,
-		name: 'Nándor Muzsik',
+		id: 3,
+		name: 'Colby/USA',
+		// name: 'USA',
 		role: 'Founder',
-		company: 'Designsill',
+		company: 'FinEdge',
 		avatar: '/koko.webp',
-		quote:
-			"Commerce.FO were created with the highest attention to details. If you're looking for a flexible Product pack, you simply can't go wrong with this one.",
+		quote: `Sam is great to work with. I have worked with him on multiple apps over the last two years and I couldn't recommend him highly enough. Thank you and I look forward to continued work together in the very near future!`,
+	},
+	{
+		id: 5,
+		name: 'Danielle/Macau',
+		// name: 'USA',
+		role: 'Co-founder',
+		company: 'FinEdge',
+		avatar: '/koko.webp',
+		quote: `We enjoyed working again with Sam on a new feature for our product. He has always met all of our requirements 100% and has gone above and beyond to ensure everything works properly.`,
+	},
+	{
+		id: 4,
+		name: 'Liorz/Isreal',
+		// name: 'USA',
+		role: 'CTO',
+		company: 'FinEdge',
+		avatar: '/koko.webp',
+		quote: `onepunchmantwo is a great professional. highly responsive, and very service oriented. would definitely work with him again!`,
 	},
 	{
 		id: 2,
-		name: 'Jane Doe',
-		role: 'CTO',
+		name: 'Kshijit/Australia',
+		// name: 'Australia',
+		role: 'Founder',
 		company: 'SaaSly',
 		avatar: '/koko.webp',
-		quote:
-			'Working with this team was a joy. They shipped fast, communicated clearly, and cared deeply about the final product.',
+		quote: `Sam is amazing developer, he deliver everything on time and excellent manner. He is my go to guy. Sam just finished and delivered pase #3 of my project and he is very accomodative of any minor changes and enhancement. Thanks Sam.`,
 	},
 	{
-		id: 3,
-		name: 'Alex Smith',
-		role: 'Product Lead',
-		company: 'FinEdge',
+		id: 1,
+		name: 'Vikas/Japan',
+		// name: 'Japan',
+		role: 'CTO',
+		company: 'Retail',
 		avatar: '/koko.webp',
-		quote:
-			'The quality and polish exceeded our expectations. Our customers noticed the difference immediately.',
+		quote: `Another great experience with Sam! He is PROFESSIONAL, responsive, and delivers high-quality work. His attention to detail and proactive communication make working with him a breeze. As a repeat customer, I highly recommend him. Thank you, Sam! 🙌`,
 	},
 ];
 
@@ -91,14 +109,14 @@ export const CustomerTestimonials: React.FC = () => {
 						</span>
 					</h2>
 
-					<p className="mt-3 text-xs text-slate-500 sm:text-sm md:text-base dark:text-slate-400">
-						From AWS cost reduction to production-ready AI automation, here are some real results 
-						delivered for SaaS teams, agencies, and high-traffic apps.
+					<p className="md:max-w-2xl mx-auto mt-3 text-xs text-slate-500 sm:text-sm md:text-base dark:text-slate-400">
+						From maximizing AWS efficiency to engineering powerful AI automations, here’s what I’ve delivered for modern SaaS founders and teams.
 					</p>
 				</header>
 
 				{/* Slider area */}
-				<div className="relative mt-10 sm:mt-12 overflow-hidden"
+				<div
+					className="relative mt-10 sm:mt-12 overflow-hidden"
 					onTouchStart={handleTouchStart}
 					onTouchMove={handleTouchMove}
 					onTouchEnd={handleTouchEnd}
@@ -106,64 +124,45 @@ export const CustomerTestimonials: React.FC = () => {
 					{/* Left side card (fixed height, ~25% visible, only on md+) */}
 					<div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 -translate-x-[65%] opacity-40 md:block">
 						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
-							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">
-								{prev.quote}
-							</p>
+							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">{prev.quote}</p>
 						</div>
 					</div>
 
 					{/* Right side card (fixed height, ~25% visible, only on md+) */}
 					<div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[65%] opacity-40 md:block">
 						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
-							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">
-								{next.quote}
-							</p>
+							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">{next.quote}</p>
 						</div>
 					</div>
 
 					{/* Gradient border wrapper for main card */}
 					<div className="relative mx-auto max-w-3xl bg-linear-to-r from-emerald-300 via-lime-300 to-emerald-400 p-px rounded-[34px] dark:from-emerald-500 dark:via-emerald-400 dark:to-lime-400">
 						{/* Main center card */}
-						<div className="relative rounded-4xl bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:px-10 md:py-14 dark:bg-slate-900">
+						<div className="relative min-h-[300px] rounded-4xl bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:px-10 md:py-14 dark:bg-slate-900">
 							{/* Stars pill */}
 							<div className="mx-auto mb-6 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-5 py-2 text-emerald-500 sm:mb-8 sm:px-7 sm:py-3 dark:bg-emerald-500/10 dark:text-emerald-300">
 								{Array.from({ length: 5 }).map((_, i) => (
-									<svg
-										key={i}
-										className="h-4 w-4"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-									>
+									<svg key={i} className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.383 2.46a1 1 0 00-.364 1.118l1.294 3.997c.3.925-.755 1.688-1.54 1.118L10.5 14.86a1 1 0 00-1.175 0l-3.36 2.23c-.784.57-1.838-.193-1.539-1.118l1.293-3.997a1 1 0 00-.364-1.118L1.972 9.397c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.361-3.97z" />
 									</svg>
 								))}
 							</div>
 
 							{/* Quote */}
-							<p className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-900 sm:text-base md:text-lg md:leading-relaxed dark:text-slate-100">
+							<p className="min-h-[120px] md:min-h-[100px] mx-auto max-w-2xl text-sm leading-relaxed text-slate-900 sm:text-base md:text-lg md:leading-relaxed dark:text-slate-100">
 								{active.quote}
 							</p>
 
 							{/* Person */}
 							<div className="mt-8 flex flex-col items-center gap-2 sm:mt-10">
-								<div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-emerald-200 sm:h-24 sm:w-24 dark:border-emerald-400/70">
-									<Image
-										src={active.avatar}
-										alt={active.name}
-										fill
-										sizes="96px"
-										className="object-cover"
-									/>
-								</div>
+								{/* <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-emerald-200 sm:h-24 sm:w-24 dark:border-emerald-400/70">
+									<Image src={active.avatar} alt={active.name} fill sizes="96px" className="object-cover" />
+								</div> */}
 								<div className="text-xs sm:text-sm">
-									<div className="font-semibold text-slate-900 dark:text-slate-50">
-										{active.name}
-									</div>
+									<div className="font-semibold text-slate-900 dark:text-slate-50">{active.name}</div>
 									<div className="text-[11px] text-slate-500 sm:text-xs dark:text-slate-400">
-										{active.role} of{' '}
-										<span className="text-emerald-500 dark:text-emerald-300">
-											{active.company}
-										</span>
+										{active.role}
+										{/* of <span className="text-emerald-500 dark:text-emerald-300">{active.company}</span> */}
 									</div>
 								</div>
 							</div>
@@ -176,9 +175,7 @@ export const CustomerTestimonials: React.FC = () => {
 										type="button"
 										onClick={() => setActiveIndex(i)}
 										className={`h-2 rounded-full transition-all ${
-											i === activeIndex
-												? 'w-6 bg-emerald-500'
-												: 'w-2 bg-emerald-200 dark:bg-emerald-500/40'
+											i === activeIndex ? 'w-6 bg-emerald-500' : 'w-2 bg-emerald-200 dark:bg-emerald-500/40'
 										}`}
 										aria-label={`Go to testimonial ${i + 1}`}
 									/>
