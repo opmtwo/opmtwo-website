@@ -30,11 +30,11 @@ const faqs = [
 
 export const FaqSection: React.FC = () => {
 	return (
-		<section id="faq" className="py-16 sm:py-20 bg-slate-50/70 dark:bg-slate-900/80">
+		<section id="faq" className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950">
 			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 				{/* Header */}
 				<div className="mb-10">
-					<h2 className="mt-4 bg-linear-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-3xl font-semibold tracking-tight text-transparent sm:text-4xl dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400">
+					<h2 className="bg-linear-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-3xl font-semibold tracking-tight text-transparent sm:text-4xl dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400">
 						Frequently Asked Questions
 					</h2>
 					<p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
