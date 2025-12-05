@@ -57,20 +57,44 @@ const techSections: TechSection[] = [
 				Icon: ClaudeIcon,
 				description: 'Great for long-context reasoning, safer assistants, and complex knowledge-heavy use-cases.',
 			},
-			{
-				name: 'Google Gemini',
-				Icon: GeminiIcon,
-				description: 'Multi-modal AI (text, image, code) ideal for product features that need Google ecosystem strength.',
-			},
-			{
-				name: 'Meta Llama',
-				Icon: LlamaIcon,
-				description: 'Open-weight models tuned for private, self-hosted, or hybrid AI deployments at scale.',
-			},
+			// {
+			// 	name: 'Google Gemini',
+			// 	Icon: GeminiIcon,
+			// 	description: 'Multi-modal AI (text, image, code) ideal for product features that need Google ecosystem strength.',
+			// },
+			// {
+			// 	name: 'Meta Llama',
+			// 	Icon: LlamaIcon,
+			// 	description: 'Open-weight models tuned for private, self-hosted, or hybrid AI deployments at scale.',
+			// },
 			{
 				name: 'Amazon Bedrock',
 				Icon: BedrockIcon,
 				description: 'Unified AWS-native platform to orchestrate multiple foundation models with enterprise security.',
+			},
+		],
+	},
+	{
+		id: 'vibe',
+		label: 'Vibe Coding & Prompt Engineering',
+		title: 'Vibe Coding & Prompt Engineering',
+		description:
+			"Crafting powerful prompts, creative workflows, and LLM ops for next-level AI experiences—where code meets creativity.",
+		items: [
+			{
+				name: 'Prompt Engineering',
+				Icon: OpenAiIcon,
+				description: 'Designing, testing, and refining prompts for LLMs to maximize accuracy, creativity, and reliability.',
+			},
+			{
+				name: 'LLM Ops',
+				Icon: BedrockIcon,
+				description: 'Managing, evaluating, and deploying large language models in production workflows.',
+			},
+			{
+				name: 'Creative Coding',
+				Icon: ReactIcon,
+				description: 'Building interactive, generative, and AI-driven user experiences with modern frameworks.',
 			},
 		],
 	},
@@ -131,6 +155,29 @@ const techSections: TechSection[] = [
 		],
 	},
 	{
+		id: 'devops',
+		label: 'DevOps & Infra as Code',
+		title: 'DevOps & Infrastructure',
+		description: 'Automated delivery pipelines and infrastructure-as-code to keep deployments consistent and reversible.',
+		items: [
+			{
+				name: 'AWS Amplify',
+				Icon: AmplifyIcon,
+				description: 'Rapidly connect frontends to AWS backends with CI/CD, hosting, and auth baked in.',
+			},
+			{
+				name: 'Serverless Framework',
+				Icon: ServerlessIcon,
+				description: 'Infrastructure-as-code for Lambda-first architectures that stay organized and easy to deploy.',
+			},
+			// {
+			// 	name: 'Terraform',
+			// 	Icon: TerraformIcon,
+			// 	description: 'Cloud-agnostic IaC to define and version infrastructure across AWS and beyond.',
+			// },
+		],
+	},
+	{
 		id: 'dev',
 		label: 'Developer Tools',
 		title: 'Developer Tools',
@@ -173,29 +220,6 @@ const techSections: TechSection[] = [
 				name: 'Tailwind CSS',
 				Icon: TailwindIcon,
 				description: 'Utility-first styling for rapid iteration and consistently modern visual design.',
-			},
-		],
-	},
-	{
-		id: 'devops',
-		label: 'DevOps & Infra as Code',
-		title: 'DevOps & Infrastructure',
-		description: 'Automated delivery pipelines and infrastructure-as-code to keep deployments consistent and reversible.',
-		items: [
-			{
-				name: 'AWS Amplify',
-				Icon: AmplifyIcon,
-				description: 'Rapidly connect frontends to AWS backends with CI/CD, hosting, and auth baked in.',
-			},
-			{
-				name: 'Serverless Framework',
-				Icon: ServerlessIcon,
-				description: 'Infrastructure-as-code for Lambda-first architectures that stay organized and easy to deploy.',
-			},
-			{
-				name: 'Terraform',
-				Icon: TerraformIcon,
-				description: 'Cloud-agnostic IaC to define and version infrastructure across AWS and beyond.',
 			},
 		],
 	},
