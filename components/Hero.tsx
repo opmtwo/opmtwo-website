@@ -50,7 +50,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-linear-to-b from-[#f4f7fb] to-[#e3edf7] text-slate-900">
+		<div className="min-h-screen flex flex-col items-center text-slate-900">
 			{/* Top nav */}
 			<header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5 sm:px-8">
 				<div className="flex items-center gap-2">
@@ -76,7 +76,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 			</header>
 
 			{/* Hero */}
-			<main className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-16 pt-10 text-center sm:px-8 sm:pt-16">
+			<main className="mx-auto my-auto flex w-full max-w-4xl flex-col items-center text-center px-4 sm:px-8">
 				{/* <div
 					className="absolute top-0 right-0 bottom-0 left-0 w-full h-full bg-cover md:w-[40%] ml-auto"
 					style={{
@@ -113,7 +113,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 				</div>
 
 				{/* Heading */}
-				<h1 className="mb-3 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl md:text-6xl mt-8">
+				<h1 className="mb-3 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl mt-8">
 					{/* Your white-label partner for */}I Specialize in
 				</h1>
 
@@ -135,32 +135,32 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 							Serverless AWS &amp; AI Automation
 						</h1> */}
 
-					<p className="max-w-lg text-base leading-relaxed text-slate-700 sm:text-lg">
+					<p className="max-w-lg text-base leading-relaxed text-slate-700 dark:text-white sm:text-lg">
 						Optimize, automate, and scale your backend with AWS Lambda, DynamoDB & AI —{' '}
 						<span className="font-semibold">10× faster and up to 70% cheaper.</span>
 					</p>
 				</div>
 
 				{/* Stats */}
-				<div className="space-y-4">
+				<div className="space-y-4 mt-8">
 					<div className="h-px w-full bg-linear-to-r from-slate-200/80 via-slate-300/70 to-transparent" />
-					<div className="flex flex-wrap items-center gap-6 text-sm text-slate-800">
+					<div className="flex flex-wrap items-center gap-6 text-sm text-slate-800 dark:text-white">
 						{/* Cost Savings */}
-						<div className="flex items-center gap-3 my-6">
+						<div className="flex items-center gap-3 text-slate-900 dark:text-white">
 							<div className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-400/40 bg-white">
 								<span className="text-lg">💰</span>
 							</div>
 							<div className="leading-tight">
-								<p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">AWS Cost Reduction</p>
-								<p className="text-sm font-semibold text-slate-900">Up to 70% Savings</p>
+								<p className="text-xs font-medium uppercase tracking-[0.18em] ">AWS Cost Reduction</p>
+								<p className="text-sm font-semibold">Up to 70% Savings</p>
 							</div>
 						</div>
 
 						{/* Rating */}
 						<div className="flex items-center gap-2 text-sm">
 							<span className="text-lg">⭐</span>
-							<span className="font-semibold text-slate-900">5.0</span>
-							<span className="text-xs text-slate-500">Average Rating</span>
+							<span className="font-semibold">5.0</span>
+							<span className="text-xs">Average Rating</span>
 						</div>
 					</div>
 					<div className="h-px w-full bg-gradient-to-r from-slate-200/80 via-slate-300/70 to-transparent" />
@@ -172,7 +172,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 					{email && (
 						<a
 							href={`mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}
-							className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white border-2 border-transparent transition hover:bg-transparent hover:text-black hover:border-black"
+							className="inline-flex items-center gap-2 rounded-full bg-black dark:bg-white px-5 py-2.5 text-sm font-semibold text-white dark:text-black border-2 border-transparent transition hover:bg-transparent dark:hover:bg-transparent hover:text-black dark:hover:text-white hover:border-black dark:hover:bg-black dark:hover:border-white"
 						>
 							<MailIcon className="h-4 w-4" />
 							{emailLabel}
@@ -184,7 +184,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 							href={`https://wa.me/${whatsapp}`}
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:text-white dark:hover:border-[#25D366]"
+							className="inline-flex items-center gap-2 rounded-full border-2 border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:border-[#25D366]"
 						>
 							<WhatsappIcon className="h-4 w-4" />
 							{whatsappLabel}
@@ -196,7 +196,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 							href={`https://www.fiverr.com/${fiverr}`}
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-black dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
+							className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-white dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
 						>
 							<FiverrIcon className="h-4 w-4" />
 							{fiverrLabel}
