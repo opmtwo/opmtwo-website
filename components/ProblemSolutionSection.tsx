@@ -8,10 +8,7 @@ import SadIcon from '@/icons/SadIcon';
 
 export const ProblemSolutionSection: React.FC = () => {
 	return (
-		<section
-			id="problem-solution"
-			className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 sm:px-6 lg:px-8"
-		>
+		<section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
 			{/* Section heading */}
 			<div className="space-y-3">
 				<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
@@ -25,8 +22,8 @@ export const ProblemSolutionSection: React.FC = () => {
 					to lean, scalable AWS &amp; AI systems.
 				</h2>
 				<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
-					I help teams escape slow releases, noisy AWS bills, and messy AI experiments — and move into
-					scalable, cost-efficient, serverless architectures.
+					I help teams escape slow releases, noisy AWS bills, and messy AI experiments — and move into scalable, cost-efficient, serverless
+					architectures.
 				</p>
 			</div>
 
@@ -42,9 +39,7 @@ export const ProblemSolutionSection: React.FC = () => {
 									<span className="inline-flex h-7 w-7 items-center justify-center rounded-[1.45rem] text-sm text-white">
 										<SadIcon />
 									</span>
-									<span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-rose-600 dark:text-rose-200">
-										Problem
-									</span>
+									<span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-rose-600 dark:text-rose-200">Problem</span>
 								</div>
 								<span className="rounded-[1.45rem] border-2 border-red-500 bg-transparent px-3 py-1 text-[11px] font-medium text-rose-700 dark:text-rose-100">
 									Speak to the Pain
@@ -55,9 +50,7 @@ export const ProblemSolutionSection: React.FC = () => {
 								<h3 className="text-lg font-semibold leading-snug text-slate-900 sm:text-xl dark:text-slate-50">
 									Struggling with slow development, high AWS bills, or legacy infrastructure?
 								</h3>
-								<p className="text-sm text-slate-600 sm:text-[15px] dark:text-slate-400">
-									You&apos;re not alone. Most teams are held back by:
-								</p>
+								<p className="text-sm text-slate-600 sm:text-[15px] dark:text-slate-400">You&apos;re not alone. Most teams are held back by:</p>
 							</div>
 
 							<ul className="space-y-2.5- text-sm text-slate-800 dark:text-slate-100">
@@ -88,9 +81,7 @@ export const ProblemSolutionSection: React.FC = () => {
 							</ul>
 
 							<div className="mt-3 rounded-2xl border-2 border-red-500 bg-transparent p-4 text-sm text-rose-900 dark:border-rose-500 dark:text-rose-50">
-								<p className="font-medium">
-									Talent search slow? Senior AWS/AI experts cost $200K+ and take months to hire.
-								</p>
+								<p className="font-medium">Talent search slow? Senior AWS/AI experts cost $200K+ and take months to hire.</p>
 							</div>
 						</div>
 					</div>
@@ -117,12 +108,9 @@ export const ProblemSolutionSection: React.FC = () => {
 
 							<div className="space-y-3">
 								<h3 className="text-lg font-semibold leading-snug text-slate-900 sm:text-xl dark:text-slate-50">
-									I help build lean, scalable, AI-powered systems with AWS Serverless and modern
-									AI models.
+									I help build lean, scalable, AI-powered systems with AWS Serverless and modern AI models.
 								</h3>
-								<p className="text-sm font-semibold text-emerald-700 sm:text-[15px] dark:text-emerald-100">
-									You get:
-								</p>
+								<p className="text-sm font-semibold text-emerald-700 sm:text-[15px] dark:text-emerald-100">You get:</p>
 							</div>
 
 							<ul className="space-y-2.5- text-sm text-slate-900 dark:text-slate-50">
@@ -175,9 +163,7 @@ export const ProblemSolutionSection: React.FC = () => {
 							</div> */}
 
 							<div className="mt-3 rounded-2xl border-2 border-emerald-400 bg-transparent p-4 text-sm text-green-900 dark:border-emerald-400 dark:text-green-50">
-								<p className="font-medium">
-									Skip the talent hunt and start scaling today with an expert who delivers immediately.
-								</p>
+								<p className="font-medium">Skip the talent hunt and start scaling today with an expert who delivers immediately.</p>
 							</div>
 						</div>
 					</div>
