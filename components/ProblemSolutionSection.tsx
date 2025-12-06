@@ -8,7 +8,7 @@ import SadIcon from '@/icons/SadIcon';
 
 export const ProblemSolutionSection: React.FC = () => {
 	return (
-		<section className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
+		<section id="problem-solution" className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
 			{/* Section heading */}
 			<div className="space-y-3">
 				<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
