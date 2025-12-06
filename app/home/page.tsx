@@ -17,6 +17,7 @@ import ServicesShowcase from '@/components/ServicesShowcase';
 import { TechStack } from '@/components/TechStack';
 import { TechStackShowcase } from '@/components/TechStackShowcase';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import DownArrowIcon from '@/icons/DownArrowIcon';
 
 const navLinks = [
 	{ href: '#hero', label: 'Home' },
@@ -102,9 +103,29 @@ export default function Home() {
 				</div>
 			</header>
 
+			{/* Scroll to next section button */}
+			<button
+				className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 transition cursor-pointer"
+				onClick={() => {
+					const sections = Array.from(document.querySelectorAll('section'));
+					const current = sections.findIndex((sec) => sec.getBoundingClientRect().top - 100 > 50);
+					const nextSection = sections[current !== -1 ? current : 1];
+					if (nextSection) {
+						const scrollY = window.scrollY + nextSection.getBoundingClientRect().top - 100;
+						window.scrollTo({
+							top: scrollY,
+							behavior: 'smooth',
+						});
+					}
+				}}
+			>
+				{/* Scroll to Next */}
+				<DownArrowIcon width={24} height={24} />
+			</button>
+
 			<Hero />
 			<Hr />
-			
+
 			{/* <ReelsSection /> */}
 
 			<ProblemSolutionSection />
@@ -137,7 +158,7 @@ export default function Home() {
 					<Hr />
 				</div>
 			</div>
-			
+
 			<FaqSection />
 
 			{/* Creative footer */}
