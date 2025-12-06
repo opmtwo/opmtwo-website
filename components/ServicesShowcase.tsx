@@ -91,7 +91,7 @@ export const ServicesShowcase: React.FC = () => {
 	const grouped = groupByCategory(services);
 
 	return (
-		<section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+		<section id="services" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 			{/* Heading */}
 			<header className="mb-12 space-y-3">
 				<h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
