@@ -101,17 +101,16 @@ export default function Home() {
 				</div>
 			</header>
 
-			<ReelsSection />
-
-			<TestimonialsSection />
-
-			<CaseStudiesSection />
+			<Hero />
+			
+			{/* <ReelsSection /> */}
 
 			<ProblemSolutionSection />
 
-			<FaqSection />
+			<CaseStudiesSection />
 
 			<ServicesShowcase />
+
 
 			{/* <ServicesSection /> */}
 
@@ -125,13 +124,15 @@ export default function Home() {
 
 			{/* Hero Section */}
 
-			<div className="mx-auto max-w-6xl px-4 pb-16 pt-24 sm:px-6 lg:px-8 lg:pt-28 space-y-20">
-				{/* <CoreOffers /> */}
+			<TestimonialsSection />
 
-				<TechStack />
-
-				{/* <CallToAction /> */}
+			<div className="">
+				<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-20">
+					<TechStack />
+				</div>
 			</div>
+			
+			<FaqSection />
 
 			{/* Creative footer */}
 			{/* <footer className="border-t border-slate-800 bg-slate-950/95">
