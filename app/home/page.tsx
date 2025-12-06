@@ -9,6 +9,7 @@ import CoreOffersSection from '@/components/CoreOffersSection';
 import FaqSection from '@/components/FaqSection';
 import ReadyToTrySection from '@/components/Footer';
 import Hero from '@/components/Hero';
+import Hr from '@/components/Hr';
 import ProblemSolutionSection from '@/components/ProblemSolutionSection';
 import { ReelsSection } from '@/components/ReelsSection';
 import ServicesSection from '@/components/ServicesSection';
@@ -102,15 +103,18 @@ export default function Home() {
 			</header>
 
 			<Hero />
+			<Hr />
 			
 			{/* <ReelsSection /> */}
 
 			<ProblemSolutionSection />
+			<Hr />
 
 			<CaseStudiesSection />
+			<Hr />
 
 			<ServicesShowcase />
-
+			<Hr />
 
 			{/* <ServicesSection /> */}
 
@@ -125,10 +129,12 @@ export default function Home() {
 			{/* Hero Section */}
 
 			<TestimonialsSection />
+			<Hr />
 
 			<div className="">
 				<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-20">
 					<TechStack />
+					<Hr />
 				</div>
 			</div>
 			
