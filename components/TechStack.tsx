@@ -239,7 +239,7 @@ const techSections: TechSection[] = [
 
 export const TechStack: React.FC = () => {
 	return (
-		<section className="relative mx-auto max-w-6xl py-16">
+		<section className="relative mx-auto max-w-6xl">
 			{/* Gradient background flair */}
 			<div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
 				<div className="absolute -top-32 left-10 h-64 w-64 rounded-full bg-gradient-radial from-sky-200/30 via-emerald-200/20 to-violet-200/30 dark:from-sky-500/30 dark:via-emerald-400/20 dark:to-violet-500/30 blur-2xl" />
