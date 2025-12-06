@@ -95,7 +95,7 @@ export const CustomerTestimonials: React.FC = () => {
 	};
 
 	return (
-		<section className="relative overflow-hidden px-4 py-16 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+		<section className="relative overflow-hidden min-h-dvh px-4 flex flex-col items-center justify-center">
 			<div className="mx-auto max-w-6xl">
 				{/* Header */}
 				{/* Updated Heading + Subtitle */}
