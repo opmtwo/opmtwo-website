@@ -50,7 +50,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 	}, []);
 
 	return (
-		<div className="min-h-screen flex flex-col items-center text-slate-900">
+		<section id="hero" className="min-h-screen flex flex-col items-center text-slate-900">
 			{/* Top nav */}
 			<header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5 sm:px-8">
 				<div className="flex items-center gap-2">
@@ -204,7 +204,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 					)}
 				</div>
 			</main>
-		</div>
+		</section>
 	);
 };
 
