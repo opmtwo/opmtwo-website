@@ -30,12 +30,18 @@ const faqs = [
 
 export const FaqSection: React.FC = () => {
 	return (
-		<section id="faq" className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950">
+		<section
+			id="faq"
+			className="relative min-h-dvh flex flex-col items-center justify-center"
+		>
 			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 				{/* Header */}
 				<div className="mb-10">
 					<h2 className="bg-linear-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-3xl font-semibold tracking-tight text-transparent sm:text-4xl dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400">
-						Frequently Asked Questions
+						<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent">
+							{/* The Modern AI & Cloud Tech Stack */}
+							Frequently Asked Questions
+						</span>
 					</h2>
 					<p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
 						Here are the most common questions teams ask before working with me on AWS, serverless, and AI automation projects.
@@ -62,7 +68,7 @@ export const FaqSection: React.FC = () => {
 							</p>
 						</div>
 
-						<button
+						{/* <button
 							type="button"
 							className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-indigo-500 via-sky-500 to-emerald-500 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-indigo-500/30 transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-slate-900"
 						>
@@ -83,7 +89,34 @@ export const FaqSection: React.FC = () => {
 									/>
 								</svg>
 							</span>
-						</button>
+						</button> */}
+
+						<a
+							href={`mailto:`}
+							target="_blank"
+							rel="noreferrer"
+							className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-black dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
+						>
+							{/* <MailIcon className="h-4 w-4" />
+													{fiverrLabel} */}
+							Contact Me
+							<span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/20 dark:bg-slate-800/40">
+								<svg
+									viewBox="0 0 20 20"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-300"
+								>
+									<path
+										d="M5 10h8m0 0L9.5 6.5M13 10 9.5 13.5"
+										stroke="currentColor"
+										strokeWidth="1.6"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+									/>
+								</svg>
+							</span>
+						</a>
 					</div>
 				</div>
 			</div>
