@@ -1,4 +1,5 @@
 // app/components/ServicesShowcase.tsx
+import classNames from 'classnames';
 import React from 'react';
 
 type ServiceCategory = 'Serverless & Cloud' | 'AI & Automation';
@@ -90,22 +91,22 @@ export const ServicesShowcase: React.FC = () => {
 	const grouped = groupByCategory(services);
 
 	return (
-		<section className="py-16 bg-white text-slate-900">
+		<section className="py-16 bg-slate-50 dark:bg-slate-950 text-slate-900">
 			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 				{/* Heading */}
 				<header className="mb-12 space-y-3">
 					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
-						<span className="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">Services</span>{' '}
-						<span className="font-normal text-slate-900">– that Make a Difference</span>
+						<span className="bg-linear-to-r from-red-600 to-red-400 bg-clip-text text-transparent">Services</span>{' '}
+						<span className="font-normal dark:text-white">– that Make a Difference</span>
 					</h2>
 				</header>
 
-				{Object.entries(grouped).map(([category, items]) => (
-					<div key={category} className="mb-14">
+				{Object.entries(grouped).map(([category, items], index) => (
+					<div key={category} className={classNames(index < Object.entries(grouped).length - 1 ? 'mb-14' : '')}>
 						{/* Category heading */}
 						<div className="mb-6 flex items-center gap-3">
-							<span className="h-px w-10 bg-gradient-to-r from-red-500 to-red-300" />
-							<h3 className="text-xl font-semibold bg-gradient-to-r from-slate-800 to-slate-500 bg-clip-text text-transparent">{category}</h3>
+							<span className="h-px w-10 bg-linear-to-r from-red-500 to-red-300" />
+							<h3 className="text-xl font-semibold bg-linear-to-r from-slate-800 to-slate-500 bg-clip-text text-transparent">{category}</h3>
 						</div>
 
 						{/* Grid */}
@@ -114,24 +115,24 @@ export const ServicesShowcase: React.FC = () => {
 								<div
 									key={service.id}
 									className="
-                    relative rounded-3xl p-[2px] 
-                    bg-gradient-to-br from-red-500/40 via-red-300/40 to-red-500/40
-                    hover:from-red-400 hover:via-red-200 hover:to-red-500 
-                    transition-all duration-300
-                  "
+										relative rounded-3xl p-[2px] 
+										bg-linear-to-br from-red-500/40 via-red-300/40 to-red-500/40
+										hover:from-red-400 hover:via-red-200 hover:to-red-500 
+										transition-all duration-300
+                  					"
 								>
 									<article
 										className="
-                      h-full rounded-3xl bg-white p-6 
-                      backdrop-blur-sm 
-                      shadow-[0_0_20px_rgba(255,0,0,0.08)] 
-                      hover:shadow-[0_0_28px_rgba(255,0,0,0.14)]
-                      transition-all duration-300
-                      hover:-translate-y-1
-                    "
+											h-full rounded-3xl bg-white dark:bg-slate-900 p-6 
+											backdrop-blur-sm 
+											shadow-[0_0_20px_rgba(255,0,0,0.08)] 
+											hover:shadow-[0_0_28px_rgba(255,0,0,0.14)]
+											transition-all duration-300
+					  					"
+										//   hover:-translate-y-1
 									>
 										{/* Number */}
-										<div className="inline-flex rounded-full bg-red-50 px-3 py-1 text-xs font-medium text-red-600">
+										<div className="inline-flex rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-medium text-red-600">
 											{service.id}/{service.total}
 										</div>
 
