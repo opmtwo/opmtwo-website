@@ -36,7 +36,10 @@ export const ReadyToTrySection: React.FC<ReadyToTrySectionProps> = ({
 				<h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
 					<span>{headline}</span>
 					{/* serverless & AI  */}
-					<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent dark:from-sky-500 dark:via-emerald-500 dark:to-violet-500"> {subheadline} </span>
+					<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent dark:from-sky-500 dark:via-emerald-500 dark:to-violet-500">
+						{' '}
+						{subheadline}{' '}
+					</span>
 					<span>for your team?</span>
 				</h2>
 
@@ -63,37 +66,49 @@ export const ReadyToTrySection: React.FC<ReadyToTrySectionProps> = ({
 				</div> */}
 
 				<div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-					<a
-						href={`mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}
-						className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white border-2 border-transparent transition hover:bg-transparent hover:text-black hover:border-black"
-					>
-						<MailIcon className="h-4 w-4" />
-						{emailLabel}
-					</a>
-					<a
-						href={`https://wa.me/${whatsapp}`}
-						target="_blank"
-						rel="noreferrer"
-						className="inline-flex items-center gap-2 rounded-full border border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:text-white dark:hover:border-[#25D366]"
-					>
-						<WhatsappIcon className="h-4 w-4" />
-						{whatsappLabel}
-					</a>
-					<a
-						href={`https://www.fiverr.com/${fiverr}`}
-						target="_blank"
-						rel="noreferrer"
-						className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-black dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
-					>
-						<FiverrIcon className="h-4 w-4" />
-						{fiverrLabel}
-					</a>
+					{/* Email Button */}
+					{email && (
+						<a
+							href={`mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}
+							className="inline-flex items-center gap-2 rounded-full bg-black dark:bg-white px-5 py-2.5 text-sm font-semibold text-white dark:text-black border-2 border-transparent transition hover:bg-transparent dark:hover:bg-transparent hover:text-black dark:hover:text-white hover:border-black dark:hover:bg-black dark:hover:border-white"
+						>
+							<MailIcon className="h-4 w-4" />
+							{emailLabel}
+						</a>
+					)}
+					{/* WhatsApp Button */}
+					{whatsapp && (
+						<a
+							href={`https://wa.me/${whatsapp}`}
+							target="_blank"
+							rel="noreferrer"
+							className="inline-flex items-center gap-2 rounded-full border-2 border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:border-[#25D366]"
+						>
+							<WhatsappIcon className="h-4 w-4" />
+							{whatsappLabel}
+						</a>
+					)}
+					{/* Fiverr Button */}
+					{fiverr && (
+						<a
+							href={`https://www.fiverr.com/${fiverr}`}
+							target="_blank"
+							rel="noreferrer"
+							className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-white dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
+						>
+							<FiverrIcon className="h-4 w-4" />
+							{fiverrLabel}
+						</a>
+					)}
 				</div>
 
 				{/* Subtext */}
 				<p className="mt-6 text-sm text-slate-500 dark:text-slate-300">
 					{description.split('\n').map((line, i) => (
-						<React.Fragment key={i}>{line}<br /></React.Fragment>
+						<React.Fragment key={i}>
+							{line}
+							<br />
+						</React.Fragment>
 					))}
 				</p>
 			</div>
