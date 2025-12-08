@@ -9,6 +9,7 @@ const phrases = [
 	// 'sorting emails', 'writing replies', 'taking notes', 'scheduling',
 	'AWS Serverless',
 	'AI Automation',
+	'LLM Integration',
 	'Backend Optimization',
 	'Cost Reduction',
 	'Workflow Automation',
@@ -50,31 +51,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 	}, []);
 
 	return (
-		<section id="hero" className="flex flex-col items-center text-slate-900">
-			{/* Top nav */}
-			<header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5 sm:px-8">
-				<div className="flex items-center gap-2">
-					<span className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 text-xs font-semibold tracking-[0.2em] uppercase">
-						AI
-					</span>
-					<span className="text-lg font-semibold tracking-tight">ReplyMate</span>
-				</div>
-
-				<nav className="hidden items-center gap-8 text-sm text-slate-600 md:flex">
-					<button className="hover:text-slate-900">Pricing</button>
-					<button className="hover:text-slate-900">Security</button>
-					<button className="hover:text-slate-900">For Teams</button>
-					<button className="hover:text-slate-900">Support</button>
-				</nav>
-
-				<div className="flex items-center gap-3">
-					<button className="hidden text-sm text-slate-700 hover:text-slate-900 md:inline">Log in</button>
-					<button className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-slate-800">
-						Start free trial
-					</button>
-				</div>
-			</header>
-
+		<section id="hero" className="flex flex-col items-center text-slate-900 pt-32">
 			{/* Hero */}
 			<main className="mx-auto my-auto flex w-full max-w-4xl flex-col items-center text-center px-4 sm:px-8">
 				{/* <div
@@ -165,7 +142,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 							<span className="text-xs">Average Rating</span>
 						</div>
 					</div>
-					<div className="h-px w-full bg-gradient-to-r from-slate-200/80 via-slate-300/70 to-transparent" />
+					<div className="h-px w-full bg-linear-to-r from-slate-200/80 via-slate-300/70 to-transparent" />
 				</div>
 
 				{/* Buttons */}
