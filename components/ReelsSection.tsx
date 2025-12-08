@@ -25,7 +25,7 @@ export const ReelsSection: React.FC<ReelsSectionProps> = ({
 	fiverr = 'onepunchmantwo',
 }) => {
 	return (
-		<section className="relative flex items-center min-h-dvh px-20">
+		<section className="relative flex items-center px-20">
 			<div className="flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
 				{/* LEFT CONTENT */}
 				<div className="max-w-xl space-y-8">

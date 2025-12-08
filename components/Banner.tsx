@@ -1,12 +1,7 @@
 const Banner = () => {
 	return (
 		<>
-			<section
-				id="hero"
-				// className="relative overflow-hidden min-h-dvh flex items-center rounded-3xl border border-slate-800  from-slate-900 via-slate-950 to-slate-900 px-6 py-12 sm:px-10 sm:py-16 shadow-2xl"
-				// className="relative overflow-hidden min-h-dvh flex items-center bg-background px-6 py-12 sm:px-10 sm:py-16"
-				className="relative overflow-hidden min-h-dvh flex items-center bg-background"
-			>
+			<section id="hero" className="relative overflow-hidden flex items-center bg-background">
 				<div
 					className="absolute top-0 right-0 bottom-0 left-0 w-full h-full bg-cover md:w-[40%] ml-auto"
 					style={{

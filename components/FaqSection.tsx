@@ -32,7 +32,7 @@ export const FaqSection: React.FC = () => {
 	return (
 		<section
 			id="faq"
-			className="relative min-h-dvh flex flex-col items-center justify-center"
+			className="relative flex flex-col items-center justify-center"
 		>
 			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 				{/* Header */}

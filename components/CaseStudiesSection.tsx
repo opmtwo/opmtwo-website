@@ -39,7 +39,7 @@ const caseStudies: CaseStudy[] = [
 
 export const CaseStudiesSection: React.FC = () => {
 	return (
-		<section id="case-studies" className="relative min-h-dvh flex flex-col items-center justify-center  px-4 sm:px-6 lg:px-8">
+		<section id="case-studies" className="relative flex flex-col items-center justify-center  px-4 sm:px-6 lg:px-8">
 			<div className="mx-auto max-w-6xl">
 				{/* Background gradient glow (subtle in light, stronger in dark) */}
 				<div className="pointer-events-none absolute inset-0 -z-10 opacity-70">

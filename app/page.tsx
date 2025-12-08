@@ -7,7 +7,7 @@ export default function Home() {
 	const [useGradient, setUseGradient] = useState(true);
 
 	return (
-		<section id="section-intro" className="onscroll fitscreen seen loaded min-h-[100dvh]">
+		<section id="section-intro" className="onscroll fitscreen seen loaded">
 			{/* <div className="layer back">
 				<div className="rope sketch" path-speed="4" path-offset="0">
 					<svg

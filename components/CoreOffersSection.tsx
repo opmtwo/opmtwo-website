@@ -79,7 +79,7 @@ export const CoreOffersSection: React.FC = () => {
 	const activeOffer = coreOffers[activeIndex];
 
 	return (
-		<section id="core-offers" className="relative flex items-center min-h-dvh mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+		<section id="core-offers" className="relative flex items-center mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
 			<div className="max-w-6xl mx-auto">
 				{/* Background glow / subtle gradient */}
 				<div className="pointer-events-none absolute inset-0 -z-10">
