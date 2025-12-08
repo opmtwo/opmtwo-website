@@ -310,7 +310,7 @@ export const TechStack: React.FC = () => {
 			</div>
 
 			{/* Header */}
-			<div className="mb-10 text-center">
+			{/* <div className="mb-10 text-center">
 				<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
 					Powering Innovation:&nbsp;
 					<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent">
@@ -321,24 +321,47 @@ export const TechStack: React.FC = () => {
 					Explore the cutting-edge tools and platforms I use to build fast, scalable, and intelligent AI solutions—from cloud to code, and everything
 					in between.
 				</p>
+			</div> */}
+
+			{/* Section heading */}
+			<div className="space-y-3 mb-6">
+				<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
+					<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
+					Tech Stack for nextgen apps
+				</p>
+				<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+					Powering Innovation:&nbsp;
+					<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
+						{/* From “everything is on fire” */}
+						The Modern AI & Cloud Tech Stack
+					</span>
+				</h2>
+				<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
+					Explore the cutting-edge tools and platforms I use to build fast, scalable, and intelligent AI solutions—from cloud to code, and everything
+					in between.
+				</p>
 			</div>
 
 			<div className="space-y-12">
 				{techSections.map((section) => (
 					<div key={section.id} className="rounded-2xl">
 						<div className="mb-4">
-							<h3 className="text-xl font-semibold mb-1">{section.title}</h3>
-							<p className="text-sm text-slate-700 dark:text-slate-300">{section.description}</p>
+							{/* <h3 className="text-xl font-semibold mb-1">{section.title}</h3> */}
+							<h4 className="text-xl font-semibold bg-linear-to-r from-cyan-600 to-cyan-400 bg-clip-text text-transparent">
+								{section.title}
+							</h4>
+							<p className="text-lg">{section.description}</p>
 						</div>
-						<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+						<div className="mt-8 grid gap-6 md:grid-cols-2">
 							{section.items.map((item) => (
-								<div key={item.name} className="flex items-center gap-3 rounded-xl border border-slate-400 p-4">
+								<div key={item.name} className="flex items-center gap-3 rounded-xl border border-slate-400 p-8">
 									<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full border border-slate-400">
 										<item.Icon className="h-6 w-6 text-sky-500 dark:text-violet-300" />
 									</div>
-									<div>
-										<h4 className="text-sm font-medium font-sans">{item.name}</h4>
-										<p className="text-xs mt-1">{item.description}</p>
+									<div className="space-y-2">
+										<h4 className="font-medium">{item.name}</h4>
+										{/* <p className="text-xs mt-1">{item.description}</p> */}
+										<p className="leading-relaxed text-slate-600">{item.description}</p>
 									</div>
 								</div>
 							))}
