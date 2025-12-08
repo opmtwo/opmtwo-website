@@ -11,18 +11,24 @@ type CaseStudy = {
 
 const caseStudies: CaseStudy[] = [
 	{
-		title: 'SaaS',
-		tagline: 'AWS Cost Optimization & Serverless Migration',
-		details: 'Cut AWS bill by 70%, removed ECS bottlenecks, migrated to Lambda + DynamoDB, and improved performance by 3×.',
-		tech: 'Lambda, DynamoDB, API Gateway',
+		title: 'FinTech',
+		tagline: 'Real-Time Payment Card Processing Engine',
+		details: 'Built a high-speed processing layer for real-time card transactions with instant validation, scoring, and routing across multiple providers.',
+		tech: 'Lambda, DynamoDB, API Gateway, Kinesis, Elasticsearch',
 	},
 	{
-		title: 'HealthTech',
-		tagline: 'AI Document Pipeline for Medical Reports',
-		details: 'Built an AI-based system that understands blood reports and automates data extraction and analysis.',
-		// AI That Understands Blood Reports: My Case Study on Vision-Powered Health Automation
-		tech: 'Lambda, DynamoDB, API Gateway, Bedrock',
+		title: 'IoT',
+		tagline: 'Real-Time Fuel Pump Data Pipeline',
+		details: 'Streams real-time petrol pump telemetry—dispenser flow, tank levels, and sales pulses—into a serverless pipeline.',
+		tech: 'Lambda, DynamoDB, Kinesis, IoT Core',
 	},
+	// {
+	// 	title: 'HealthTech',
+// 	tagline: 'AI Document Pipeline for Medical Reports',
+// 	details: 'Built an AI-based system that understands blood reports and automates data extraction and analysis.',
+// 	// AI That Understands Blood Reports: My Case Study on Vision-Powered Health Automation
+// 	tech: 'Lambda, DynamoDB, API Gateway, Bedrock',
+// },
 	{
 		title: 'FinTech',
 		tagline: 'AI Support Chatbot',
@@ -30,11 +36,30 @@ const caseStudies: CaseStudy[] = [
 		tech: 'Lambda, DynamoDB, API Gateway, ChatGPT, Bedrock',
 	},
 	{
+		title: 'SalesTech',
+		tagline: 'AI-Driven Inbox Warm-Up Automation',
+		details: 'Built an AI engine that simulates natural conversations, boosts sender reputation, and improves email deliverability across domains.',
+		tech: 'Lambda, DynamoDB, API Gateway, Bedrock, SES',
+	},
+	{
 		title: 'High-Traffic',
 		tagline: 'Serverless Core Backend for Scale',
 		details: 'Rebuilt core backend into a fully serverless stack. Zero scaling issues, with 80% Lower Streaming Costs.',
 		tech: 'Lambda, DynamoDB, API Gateway, Bunny Stream',
 	},
+{
+		title: 'SaaS',
+		tagline: 'AWS Cost Optimization & Serverless Migration',
+		details: 'Cut AWS bill by 70%, removed ECS bottlenecks, migrated to Lambda + DynamoDB, and improved performance by 3×.',
+		tech: 'Lambda, DynamoDB, API Gateway',
+	},
+	// {
+	// 	title: 'PropTech',
+	// 	tagline: 'AI Social Media Post Creator for Real Estate Data',
+	// 	details:
+	// 		'Built AI that converts property data into polished social posts with pricing insights, neighborhood highlights, and ready-to-publish media assets.',
+	// 	tech: 'Lambda, DynamoDB, Bedrock, S3, Next.js',
+	// },
 ];
 
 export const CaseStudiesSection: React.FC = () => {
