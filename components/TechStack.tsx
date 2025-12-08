@@ -5,22 +5,28 @@ import { AmplifyIcon } from '@/icons/AmplifyIcon';
 import { ApiGatewayIcon } from '@/icons/ApiGatewayIcon';
 import { BedrockIcon } from '@/icons/BedrockIcon';
 import { ClaudeIcon } from '@/icons/ClaudeIcon';
+import CloudFrontIcon from '@/icons/CloudFrontIcon';
 import CloudWatchIcon from '@/icons/CloudWatchIcon';
 import { CognitoIcon } from '@/icons/CognitoIcon';
 import { DynamoDbIcon } from '@/icons/DynamoDbIcon';
 import { ElasticsearchIcon } from '@/icons/ElasticsearchIcon';
 import { EventBridgeIcon } from '@/icons/EventBridgeIcon';
 import { GeminiIcon } from '@/icons/GeminiIcon';
+import KinesisIcon from '@/icons/KinesisIcon';
 import { LambdaIcon } from '@/icons/LambdaIcon';
 import { LlamaIcon } from '@/icons/LlamaIcon';
+import MskIcon from '@/icons/MskIcon';
 import { NextJsIcon } from '@/icons/NextJsIcon';
 import { NodeIcon } from '@/icons/NodeIcon';
 import { OpenAiIcon } from '@/icons/OpenAiIcon';
+import { OpensearchIcon } from '@/icons/OpensearchIcon';
 import { PineconeIcon } from '@/icons/PineconeIcon';
 import { PythonIcon } from '@/icons/PythonIcon';
 import { ReactIcon } from '@/icons/ReactIcon';
 import { S3Icon } from '@/icons/S3Icon';
 import { ServerlessIcon } from '@/icons/ServerlessIcon';
+import SNSIcon from '@/icons/SNSIcon';
+import SQSIcon from '@/icons/SQSIcon';
 import { StepFunctionsIcon } from '@/icons/StepFunctionsIcon';
 import { TailwindIcon } from '@/icons/TailwindIcon';
 import { TerraformIcon } from '@/icons/TerraformIcon';
@@ -43,6 +49,79 @@ type TechSection = {
 };
 
 const techSections: TechSection[] = [
+	{
+		id: 'serverless',
+		label: 'AWS Serverless & Cloud',
+		title: 'AWS Serverless & Cloud',
+		description: 'Fully managed, event-driven backends built to scale automatically while keeping your AWS bill under control.',
+		items: [
+			{
+				name: 'AWS Lambda',
+				Icon: LambdaIcon,
+				description: 'Event-driven compute that scales from zero to peak traffic without managing servers or containers.',
+			},
+			{
+				name: 'API Gateway',
+				Icon: ApiGatewayIcon,
+				description: 'Highly available API front-door for REST, WebSocket, and HTTP APIs with built-in security and throttling.',
+			},
+			{
+				name: 'Step Functions',
+				Icon: StepFunctionsIcon,
+				description: 'Visual workflows to orchestrate complex business logic, retries, and long-running AI/ETL jobs.',
+			},
+			{
+				name: 'Cognito',
+				Icon: CognitoIcon,
+				description: 'Secure, scalable user auth (email, social, enterprise SSO) without rolling your own identity system.',
+			},
+			{
+				name: 'S3',
+				Icon: S3Icon,
+				description: 'Durable, cost-effective storage for uploads, backups, data lakes, and static asset hosting.',
+			},
+			{
+				name: 'CloudFront',
+				Icon: CloudFrontIcon,
+				description: 'Global CDN for blazing-fast delivery of APIs, websites, and media with built-in security layers.',
+			},
+			{
+				name: 'EventBridge',
+				Icon: EventBridgeIcon,
+				description: 'Serverless event bus for decoupled, scalable integrations across AWS services.',
+			},
+			{
+				name: 'CloudWatch',
+				Icon: CloudWatchIcon,
+				description: 'Monitoring, logging & alerting for AWS resources & applications to keep everything running smoothly.',
+			},
+			{
+				name: 'SQS',
+				Icon: SQSIcon,
+				description: 'Highly reliable message queue for decoupled microservices and asynchronous workloads.',
+			},
+			{
+				name: 'SNS',
+				Icon: SNSIcon,
+				description: 'Pub/sub messaging for fan-out notifications, microservice events, and system-wide broadcasts.',
+			},
+			// {
+			// 	name: 'Kinesis',
+			// 	Icon: KinesisIcon,
+			// 	description: 'Real-time streaming platform for ingesting event data, analytics, and continuous pipelines.',
+			// },
+			{
+				name: 'Kinesis',
+				Icon: KinesisIcon,
+				description: 'Fully managed streaming service for ingesting, processing, and analyzing real-time data.',
+			},
+			// {
+			// 	name: 'AppSync',
+			// 	Icon: AppSyncIcon,
+			// 	description: 'Fully managed GraphQL APIs with real-time subscriptions and automatic data orchestration.',
+			// },
+		],
+	},
 	{
 		id: 'ai',
 		label: 'AI Models & Platforms',
@@ -80,8 +159,7 @@ const techSections: TechSection[] = [
 		id: 'vibe',
 		label: 'Vibe Coding & Prompt Engineering',
 		title: 'Vibe Coding & Prompt Engineering',
-		description:
-			"Crafting powerful prompts, creative workflows, and LLM ops for next-level AI experiences—where code meets creativity.",
+		description: 'Crafting powerful prompts, creative workflows, and LLM ops for next-level AI experiences—where code meets creativity.',
 		items: [
 			{
 				name: 'Prompt Engineering',
@@ -107,65 +185,50 @@ const techSections: TechSection[] = [
 		description: 'Search, recommendations, and RAG (Retrieval-Augmented Generation) powered by fast, scalable data stores.',
 		items: [
 			{
+				name: 'DynamoDB',
+				Icon: DynamoDbIcon,
+				description: 'Serverless NoSQL backbone for low-latency, auto-scaling data workloads across millions of users.',
+			},
+			{
 				name: 'Elasticsearch',
 				Icon: ElasticsearchIcon,
 				description: 'High-performance full-text and structured search for logs, analytics, and smart query experiences.',
+			},
+			{
+				name: 'OpenSearch',
+				Icon: OpensearchIcon,
+				description: 'AWS-native search and analytics engine built for scale, offering vector search and embeddings.',
 			},
 			{
 				name: 'Pinecone',
 				Icon: PineconeIcon,
 				description: 'Managed vector database for lightning-fast semantic search and enterprise-grade RAG systems.',
 			},
-			{
-				name: 'DynamoDB',
-				Icon: DynamoDbIcon,
-				description: 'Serverless NoSQL backbone for low-latency, auto-scaling data workloads across millions of users.',
-			},
 		],
 	},
-	{
-		id: 'serverless',
-		label: 'AWS Serverless & Cloud',
-		title: 'AWS Serverless & Cloud',
-		description: 'Fully managed, event-driven backends built to scale automatically while keeping your AWS bill under control.',
-		items: [
-			{
-				name: 'AWS Lambda',
-				Icon: LambdaIcon,
-				description: 'Event-driven compute that scales from zero to peak traffic without managing servers or containers.',
-			},
-			{
-				name: 'API Gateway',
-				Icon: ApiGatewayIcon,
-				description: 'Highly available API front-door for REST, WebSocket, and HTTP APIs with built-in security and throttling.',
-			},
-			{
-				name: 'Step Functions',
-				Icon: StepFunctionsIcon,
-				description: 'Visual workflows to orchestrate complex business logic, retries, and long-running AI/ETL jobs.',
-			},
-			{
-				name: 'Cognito',
-				Icon: CognitoIcon,
-				description: 'Secure, scalable user auth (email, social, enterprise SSO) without rolling your own identity system.',
-			},
-			{
-				name: 'S3',
-				Icon: S3Icon,
-				description: 'Durable, cost-effective storage for uploads, backups, data lakes, and static asset hosting.',
-			},
-			{
-				name: 'EventBridge',
-				Icon: EventBridgeIcon,
-				description: 'Serverless event bus for decoupled, scalable integrations across AWS services.',
-			},
-			{
-				name: 'CloudWatch',
-				Icon: CloudWatchIcon,
-				description: 'Monitoring, logging & alerting for AWS resources & applications to keep everything running smoothly.',
-			},
-		],
-	},
+	// {
+	// 	id: 'streaming',
+	// 	label: 'Event Streaming & Queues',
+	// 	title: 'Real-Time Data Streams & Messaging',
+	// 	description: 'High-throughput event pipelines and message brokers for real-time apps, data ingestion, and asynchronous microservices.',
+	// 	items: [
+	// 		{
+	// 			name: 'Amazon MSK',
+	// 			Icon: MskIcon,
+	// 			description: 'Fully managed Apache Kafka service that simplifies setup, scaling, and operations for real-time event streaming workloads.',
+	// 		},
+	// 		{
+	// 			name: 'Amazon Kinesis',
+	// 			Icon: KinesisIcon,
+	// 			description: 'Fully managed streaming service for ingesting, processing, and analyzing real-time data without managing clusters.',
+	// 		},
+	// 		// {
+	// 		// 	name: 'RabbitMQ',
+	// 		// 	Icon: RabbitMqIcon,
+	// 		// 	description: 'Lightweight, reliable message broker for queues, pub/sub, and background job processing across distributed systems.',
+	// 		// },
+	// 	],
+	// },
 	{
 		id: 'devops',
 		label: 'DevOps & Infra as Code',
@@ -269,7 +332,7 @@ export const TechStack: React.FC = () => {
 						</div>
 						<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
 							{section.items.map((item) => (
-								<div 									key={item.name} 									className="flex items-center gap-3 rounded-xl border border-slate-400 p-4"								>
+								<div key={item.name} className="flex items-center gap-3 rounded-xl border border-slate-400 p-4">
 									<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full border border-slate-400">
 										<item.Icon className="h-6 w-6 text-sky-500 dark:text-violet-300" />
 									</div>
