@@ -25,7 +25,7 @@ export const ReadyToTrySection: React.FC<ReadyToTrySectionProps> = ({
 	whatsappLabel = 'Chat on WhatsApp',
 	fiverrLabel = 'View My Fiverr Profile',
 	email = 'you@example.com',
-	whatsapp = '1234567890',
+	whatsapp,
 	fiverr = 'onepunchmantwo',
 	description = "Send a quick note with your current stack and challenges.\nI'll reply with a short, actionable plan and possible next steps.",
 }) => {
