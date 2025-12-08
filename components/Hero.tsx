@@ -27,7 +27,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 	emailLabel = 'Book a Free 15-Minute Call',
 	whatsappLabel = 'Chat on WhatsApp',
 	fiverrLabel = 'View My Fiverr Profile',
-	email = 'you@example.com',
+	email = 'connect@opmtwo.com',
 	whatsapp,
 	fiverr = 'onepunchmantwo',
 }) => {
@@ -100,21 +100,23 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 				</div> */}
 
 				{/* Rating */}
-				<div className="inline-flex items-center gap-3 rounded-full bg-white/70 px-4 py-2 text-sm shadow-sm backdrop-blur">
-					<div className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-semibold text-white">
-						<span>★</span>
+				<a className="cursor-pointer" href="https://www.fiverr.com/onepunchmantwo" target="_blank" rel="noreferrer">
+					<div className="inline-flex items-center gap-3 rounded-full bg-white/70 px-4 py-2 text-sm shadow-sm backdrop-blur">
+						<div className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-semibold text-white">
+							<span>★</span>
+						</div>
+						<div className="space-y-0.5 leading-snug">
+							<p className="text-xs font-medium uppercase tracking-[0.16em] text-slate-600">120+ Five-Star Reviews</p>
+							<button className="pointer-events-none text-xs font-semibold text-slate-900 underline decoration-slate-400 underline-offset-2">
+								Read Client Success Stories
+							</button>
+						</div>
 					</div>
-					<div className="space-y-0.5 leading-snug">
-						<p className="text-xs font-medium uppercase tracking-[0.16em] text-slate-600">120+ Five-Star Reviews</p>
-						<button className="text-xs font-semibold text-slate-900 underline decoration-slate-400 underline-offset-2">
-							Read Client Success Stories
-						</button>
-					</div>
-				</div>
+				</a>
 
 				{/* Heading */}
 				<h1 className="mb-3 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl mt-8">
-					{/* Your white-label partner for */}I Specialize in
+					{/* Your white-label partner for */}AWS Consultant Specializing in
 				</h1>
 
 				{/* Animated second line */}
@@ -136,7 +138,7 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 						</h1> */}
 
 					<p className="max-w-lg text-base leading-relaxed text-slate-700 dark:text-white sm:text-lg">
-						Optimize, automate, and scale your backend with AWS Lambda, DynamoDB & AI —{' '}
+						Optimize, automate, and scale your backend with AWS Serverless Architecture & AI —{' '}
 						<span className="font-semibold">10× faster and up to 70% cheaper.</span>
 					</p>
 				</div>
