@@ -8,10 +8,10 @@ const faqs = [
 	},
 	{
 		question: 'Can you help reduce our AWS bill with a system/architecture redesign?',
-		answer: 'Yes. I typically run a cost audit, remove waste, right-size resources, and redesign critical workloads using Lambda, DynamoDB, and other serverless services to cut 40–70% of backend costs.',
+		answer: 'Yes. I typically run a cost audit, remove waste, resize resources, and redesign critical workloads using Lambda, DynamoDB, and other serverless services to cut 40–70% of backend costs.',
 	},
 	{
-		question: 'Can you integrate ChatGPT/Bedrock into our existing systems and workflows?',
+		question: 'Can you integrate LLM based AI into our existing systems and workflows?',
 		answer: 'Absolutely. I build AI workflows like ticket reduction, document parsing, internal FAQ bots, and help centers using providers such as OpenAI, Bedrock, and Llama 3.',
 	},
 	{
