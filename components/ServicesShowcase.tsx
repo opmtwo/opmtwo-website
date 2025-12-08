@@ -47,14 +47,14 @@ const services: ServiceItem[] = [
 	{
 		id: 5,
 		total: 8,
-		title: 'AI Support Suite (ChatGPT + Llama + Gemini)',
+		title: 'AI Support Suite (ChatGPT + Claude + Llama)',
 		description: 'AI chatbot trained on your docs, ticketing history, FAQs, and knowledge base.',
 		category: 'AI & Automation',
 	},
 	{
 		id: 6,
 		total: 8,
-		title: 'AI Document Workflows',
+		title: 'AI Document Based Workflows',
 		description: 'Automate OCR, summarization, classification & extraction for PDFs and forms.',
 		category: 'AI & Automation',
 	},
