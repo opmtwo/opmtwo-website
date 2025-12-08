@@ -96,17 +96,19 @@ export const CustomerTestimonials: React.FC = () => {
 
 	return (
 		<section id="testimonials" className="relative overflow-hidden px-4 flex flex-col items-center justify-center">
-			<div className="mx-auto max-w-6xl">
+			<div className="mx-auto lg:w-6xl">
 				{/* Header */}
 				{/* Updated Heading + Subtitle */}
-				<header className="text-center px-2">
+				<header className="text-center px-2 p-[2px] ">
 					<h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl dark:text-slate-50">
-						Teams around the world trust me with their{' '}
-						<span className="relative inline-block">
+						<span className="relative">
 							<span className="relative z-10 bg-linear-to-r from-sky-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
-								Serverless & AI transformation
+								Testimonials
+								<br />
 							</span>
 						</span>
+						{/* Trusted by teams worldwideTrusted by teams worldwide for Serverless & AI transformation */}
+						Trusted by teams worldwide
 					</h2>
 
 					<p className="md:max-w-2xl mx-auto mt-3 text-xs text-slate-500 sm:text-sm md:text-base dark:text-slate-400">
@@ -136,9 +138,9 @@ export const CustomerTestimonials: React.FC = () => {
 					</div>
 
 					{/* Gradient border wrapper for main card */}
-					<div className="relative mx-auto max-w-3xl bg-linear-to-r from-emerald-300 via-lime-300 to-emerald-400 p-px rounded-[34px] dark:from-emerald-500 dark:via-emerald-400 dark:to-lime-400">
+					<div className="relative mx-auto max-w-3xl bg-linear-to-r from-emerald-300 via-lime-300 to-emerald-400 rounded-[34px] dark:from-emerald-500 dark:via-emerald-400 dark:to-lime-400 p-[2px]">
 						{/* Main center card */}
-						<div className="relative min-h-[300px] rounded-4xl bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:px-10 md:py-14 dark:bg-slate-900">
+						<div className="relative min-h-[300px] rounded-4xl bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:px-10 md:py-14 dark:bg-(--background-dark)">
 							{/* Stars pill */}
 							<div className="mx-auto mb-6 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-5 py-2 text-emerald-500 sm:mb-8 sm:px-7 sm:py-3 dark:bg-emerald-500/10 dark:text-emerald-300">
 								{Array.from({ length: 5 }).map((_, i) => (
@@ -186,7 +188,7 @@ export const CustomerTestimonials: React.FC = () => {
 							<button
 								type="button"
 								onClick={goPrev}
-								className="absolute left-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-lg text-black dark:text-white transition hover:scale-105 md:flex"
+								className="absolute left-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-xl cursor-pointer text-black dark:text-white transition hover:scale-105 md:flex"
 								aria-label="Previous testimonial"
 							>
 								←
@@ -194,7 +196,7 @@ export const CustomerTestimonials: React.FC = () => {
 							<button
 								type="button"
 								onClick={goNext}
-								className="absolute right-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-lg text-black dark:text-white transition hover:scale-105 md:flex"
+								className="absolute right-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-xl cursor-pointer text-black dark:text-white transition hover:scale-105 md:flex"
 								aria-label="Next testimonial"
 							>
 								→
