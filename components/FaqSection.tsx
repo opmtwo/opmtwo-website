@@ -11,11 +11,11 @@ const faqs = [
 		answer: 'Yes. I typically run a cost audit, remove waste, right-size resources, and redesign critical workloads using Lambda, DynamoDB, and other serverless services to cut 40–70% of backend costs.',
 	},
 	{
-				question: 'Can you integrate ChatGPT/Bedrock into our existing systems and workflows?',
+		question: 'Can you integrate ChatGPT/Bedrock into our existing systems and workflows?',
 		answer: 'Absolutely. I build AI workflows like ticket reduction, document parsing, internal FAQ bots, and help centers using providers such as OpenAI, Bedrock, and Llama 3.',
 	},
 	{
-question: 'Do you only work with startups, or do you also support larger companies?',
+		question: 'Do you only work with startups, or do you also support larger companies?',
 		answer: 'I work with startups, SaaS teams, agencies, and enterprises. The engagement style changes based on your size, but the goal is always the same: fast, lean, production-ready systems.',
 	},
 	{
@@ -30,10 +30,7 @@ question: 'Do you only work with startups, or do you also support larger compani
 
 export const FaqSection: React.FC = () => {
 	return (
-		<section
-			id="faq"
-			className="relative flex flex-col items-center justify-center"
-		>
+		<section id="faq" className="relative flex flex-col items-center justify-center pb-16">
 			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 				{/* Header */}
 				<div className="mb-10">
@@ -52,14 +49,14 @@ export const FaqSection: React.FC = () => {
 				<div className="grid gap-x-12 gap-y-10 md:grid-cols-3">
 					{faqs.map((item) => (
 						<div key={item.question} className="space-y-2">
-							<h3 className="text-sm font-semibold text-slate-900 sm:text-base dark:text-slate-50">{item.question}</h3>
+							<h3 className="text-lg text-slate-900 dark:text-slate-50">{item.question}</h3>
 							<p className="text-sm leading-relaxed text-slate-500 sm:text-[0.95rem] dark:text-slate-400">{item.answer}</p>
 						</div>
 					))}
 				</div>
 
 				{/* Bottom CTA card with gradient border */}
-				<div className="mt-14 rounded-3xl bg-linear-to-r from-indigo-500 via-sky-500 to-emerald-500 p-px">
+				<div className="mt-14 rounded-3xl p-px border-2">
 					<div className="flex flex-col items-start justify-between gap-4 rounded-[1.45rem] bg-white/95 px-6 py-6 backdrop-blur-sm sm:px-8 sm:py-7 md:flex-row md:items-center dark:bg-slate-900/95">
 						<div>
 							<h3 className="text-base font-semibold text-slate-900 sm:text-lg dark:text-slate-50">Still have questions?</h3>
@@ -95,7 +92,7 @@ export const FaqSection: React.FC = () => {
 							href={`mailto:connect@opmtwo.com?subject=Serverless%20%2B%20AI%20Consultation`}
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-black dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
+							className="inline-flex items-center gap-2 rounded-full border-2 border-black dark:border-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73]  dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
 						>
 							{/* <MailIcon className="h-4 w-4" />
 													{fiverrLabel} */}
