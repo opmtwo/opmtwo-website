@@ -120,7 +120,7 @@ export default function Home() {
 				}}
 			>
 				{/* Scroll to Next */}
-				<DownArrowIcon width={24} height={24} />
+				<DownArrowIcon width={24} height={24} fill="currentColor" stroke="currentColor" />
 			</button>
 
 			<Hero />
