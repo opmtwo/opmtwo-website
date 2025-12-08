@@ -57,8 +57,8 @@ const caseStudies: CaseStudy[] = [
 	// 	title: 'PropTech',
 	// 	tagline: 'AI Social Media Post Creator for Real Estate Data',
 	// 	details:
-	// 		'Built AI that converts property data into polished social posts with pricing insights, neighborhood highlights, and ready-to-publish media assets.',
-	// 	tech: 'Lambda, DynamoDB, Bedrock, S3, Next.js',
+	// 		'Built AI that converts property data into social posts with pricing insights, neighborhood highlights, and ready-to-publish media assets.',
+	// 	tech: 'Lambda, DynamoDB, Bedrock, AI Image Generation',
 	// },
 ];
 
