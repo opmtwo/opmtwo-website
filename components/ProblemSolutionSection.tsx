@@ -16,14 +16,19 @@ export const ProblemSolutionSection: React.FC = () => {
 					Serverless &amp; AI, without the chaos
 				</p>
 				<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+					From&nbsp;
 					<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
-						From “everything is on fire”
+						{/* From “everything is on fire” */}
+						“everything is breaking”
 					</span>{' '}
 					to lean, scalable AWS &amp; AI systems.
+					{/* to lean, scalable, future-proof AWS & AI infrastructure */}
+					{/* to high-performing, scalable AWS & AI infrastructure */}
 				</h2>
 				<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
-					I help teams escape slow releases, noisy AWS bills, and messy AI experiments — and move into scalable, cost-efficient, serverless
-					architectures.
+					{/* I help teams escape slow releases, noisy AWS bills, and messy AI experiments — and move into scalable, cost-efficient, serverless
+					architectures. */}
+					I help teams fix slow releases, shrink AWS bills, and move into fast, cost-efficient, serverless architecture that actually scales.
 				</p>
 			</div>
 
