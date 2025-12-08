@@ -152,12 +152,8 @@ export default function Home() {
 			<TestimonialsSection />
 			<Hr />
 
-			<div className="">
-				<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-20">
-					<TechStack />
-					<Hr />
-				</div>
-			</div>
+			<TechStack />
+			<Hr />
 
 			<FaqSection />
 
