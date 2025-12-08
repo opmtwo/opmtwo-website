@@ -32,7 +32,7 @@ export const ReadyToTrySection: React.FC<ReadyToTrySectionProps> = ({
 	return (
 		<section className="relative overflow-hidden bg-[#EEF3FB] dark:bg-slate-950">
 			{/* Soft cloud-ish background */}
-			<div className="relative mx-auto flex min-h-[420px] max-w-4xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:px-8">
+			<div className="relative mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:px-8">
 				<h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
 					<span>{headline}</span>
 					{/* serverless & AI  */}
