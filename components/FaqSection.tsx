@@ -3,27 +3,27 @@ import React from 'react';
 
 const faqs = [
 	{
-		question: 'What kind of projects do you usually help with?',
+		question: 'What kind of projects do you usually help with as an AWS and AI specialist?',
 		answer: 'I design and implement AWS serverless backends, AI-powered web apps and APIs, automation workflows, and modernize legacy systems into scalable, event-driven architectures.',
 	},
 	{
-		question: 'Can you help reduce our AWS bill?',
+		question: 'Can you help reduce our AWS bill with a system/architecture redesign?',
 		answer: 'Yes. I typically run a cost audit, remove waste, right-size resources, and redesign critical workloads using Lambda, DynamoDB, and other serverless services to cut 40–70% of backend costs.',
 	},
 	{
-		question: 'Do you only work with startups?',
-		answer: 'No. I work with startups, SaaS teams, agencies, and enterprises. The engagement style changes based on your size, but the goal is always the same: fast, lean, production-ready systems.',
-	},
-	{
-		question: 'Can you integrate ChatGPT / Llama / Bedrock?',
+				question: 'Can you integrate ChatGPT/Bedrock into our existing systems and workflows?',
 		answer: 'Absolutely. I build AI workflows like ticket reduction, document parsing, internal FAQ bots, and help centers using providers such as OpenAI, Bedrock, and Llama 3.',
 	},
 	{
-		question: 'How does a typical engagement start?',
+question: 'Do you only work with startups, or do you also support larger companies?',
+		answer: 'I work with startups, SaaS teams, agencies, and enterprises. The engagement style changes based on your size, but the goal is always the same: fast, lean, production-ready systems.',
+	},
+	{
+		question: 'How does a typical engagement start when a new team reaches out for help?',
 		answer: 'We start with a short call to understand your stack and goals. Then I propose a focused plan—often a 1–2 week pilot to prove value before scaling to a larger roadmap.',
 	},
 	{
-		question: 'Do you offer ongoing support?',
+		question: 'Do you offer ongoing support after the initial project is complete?',
 		answer: 'Yes. I can stay on as an on-demand AWS/AI architect to review designs, ship new features, and keep costs under control via a flexible retainer or part-time engagement.',
 	},
 ];
