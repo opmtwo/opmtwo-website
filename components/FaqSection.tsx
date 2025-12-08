@@ -92,7 +92,7 @@ export const FaqSection: React.FC = () => {
 						</button> */}
 
 						<a
-							href={`mailto:`}
+							href={`mailto:connect@opmtwo.com?subject=Serverless%20%2B%20AI%20Consultation`}
 							target="_blank"
 							rel="noreferrer"
 							className="inline-flex items-center gap-2 rounded-full border border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-black dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
