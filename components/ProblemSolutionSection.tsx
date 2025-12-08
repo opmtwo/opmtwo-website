@@ -8,7 +8,7 @@ import SadIcon from '@/icons/SadIcon';
 
 export const ProblemSolutionSection: React.FC = () => {
 	return (
-		<section id="problem-solution" className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
+		<section id="problem-solution" className="relative max-w-6xl mx-auto flex flex-col gap-10 px-4 sm:px-6 lg:px-8">
 			{/* Section heading */}
 			<div className="space-y-3">
 				<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
@@ -113,7 +113,7 @@ export const ProblemSolutionSection: React.FC = () => {
 
 							<div className="space-y-3">
 								<h3 className="text-lg font-semibold leading-snug text-slate-900 sm:text-xl dark:text-slate-50">
-									I help build lean, scalable, AI-powered systems with AWS Serverless and modern AI models.
+									I help build lean, scalable, AI-powered systems with AWS Serverless.
 								</h3>
 								<p className="text-sm font-semibold text-emerald-700 sm:text-[15px] dark:text-emerald-100">You get:</p>
 							</div>
@@ -134,7 +134,8 @@ export const ProblemSolutionSection: React.FC = () => {
 									<span className="mt-0.5 text-base">✔</span>
 									<span>
 										{/* AI automation workflows powered by ChatGPT / Llama 3 / Bedrock / Gemini */}
-										AI automation workflows powered by ChatGPT, Bedrock or Llama
+										{/* AI automation workflows powered by ChatGPT, Bedrock or Llama */}
+										AI automation workflows powered by modern LLM models
 									</span>
 								</li>
 								<li className="flex gap-3">
