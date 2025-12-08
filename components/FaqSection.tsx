@@ -33,31 +33,82 @@ export const FaqSection: React.FC = () => {
 		<section id="faq" className="relative flex flex-col items-center justify-center pb-16">
 			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 				{/* Header */}
-				<div className="mb-10">
+				{/* <div className="mb-10">
 					<h2 className="bg-linear-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-3xl font-semibold tracking-tight text-transparent sm:text-4xl dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400">
 						<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent">
-							{/* The Modern AI & Cloud Tech Stack */}
 							Frequently Asked Questions
 						</span>
 					</h2>
 					<p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
 						Here are the most common questions teams ask before working with me on AWS, serverless, and AI automation projects.
 					</p>
+				</div> */}
+
+				{/* Section heading */}
+				<div className="space-y-3 mb-6">
+					<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
+						<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
+						FAQ
+					</p>
+					<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+						Most Common&nbsp;
+						<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-sky-500 bg-clip-text text-transparent">
+							{/* From “everything is on fire” */}
+							Frequently Asked Questions
+						</span>
+					</h2>
+					<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
+						Here are the most common questions teams ask before working with me on AWS, serverless, and AI automation projects.
+					</p>
 				</div>
 
 				{/* FAQ grid */}
-				<div className="grid gap-x-12 gap-y-10 md:grid-cols-3">
+				{/* <div className="grid gap-x-12 gap-y-10 md:grid-cols-3">
 					{faqs.map((item) => (
 						<div key={item.question} className="space-y-2">
 							<h3 className="text-lg text-slate-900 dark:text-slate-50">{item.question}</h3>
 							<p className="text-sm leading-relaxed text-slate-500 sm:text-[0.95rem] dark:text-slate-400">{item.answer}</p>
 						</div>
 					))}
+				</div> */}
+
+				<div className="mt-8 grid gap-6 md:grid-cols-2">
+					{faqs.map((item) => (
+						// <div key={item.question} className="group rounded-2xl border-2 border-black/10 dark:border-white/10 p-6">
+
+						<div
+							key={item.question}
+							className="
+									relative rounded-3xl p-[2px] 
+									bg-linear-to-br from-sky-500/40 via-sky-300/40 to-sky-500/40
+									hover:from-sky-400 hover:via-sky-200 hover:to-sky-500 
+									transition-all duration-300
+								"
+						>
+							<article
+								className="
+										h-full rounded-3xl bg-white dark:bg-(--background-dark) p-8
+										backdrop-blur-sm
+										hover:shadow-[0_0_28px_rgba(0,0,255,0.14)]
+										transition-all duration-300
+										space-y-2
+									"
+							>
+								{/* <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{item.question}</h3> */}
+								{/* <h4 className="text-md font-semibold">{item.question}</h4> */}
+								<h4 className="text-lg font-semibold bg-linear-to-r from-sky-600 to-sky-400 bg-clip-text text-transparent">
+									<span className="leading-relaxed">{item.question}</span>
+								</h4>
+								{/* <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{item.answer}</p> */}
+								<p className="leading-relaxed text-slate-600">{item.answer}</p>
+							</article>
+						</div>
+					))}
 				</div>
 
 				{/* Bottom CTA card with gradient border */}
 				<div className="mt-14 rounded-3xl p-px border-2">
-					<div className="flex flex-col items-start justify-between gap-4 rounded-[1.45rem] bg-white/95 px-6 py-6 backdrop-blur-sm sm:px-8 sm:py-7 md:flex-row md:items-center dark:bg-slate-900/95">
+					<div className="flex flex-col items-start justify-between gap-4 rounded-[1.45rem] px-6 py-6 sm:px-8 sm:py-7 md:flex-row md:items-center">
 						<div>
 							<h3 className="text-base font-semibold text-slate-900 sm:text-lg dark:text-slate-50">Still have questions?</h3>
 							<p className="mt-1 text-sm text-slate-600 sm:text-[0.95rem] dark:text-slate-300">
@@ -92,7 +143,7 @@ export const FaqSection: React.FC = () => {
 							href={`mailto:connect@opmtwo.com?subject=Serverless%20%2B%20AI%20Consultation`}
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border-2 border-black dark:border-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73]  dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
+							className="inline-flex items-center justify-center min-w-[150px] gap-2 rounded-full border-2 border-black dark:border-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73]  dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
 						>
 							{/* <MailIcon className="h-4 w-4" />
 													{fiverrLabel} */}
