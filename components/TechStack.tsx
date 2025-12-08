@@ -303,71 +303,69 @@ const techSections: TechSection[] = [
 export const TechStack: React.FC = () => {
 	return (
 		<section id="tech" className="relative mx-auto max-w-6xl">
-			{/* Gradient background flair */}
-			<div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-				<div className="absolute -top-32 left-10 h-64 w-64 rounded-full bg-gradient-radial from-sky-200/30 via-emerald-200/20 to-violet-200/30 dark:from-sky-500/30 dark:via-emerald-400/20 dark:to-violet-500/30 blur-2xl" />
-				<div className="absolute bottom-0 right-0 h-48 w-48 rounded-full bg-gradient-radial from-fuchsia-200/10 via-sky-200/10 to-emerald-200/10 dark:from-fuchsia-500/20 dark:via-sky-500/10 dark:to-emerald-400/10 blur-2xl" />
-			</div>
+			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-20">
+				{/* Section heading */}
+				<div className="space-y-3 mb-6">
+					<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
+						<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
+						Tech Stack for nextgen apps
+					</p>
+					<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+						Powering Innovation:&nbsp;
+						<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
+							The Modern AI & Cloud Tech Stack
+						</span>
+					</h2>
+					<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
+						Explore the cutting-edge tools and platforms I use to build fast, scalable, and intelligent AI solutions—from cloud to code, and
+						everything in between.
+					</p>
+				</div>
 
-			{/* Header */}
-			{/* <div className="mb-10 text-center">
-				<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-					Powering Innovation:&nbsp;
-					<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent">
-						The Modern AI & Cloud Tech Stack
-					</span>
-				</h2>
-				<p className="mt-3 max-w-2xl mx-auto text-base text-slate-700 dark:text-slate-300">
-					Explore the cutting-edge tools and platforms I use to build fast, scalable, and intelligent AI solutions—from cloud to code, and everything
-					in between.
-				</p>
-			</div> */}
-
-			{/* Section heading */}
-			<div className="space-y-3 mb-6">
-				<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
-					<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
-					Tech Stack for nextgen apps
-				</p>
-				<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
-					Powering Innovation:&nbsp;
-					<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
-						{/* From “everything is on fire” */}
-						The Modern AI & Cloud Tech Stack
-					</span>
-				</h2>
-				<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
-					Explore the cutting-edge tools and platforms I use to build fast, scalable, and intelligent AI solutions—from cloud to code, and everything
-					in between.
-				</p>
-			</div>
-
-			<div className="space-y-12">
-				{techSections.map((section) => (
-					<div key={section.id} className="rounded-2xl">
-						<div className="mb-4">
-							{/* <h3 className="text-xl font-semibold mb-1">{section.title}</h3> */}
-							<h4 className="text-xl font-semibold bg-linear-to-r from-cyan-600 to-cyan-400 bg-clip-text text-transparent">
-								{section.title}
-							</h4>
-							<p className="text-lg">{section.description}</p>
-						</div>
-						<div className="mt-8 grid gap-6 md:grid-cols-2">
-							{section.items.map((item) => (
-								<div key={item.name} className="flex items-center gap-3 rounded-xl border border-slate-400 p-8">
-									<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full border border-slate-400">
-										<item.Icon className="h-6 w-6 text-sky-500 dark:text-violet-300" />
+				<div className="space-y-12">
+					{techSections.map((section) => (
+						<div key={section.id} className="rounded-2xl">
+							<div className="mb-4">
+								<h4 className="text-xl font-semibold bg-linear-to-r from-cyan-600 to-cyan-400 bg-clip-text text-transparent">
+									{section.title}
+								</h4>
+								<p className="text-lg">{section.description}</p>
+							</div>
+							<div className="mt-8 grid gap-6 md:grid-cols-2">
+								{section.items.map((item) => (
+									<div
+										key={item.name}
+										className="
+									relative rounded-3xl p-[2px] 
+									bg-linear-to-br from-cyan-500/40 via-cyan-300/40 to-cyan-500/40
+									hover:from-cyan-400 hover:via-cyan-200 hover:to-cyan-500 
+									transition-all duration-300
+								"
+									>
+										<article
+											className="
+											flex items-center gap-3
+										h-full rounded-3xl bg-background dark:[var(--background-dark)] p-8
+										backdrop-blur-sm
+										hover:shadow-[0_0_28px_rgba(255,0,0,0.14)]
+										transition-all duration-300
+									"
+										>
+											<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full border border-slate-400">
+												<item.Icon className="h-6 w-6 text-sky-500 dark:text-violet-300" />
+											</div>
+											<div className="space-y-2">
+												<h4 className="font-medium">{item.name}</h4>
+												{/* <p className="text-xs mt-1">{item.description}</p> */}
+												<p className="leading-relaxed text-slate-600">{item.description}</p>
+											</div>
+										</article>
 									</div>
-									<div className="space-y-2">
-										<h4 className="font-medium">{item.name}</h4>
-										{/* <p className="text-xs mt-1">{item.description}</p> */}
-										<p className="leading-relaxed text-slate-600">{item.description}</p>
-									</div>
-								</div>
-							))}
+								))}
+							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		</section>
 	);
