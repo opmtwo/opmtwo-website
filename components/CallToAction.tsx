@@ -20,7 +20,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
 	whatsappLabel = 'Chat on WhatsApp',
 	fiverrLabel = 'View My Fiverr Profile',
 	email = 'you@example.com',
-	whatsapp = '1234567890',
+	whatsapp,
 	fiverr = 'onepunchmantwo',
 }) => {
 	return (
