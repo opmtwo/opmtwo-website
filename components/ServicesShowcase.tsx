@@ -154,9 +154,10 @@ export const ServicesShowcase: React.FC = () => {
 
 									{/* Title + Description */}
 									<div className="mt-6 space-y-2">
-										<h4 className="text-md font-semibold bg-linear-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
+										{/* <h4 className="text-md font-semibold bg-linear-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
 											{service.title}
-										</h4>
+										</h4> */}
+										<h4 className="font-medium">{service.title}</h4>
 										<p className="leading-relaxed text-slate-600">{service.description}</p>
 									</div>
 								</article>
