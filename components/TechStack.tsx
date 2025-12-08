@@ -269,10 +269,7 @@ export const TechStack: React.FC = () => {
 						</div>
 						<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
 							{section.items.map((item) => (
-								<div
-									key={item.name}
-									className="flex items-center gap-3 rounded-xl border border-slate-400 p-4"
-								>
+								<div 									key={item.name} 									className="flex items-center gap-3 rounded-xl border border-slate-400 p-4"								>
 									<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full border border-slate-400">
 										<item.Icon className="h-6 w-6 text-sky-500 dark:text-violet-300" />
 									</div>
