@@ -108,11 +108,8 @@ export const CaseStudiesSection: React.FC = () => {
 										<div className="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br from-sky-500 via-purple-500 to-emerald-500">
 											<Star className="h-4 w-4 text-white" />
 										</div>
-										<div>
-											{/* <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">{item.title}</h3> */}
-											<h4 className="text-md font-semibold bg-linear-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent">
-												{item.title}
-											</h4>
+										<div className="space-y-2">
+											<h4 className="font-medium">{item.title}</h4>
 											<p className="mt-1 text-xs font-medium">{item.tagline}</p>
 										</div>
 									</div>
