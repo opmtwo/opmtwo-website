@@ -1,6 +1,9 @@
 // app/components/FaqSection.tsx
 import React from 'react';
 
+import Text from './Text';
+import Title from './Title';
+
 const faqs = [
 	{
 		question: 'What kind of projects do you usually help with as an AWS and AI specialist?',
@@ -50,13 +53,13 @@ export const FaqSection: React.FC = () => {
 						<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
 						FAQ
 					</p>
-					<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+					<Title>
 						Frequently&nbsp;
 						<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-sky-500 bg-clip-text text-transparent">
 							{/* From “everything is on fire” */}
 							Asked Questions
 						</span>
-					</h2>
+					</Title>
 					<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
 						Here are the most common questions teams ask before working with me on AWS, serverless, and AI automation projects.
 					</p>
@@ -87,7 +90,7 @@ export const FaqSection: React.FC = () => {
 						>
 							<article
 								className="
-										h-full rounded-3xl bg-white dark:bg-(--background-dark) p-8
+										h-full rounded-3xl bg-background dark:bg-(--background-dark) p-6 lg:p-8
 										backdrop-blur-sm
 										hover:shadow-[0_0_28px_rgba(0,0,255,0.14)]
 										transition-all duration-300
@@ -101,7 +104,7 @@ export const FaqSection: React.FC = () => {
 								</h4> */}
 								{/* <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{item.answer}</p> */}
 								<h4 className="font-medium">{item.question}</h4>
-								<p className="leading-relaxed text-slate-600">{item.answer}</p>
+								<Text>{item.answer}</Text>
 							</article>
 						</div>
 					))}
