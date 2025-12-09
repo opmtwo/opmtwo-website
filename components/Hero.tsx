@@ -99,7 +99,9 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 
 				{/* Heading */}
 				<h1 className="mb-3 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl mt-8">
-					{/* Your white-label partner for */}AWS Consultant Specializing in
+					{/* Your white-label partner for */}
+					<span className="bg-linear-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent">Fiverrs Pick&nbsp;</span>
+					AWS & AI Consultant Specializing in
 				</h1>
 
 				{/* Animated second line */}
