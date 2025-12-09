@@ -30,7 +30,7 @@ export const ReadyToTrySection: React.FC<ReadyToTrySectionProps> = ({
 	description = "Send a quick note with your current stack and challenges.\nI'll reply with a short, actionable plan and possible next steps.",
 }) => {
 	return (
-		<section className="relative overflow-hidden bg-[#EEF3FB] dark:bg-slate-950">
+		<section id="contact" className="relative overflow-hidden bg-[#EEF3FB] dark:bg-slate-950">
 			{/* Soft cloud-ish background */}
 			<div className="relative mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:px-8">
 				<h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
