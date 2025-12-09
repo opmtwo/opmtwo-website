@@ -6,6 +6,8 @@ import React from 'react';
 import HappyIcon from '@/icons/HappyIcon';
 import SadIcon from '@/icons/SadIcon';
 
+import Title from './Title';
+
 export const ProblemSolutionSection: React.FC = () => {
 	return (
 		<section id="problem-solution" className="relative max-w-6xl mx-auto flex flex-col gap-10 px-4 sm:px-6 lg:px-8">
@@ -15,7 +17,7 @@ export const ProblemSolutionSection: React.FC = () => {
 					<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
 					Serverless &amp; AI, without the chaos
 				</p>
-				<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+				<Title>
 					From&nbsp;
 					<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
 						{/* From “everything is on fire” */}
@@ -24,7 +26,7 @@ export const ProblemSolutionSection: React.FC = () => {
 					to lean, scalable AWS &amp; AI systems.
 					{/* to lean, scalable, future-proof AWS & AI infrastructure */}
 					{/* to high-performing, scalable AWS & AI infrastructure */}
-				</h2>
+				</Title>
 				<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
 					{/* I help teams escape slow releases, noisy AWS bills, and messy AI experiments — and move into scalable, cost-efficient, serverless
 					architectures. */}
