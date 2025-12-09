@@ -96,7 +96,7 @@ export const CustomerTestimonials: React.FC = () => {
 
 	return (
 		<section id="testimonials" className="relative overflow-hidden px-4 flex flex-col items-center justify-center">
-			<div className="mx-auto lg:w-6xl">
+			<div className="mx-auto xl:w-6xl">
 				{/* Header */}
 				{/* Updated Heading + Subtitle */}
 				<header className="text-center px-2 p-[2px] ">
@@ -124,14 +124,14 @@ export const CustomerTestimonials: React.FC = () => {
 					onTouchEnd={handleTouchEnd}
 				>
 					{/* Left side card (fixed height, ~25% visible, only on md+) */}
-					<div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 -translate-x-[65%] opacity-40 md:block">
+					<div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 -translate-x-[65%] opacity-40 xl:block">
 						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
 							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">{prev.quote}</p>
 						</div>
 					</div>
 
 					{/* Right side card (fixed height, ~25% visible, only on md+) */}
-					<div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[65%] opacity-40 md:block">
+					<div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[65%] opacity-40 xl:block">
 						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
 							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">{next.quote}</p>
 						</div>
@@ -151,7 +151,7 @@ export const CustomerTestimonials: React.FC = () => {
 							</div>
 
 							{/* Quote */}
-							<p className="min-h-[120px] md:min-h-[100px] mx-auto max-w-2xl text-sm leading-relaxed text-slate-900 sm:text-base md:text-lg md:leading-relaxed dark:text-slate-100">
+							<p className="min-h-[140px] md:min-h-[100px] mx-auto text-sm leading-relaxed text-slate-900 sm:text-base md:text-lg md:leading-relaxed dark:text-slate-100">
 								{active.quote}
 							</p>
 
@@ -205,7 +205,7 @@ export const CustomerTestimonials: React.FC = () => {
 					</div>
 
 					{/* Mobile arrows (below card) */}
-					<div className="mt-6 flex justify-center gap-4 md:hidden">
+					<div className="mt-6 flex justify-center gap-4 xl:hidden">
 						<button
 							type="button"
 							onClick={goPrev}
