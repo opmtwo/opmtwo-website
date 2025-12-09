@@ -11,16 +11,15 @@ import { CognitoIcon } from '@/icons/CognitoIcon';
 import { DynamoDbIcon } from '@/icons/DynamoDbIcon';
 import { ElasticsearchIcon } from '@/icons/ElasticsearchIcon';
 import { EventBridgeIcon } from '@/icons/EventBridgeIcon';
-import { GeminiIcon } from '@/icons/GeminiIcon';
+import JestIcon from '@/icons/JestIcon';
 import KinesisIcon from '@/icons/KinesisIcon';
 import { LambdaIcon } from '@/icons/LambdaIcon';
-import { LlamaIcon } from '@/icons/LlamaIcon';
-import MskIcon from '@/icons/MskIcon';
 import { NextJsIcon } from '@/icons/NextJsIcon';
 import { NodeIcon } from '@/icons/NodeIcon';
 import { OpenAiIcon } from '@/icons/OpenAiIcon';
 import { OpensearchIcon } from '@/icons/OpensearchIcon';
 import { PineconeIcon } from '@/icons/PineconeIcon';
+import PostmanIcon from '@/icons/PostmanIcon';
 import { PythonIcon } from '@/icons/PythonIcon';
 import { ReactIcon } from '@/icons/ReactIcon';
 import { S3Icon } from '@/icons/S3Icon';
@@ -29,7 +28,6 @@ import SNSIcon from '@/icons/SNSIcon';
 import SQSIcon from '@/icons/SQSIcon';
 import { StepFunctionsIcon } from '@/icons/StepFunctionsIcon';
 import { TailwindIcon } from '@/icons/TailwindIcon';
-import { TerraformIcon } from '@/icons/TerraformIcon';
 import { TypeScriptIcon } from '@/icons/TypeScriptIcon';
 
 type TechIcon = React.ComponentType<{ className?: string }>;
@@ -295,6 +293,24 @@ const techSections: TechSection[] = [
 				name: 'Tailwind CSS',
 				Icon: TailwindIcon,
 				description: 'Utility-first styling for rapid iteration and consistently modern visual design.',
+			},
+		],
+	},
+	{
+		id: 'testing',
+		label: 'Software Testing',
+		title: 'Software Testing & Quality Assurance',
+		description: 'High-confidence releases powered by automated testing, API validation, and end-to-end quality checks across modern tools and workflows.',
+		items: [
+			{
+				name: 'Postman',
+				Icon: PostmanIcon,
+				description: 'Design, run, automate, and monitor API tests using collections, environments, and scripted workflows.',
+			},
+			{
+				name: 'Jest',
+				Icon: JestIcon,
+				description: 'Fast, reliable unit and integration testing framework for JavaScript and TypeScript applications.',
 			},
 		],
 	},
