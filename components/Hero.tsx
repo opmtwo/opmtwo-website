@@ -17,8 +17,11 @@ const phrases = [
 
 interface ReelsSectionProps {
 	emailLabel?: string;
+	emailLabelMobile?: string;
 	whatsappLabel?: string;
+	whatsappLabelMobile?: string;
 	fiverrLabel?: string;
+	fiverrLabelMobile?: string;
 	email?: string;
 	whatsapp?: string;
 	fiverr?: string;
@@ -26,8 +29,11 @@ interface ReelsSectionProps {
 
 export const Hero: React.FC<ReelsSectionProps> = ({
 	emailLabel = 'Book a Free 15-Minute Call',
+	emailLabelMobile = 'Free 15-Min Call',
 	whatsappLabel = 'Chat on WhatsApp',
+	whatsappLabelMobile = 'WhatsApp',
 	fiverrLabel = 'View My Fiverr Profile',
+	fiverrLabelMobile = 'Fiverr Profile',
 	email = 'connect@opmtwo.com',
 	whatsapp,
 	fiverr = 'onepunchmantwo',
@@ -154,7 +160,8 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 							className="inline-flex items-center gap-2 rounded-full bg-black dark:bg-white px-5 py-2.5 text-sm font-semibold text-white dark:text-black border-2 border-transparent transition hover:bg-transparent dark:hover:bg-transparent hover:text-black dark:hover:text-white hover:border-black dark:hover:bg-black dark:hover:border-white"
 						>
 							<MailIcon className="h-4 w-4" />
-							{emailLabel}
+							<div className="sm:hidden">{emailLabelMobile}</div>
+							<div className="hidden sm:block">{emailLabel}</div>
 						</a>
 					)}
 					{/* WhatsApp Button */}
@@ -166,7 +173,8 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 							className="inline-flex items-center gap-2 rounded-full border-2 border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:border-[#25D366]"
 						>
 							<WhatsappIcon className="h-4 w-4" />
-							{whatsappLabel}
+							<div className="sm:hidden">{whatsappLabelMobile}</div>
+							<div className="hidden sm:block">{whatsappLabel}</div>
 						</a>
 					)}
 					{/* Fiverr Button */}
@@ -178,7 +186,8 @@ export const Hero: React.FC<ReelsSectionProps> = ({
 							className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-white dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
 						>
 							<FiverrIcon className="h-4 w-4" />
-							{fiverrLabel}
+							<div className="sm:hidden">{fiverrLabelMobile}</div>
+							<div className="hidden sm:block">{fiverrLabel}</div>
 						</a>
 					)}
 				</div>
