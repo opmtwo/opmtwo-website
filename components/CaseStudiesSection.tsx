@@ -1,6 +1,9 @@
+import { Star } from 'lucide-react';
 // app/components/CaseStudiesSection.tsx
 import React from 'react';
-import { Star } from 'lucide-react';
+
+import Text from './Text';
+import Title from './Title';
 
 type CaseStudy = {
 	title: string;
@@ -72,13 +75,13 @@ export const CaseStudiesSection: React.FC = () => {
 						<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
 						Case Studies from real projects
 					</p>
-					<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+					<Title>
 						<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
 							{/* From “everything is on fire” */}
 							Case Studies&nbsp;
 						</span>{' '}
 						From Recent Projects
-					</h2>
+					</Title>
 					<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
 						Snapshots from recent client work across multiple industries — all focused on serverless, AI, and AWS cost reduction.
 					</p>
@@ -97,7 +100,7 @@ export const CaseStudiesSection: React.FC = () => {
 						>
 							<article
 								className="
-										h-full rounded-3xl bg-white dark:bg-[var(--background-dark)] p-8
+										h-full rounded-3xl bg-background dark:bg-(--background-dark) p-6 lg:p-8
 										backdrop-blur-sm
 										hover:shadow-[0_0_28px_rgba(255,0,0,0.14)]
 										transition-all duration-300
@@ -115,7 +118,7 @@ export const CaseStudiesSection: React.FC = () => {
 									</div>
 
 									{/* <p className="mt-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">{item.details}</p> */}
-									<p className="leading-relaxed text-slate-600">{item.details}</p>
+									<Text>{item.details}</Text>
 
 									<div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-sky-500/40 to-transparent opacity-70 transition-all group-hover:via-emerald-400/70 group-hover:opacity-100" />
 
