@@ -2,6 +2,9 @@
 import classNames from 'classnames';
 import React from 'react';
 
+import Text from './Text';
+import Title from './Title';
+
 type ServiceCategory = 'Serverless & Cloud' | 'AI & Automation';
 
 interface ServiceItem {
@@ -106,13 +109,13 @@ export const ServicesShowcase: React.FC = () => {
 					<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
 					Services to accelerate your team’s growth
 				</p>
-				<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+				<Title>
 					<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-emerald-500 bg-clip-text text-transparent">
 						{/* From “everything is on fire” */}
 						Services
 					</span>{' '}
 					that Make a Difference
-				</h2>
+				</Title>
 				<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
 					Practical, business-focused suite of AWS, Serverless, and AI solutions designed to eliminate bottlenecks, cut costs, and accelerate your
 					team’s growth.
@@ -141,7 +144,7 @@ export const ServicesShowcase: React.FC = () => {
 							>
 								<article
 									className="
-										h-full rounded-3xl bg-background dark:[var(--background-dark)] p-8
+										h-full rounded-3xl bg-background dark:bg-(--background-dark) p-6 lg:p-8
 										backdrop-blur-sm
 										hover:shadow-[0_0_28px_rgba(255,0,0,0.14)]
 										transition-all duration-300
@@ -158,7 +161,7 @@ export const ServicesShowcase: React.FC = () => {
 											{service.title}
 										</h4> */}
 										<h4 className="font-medium">{service.title}</h4>
-										<p className="leading-relaxed text-slate-600">{service.description}</p>
+										<Text>{service.description}</Text>
 									</div>
 								</article>
 							</div>
