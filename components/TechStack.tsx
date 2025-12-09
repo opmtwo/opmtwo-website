@@ -14,11 +14,13 @@ import { EventBridgeIcon } from '@/icons/EventBridgeIcon';
 import JestIcon from '@/icons/JestIcon';
 import KinesisIcon from '@/icons/KinesisIcon';
 import { LambdaIcon } from '@/icons/LambdaIcon';
+import MongoIcon from '@/icons/MongoIcon';
 import { NextJsIcon } from '@/icons/NextJsIcon';
 import { NodeIcon } from '@/icons/NodeIcon';
 import { OpenAiIcon } from '@/icons/OpenAiIcon';
 import { OpensearchIcon } from '@/icons/OpensearchIcon';
 import { PineconeIcon } from '@/icons/PineconeIcon';
+import PostgresIcon from '@/icons/PostgresIcon';
 import PostmanIcon from '@/icons/PostmanIcon';
 import { PythonIcon } from '@/icons/PythonIcon';
 import { ReactIcon } from '@/icons/ReactIcon';
@@ -207,6 +209,30 @@ const techSections: TechSection[] = [
 			},
 		],
 	},
+	{
+		id: 'databases',
+		label: 'Databases',
+		title: 'Databases',
+		description: 'Designing, optimizing, and scaling modern databases for fast, reliable, and high-performance applications.',
+		items: [
+			{
+				name: 'MongoDB Architecture',
+				Icon: MongoIcon, // your MongoDB SVG component
+				description: 'Schema design, indexing strategies, aggregation pipelines, and performance tuning for high-scale workloads.',
+			},
+			{
+				name: 'PostgreSQL & SQL Optimization',
+				Icon: PostgresIcon,
+				description: 'Relational modeling, query optimization, indexing, partitioning, and building scalable transactional systems.',
+			},
+			// {
+			// 	name: 'Distributed Databases',
+			// 	Icon: DynamoDbIcon, // DynamoDB or any distributed DB icon
+			// 	description: 'Designing highly reliable, globally distributed data layers using DynamoDB, Cassandra, and cloud-native NoSQL systems.',
+			// },
+		],
+	},
+
 	// {
 	// 	id: 'streaming',
 	// 	label: 'Event Streaming & Queues',
