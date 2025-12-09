@@ -22,26 +22,26 @@ const Nav = () => {
 						<span className="text-lg font-semibold tracking-tight">Aditya Samanta</span>
 					</div>
 
-					<nav className="hidden items-center gap-8 text-sm text-slate-600 lg:flex">
-						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('problem-solution')}>
+					<nav className="hidden items-center gap-8 text-sm text-black dark:text-white lg:flex">
+						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('problem-solution')}>
 							Solution
 						</button>
-						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('case-studies')}>
+						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('case-studies')}>
 							Case Studies
 						</button>
-						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('services')}>
+						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('services')}>
 							Services
 						</button>
-						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('testimonials')}>
+						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('testimonials')}>
 							Testimonials
 						</button>
-						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('tech')}>
+						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('tech')}>
 							Tech
 						</button>
-						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('faq')}>
+						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('faq')}>
 							FAQ
 						</button>
-						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('contact')}>
+						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('contact')}>
 							Contact
 						</button>
 					</nav>
