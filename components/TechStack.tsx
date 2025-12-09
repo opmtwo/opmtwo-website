@@ -30,6 +30,9 @@ import { StepFunctionsIcon } from '@/icons/StepFunctionsIcon';
 import { TailwindIcon } from '@/icons/TailwindIcon';
 import { TypeScriptIcon } from '@/icons/TypeScriptIcon';
 
+import Text from './Text';
+import Title from './Title';
+
 type TechIcon = React.ComponentType<{ className?: string }>;
 
 type TechItem = {
@@ -326,12 +329,12 @@ export const TechStack: React.FC = () => {
 						<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
 						Tech Stack for nextgen apps
 					</p>
-					<h2 className="text-balance text-2xl font-semibold text-slate-900 sm:text-3xl lg:text-4xl dark:text-slate-50">
+					<Title>
 						Powering Innovation:&nbsp;
 						<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
 							The Modern AI & Cloud Tech Stack
 						</span>
-					</h2>
+					</Title>
 					<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
 						Explore the cutting-edge tools and platforms I use to build fast, scalable, and intelligent AI solutions—from cloud to code, and
 						everything in between.
@@ -361,7 +364,7 @@ export const TechStack: React.FC = () => {
 										<article
 											className="
 											flex items-center gap-3
-										h-full rounded-3xl bg-background dark:[var(--background-dark)] p-8
+										h-full rounded-3xl bg-background dark:bg-(--background-dark) p-6 lg:p-8
 										backdrop-blur-sm
 										hover:shadow-[0_0_28px_rgba(255,0,0,0.14)]
 										transition-all duration-300
@@ -373,7 +376,7 @@ export const TechStack: React.FC = () => {
 											<div className="space-y-2">
 												<h4 className="font-medium">{item.name}</h4>
 												{/* <p className="text-xs mt-1">{item.description}</p> */}
-												<p className="leading-relaxed text-slate-600">{item.description}</p>
+												<Text>{item.description}</Text>
 											</div>
 										</article>
 									</div>
