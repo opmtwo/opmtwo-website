@@ -14,7 +14,7 @@ const Nav = () => {
 		<>
 			{/* Top nav */}
 			<header className="z-50 fixed top-0 right-0 left-0 bg-white dark:bg-(--background-dark)">
-				<div className="max-w-6xl flex items-center justify-between mx-auto w-full px-4 py-5 sm:px-8">
+				<div className="flex items-center justify-between mx-auto w-full px-4 py-5 sm:px-8">
 					<div className="cursor-pointer flex items-center gap-2" onClick={() => scrollToEle('hero')}>
 						<span className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 text-xs font-semibold uppercase">
 							AS
@@ -22,7 +22,7 @@ const Nav = () => {
 						<span className="text-lg font-semibold tracking-tight">Aditya Samanta</span>
 					</div>
 
-					<nav className="hidden items-center gap-8 text-sm text-slate-600 md:flex">
+					<nav className="hidden items-center gap-8 text-sm text-slate-600 lg:flex">
 						<button className="cursor-pointer hover:text-slate-900" onClick={() => scrollToEle('problem-solution')}>
 							Solution
 						</button>
