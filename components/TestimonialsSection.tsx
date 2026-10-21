@@ -12,6 +12,30 @@ import SectionHeading from './ui/SectionHeading';
 const EASE = [0.22, 1, 0.36, 1] as const;
 const INTERVAL = 7000;
 
+type Review = (typeof testimonials)[number];
+
+const Review = ({ review }: { review: Review }) => (
+	<div className="flex flex-col items-center text-center">
+		<div className="flex gap-1 text-emerald-300" aria-label="5 out of 5 stars">
+			{Array.from({ length: 5 }).map((_, i) => (
+				<span key={i}>★</span>
+			))}
+		</div>
+		<blockquote className="mx-auto mt-6 max-w-3xl text-balance font-serif text-2xl leading-snug text-white sm:text-3xl md:text-[2.1rem]">{review.quote}</blockquote>
+		<figcaption className="mt-10 flex items-center gap-4 text-left">
+			<span className="flex h-11 w-11 items-center justify-center rounded-full bg-linear-to-br from-emerald-400/30 via-cyan-400/20 to-violet-400/30 text-sm font-medium text-white">
+				{review.name[0]}
+			</span>
+			<div>
+				<div className="text-sm font-medium text-white">{review.name}</div>
+				<div className="text-xs text-muted">
+					{review.role} · {review.location}
+				</div>
+			</div>
+		</figcaption>
+	</div>
+);
+
 export const CustomerTestimonials: React.FC = () => {
 	const [[index, direction], setState] = useState([0, 1]);
 	const [paused, setPaused] = useState(false);
@@ -51,40 +75,34 @@ export const CustomerTestimonials: React.FC = () => {
 						touchX.current = null;
 					}}
 				>
-					<div className="glass relative min-h-[22rem] overflow-hidden rounded-[2rem] px-6 py-12 sm:px-14 sm:py-16">
-						<span aria-hidden className="absolute left-6 top-2 font-serif text-[10rem] leading-none text-white/[0.04] sm:left-10">
+					<div className="glass relative overflow-hidden rounded-[2rem] px-6 py-12 sm:px-14 sm:py-16">
+						<span aria-hidden className="absolute left-1/2 top-2 -translate-x-1/2 font-serif text-[10rem] leading-none text-white/[0.04]">
 							“
 						</span>
 
-						<AnimatePresence mode="wait" custom={direction}>
-							<motion.figure
-								key={index}
-								custom={direction}
-								initial={{ opacity: 0, rotateY: direction * 25, x: direction * 60, filter: 'blur(8px)' }}
-								animate={{ opacity: 1, rotateY: 0, x: 0, filter: 'blur(0px)' }}
-								exit={{ opacity: 0, rotateY: direction * -25, x: direction * -60, filter: 'blur(8px)' }}
-								transition={{ duration: 0.6, ease: EASE }}
-								className="relative"
-							>
-								<div className="flex gap-1 text-emerald-300" aria-label="5 out of 5 stars">
-									{Array.from({ length: 5 }).map((_, i) => (
-										<span key={i}>★</span>
-									))}
+						{/* Every review is laid out invisibly in the same cell, so the card is always as
+						    tall as the longest one; the active review is centred on top of them */}
+						<div className="grid">
+							{testimonials.map((item) => (
+								<div key={item.name} aria-hidden className="invisible [grid-area:1/1]">
+									<Review review={item} />
 								</div>
-								<blockquote className="mt-6 font-serif text-2xl leading-snug text-white sm:text-3xl md:text-[2.1rem]">{t.quote}</blockquote>
-								<figcaption className="mt-10 flex items-center gap-4">
-									<span className="flex h-11 w-11 items-center justify-center rounded-full bg-linear-to-br from-emerald-400/30 via-cyan-400/20 to-violet-400/30 text-sm font-medium text-white">
-										{t.name[0]}
-									</span>
-									<div>
-										<div className="text-sm font-medium text-white">{t.name}</div>
-										<div className="text-xs text-muted">
-											{t.role} · {t.location}
-										</div>
-									</div>
-								</figcaption>
-							</motion.figure>
-						</AnimatePresence>
+							))}
+
+							<AnimatePresence mode="wait" custom={direction}>
+								<motion.figure
+									key={index}
+									custom={direction}
+									initial={{ opacity: 0, x: direction * 40, filter: 'blur(8px)' }}
+									animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+									exit={{ opacity: 0, x: direction * -40, filter: 'blur(8px)' }}
+									transition={{ duration: 0.6, ease: EASE }}
+									className="relative self-center [grid-area:1/1]"
+								>
+									<Review review={t} />
+								</motion.figure>
+							</AnimatePresence>
+						</div>
 					</div>
 
 					{/* Controls + progress */}
