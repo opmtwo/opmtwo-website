@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { fiverrUrl, testimonials } from '@/content/site';
 
+import { IconButton } from './ui/Buttons';
 import SectionHeading from './ui/SectionHeading';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -110,12 +111,12 @@ export const CustomerTestimonials: React.FC = () => {
 							))}
 						</div>
 						<div className="flex gap-2">
-							<button aria-label="Previous review" onClick={() => go(-1)} className="glass flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition hover:bg-white/10">
-								<ArrowLeft className="h-4 w-4" />
-							</button>
-							<button aria-label="Next review" onClick={() => go(1)} className="glass flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition hover:bg-white/10">
-								<ArrowRight className="h-4 w-4" />
-							</button>
+							<IconButton aria-label="Previous review" onClick={() => go(-1)}>
+								<ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
+							</IconButton>
+							<IconButton aria-label="Next review" onClick={() => go(1)}>
+								<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+							</IconButton>
 						</div>
 					</div>
 

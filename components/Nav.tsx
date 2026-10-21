@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 import { contact, mailto, nav } from '@/content/site';
 
+import { IconButton, MagneticButton, RollText } from './ui/Buttons';
+
 const scrollToEle = (id: string) => {
 	const el = document.getElementById(id);
 	if (el) window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - 80, behavior: 'smooth' });
@@ -44,27 +46,20 @@ const Nav = () => {
 						<button
 							key={item.id}
 							onClick={() => scrollToEle(item.id)}
-							className="cursor-pointer rounded-full px-3.5 py-2 text-[13px] text-muted transition-colors hover:bg-white/5 hover:text-white"
+							className="group cursor-pointer rounded-full px-3.5 py-2 text-[13px] text-muted transition-colors duration-300 hover:bg-white/[0.06] hover:text-white"
 						>
-							{item.label}
+							<RollText>{item.label}</RollText>
 						</button>
 					))}
 				</nav>
 
 				<div className="flex items-center gap-2">
-					<a
-						href={mailto}
-						className="rounded-full bg-white px-4 py-2 text-[13px] font-medium text-black transition hover:bg-emerald-300"
-					>
+					<MagneticButton href={mailto} size="sm">
 						Book a call
-					</a>
-					<button
-						aria-label={open ? 'Close menu' : 'Open menu'}
-						onClick={() => setOpen((o) => !o)}
-						className="glass flex h-9 w-9 cursor-pointer items-center justify-center rounded-full lg:hidden"
-					>
+					</MagneticButton>
+					<IconButton aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((o) => !o)} className="!h-9 !w-9 lg:hidden">
 						{open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-					</button>
+					</IconButton>
 				</div>
 			</div>
 
@@ -84,9 +79,10 @@ const Nav = () => {
 									setOpen(false);
 									scrollToEle(item.id);
 								}}
-								className="block w-full cursor-pointer rounded-2xl px-4 py-3 text-left text-sm text-white/80 hover:bg-white/5"
+								className="group flex w-full cursor-pointer items-center justify-between rounded-2xl px-4 py-3 text-left text-sm text-white/80 transition-colors hover:bg-white/5 hover:text-white"
 							>
-								{item.label}
+								<RollText>{item.label}</RollText>
+								<span className="text-muted transition-transform duration-300 group-hover:translate-x-1">→</span>
 							</button>
 						))}
 					</motion.nav>

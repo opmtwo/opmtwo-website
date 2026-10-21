@@ -120,6 +120,18 @@ h6 {
 	animation: angle-spin 6s linear infinite;
 }
 
+/* Light beam travelling around a rounded border (used on ghost buttons) */
+.border-beam {
+	padding: 1px;
+	background: conic-gradient(from var(--angle), transparent 0%, transparent 65%, #6ee7b7 80%, #67e8f9 88%, #ffffff 92%, transparent 100%);
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	animation: angle-spin 2.4s linear infinite;
+}
+
 @keyframes angle-spin {
 	to {
 		--angle: 360deg;
@@ -157,6 +169,7 @@ h6 {
 		scroll-behavior: auto;
 	}
 	.conic-border,
+	.border-beam,
 	.animate-marquee,
 	.animate-grid-flow {
 		animation: none;

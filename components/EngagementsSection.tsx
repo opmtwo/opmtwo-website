@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 
 import { engagements, mailto } from '@/content/site';
 
+import { MagneticButton } from './ui/Buttons';
 import SectionHeading from './ui/SectionHeading';
 import TiltCard from './ui/TiltCard';
 
@@ -56,15 +57,9 @@ const EngagementsSection = () => {
 										))}
 									</ul>
 									<div className="mt-auto pt-8">
-										<a
-											href={mailto}
-											className={classNames(
-												'flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-medium transition',
-												e.featured ? 'bg-white text-black hover:bg-emerald-300' : 'bg-white/5 text-white hover:bg-white/10'
-											)}
-										>
+										<MagneticButton href={mailto} variant={e.featured ? 'primary' : 'ghost'} className="w-full">
 											Get started
-										</a>
+										</MagneticButton>
 									</div>
 								</div>
 							</TiltCard>

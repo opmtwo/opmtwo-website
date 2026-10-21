@@ -65,10 +65,11 @@ export const Hero: React.FC = () => {
 			<motion.div style={{ y: contentY, opacity: contentOpacity }} className="mx-auto flex w-full max-w-7xl flex-1 items-center px-5 pb-24 pt-36 sm:px-8">
 				<motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.4 } } }} className="max-w-2xl">
 					{/* Eyebrow */}
-					<motion.a variants={fadeUp} href={fiverrUrl} target="_blank" rel="noreferrer" className="glass group inline-flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-xs">
+					<motion.a variants={fadeUp} href={fiverrUrl} target="_blank" rel="noreferrer" className="glass group relative inline-flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-xs">
+						<span aria-hidden className="border-beam pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 						<span className="rounded-full bg-emerald-400/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-emerald-300">★ 5.0</span>
 						<span className="text-white/80">{hero.eyebrow}</span>
-						<span className="text-muted transition-transform group-hover:translate-x-0.5">→</span>
+						<span className="text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white">→</span>
 					</motion.a>
 
 					{/* Headline */}
