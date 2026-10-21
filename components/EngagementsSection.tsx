@@ -57,7 +57,7 @@ const EngagementsSection = () => {
 										))}
 									</ul>
 									<div className="mt-auto pt-8">
-										<MagneticButton href={mailto} variant={e.featured ? 'primary' : 'ghost'} className="w-full">
+										<MagneticButton href={mailto} variant={e.featured ? 'primary' : 'ghost'} block>
 											Get started
 										</MagneticButton>
 									</div>
