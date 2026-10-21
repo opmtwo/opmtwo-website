@@ -1,47 +1,39 @@
 'use client';
 
 import CaseStudiesSection from '@/components/CaseStudiesSection';
+import EngagementsSection from '@/components/EngagementsSection';
 import FaqSection from '@/components/FaqSection';
 import ReadyToTrySection from '@/components/Footer';
 import Hero from '@/components/Hero';
-import Hr from '@/components/Hr';
+import LevelsSection from '@/components/LevelsSection';
+import LogoMarquee from '@/components/LogoMarquee';
+import ScrollProgress from '@/components/motion/ScrollProgress';
 import Nav from '@/components/Nav';
 import ProblemSolutionSection from '@/components/ProblemSolutionSection';
-import ScrollToNextSection from '@/components/ScrollToNextSection';
-import ServicesShowcase from '@/components/ServicesShowcase';
+import ProcessSection from '@/components/ProcessSection';
 import { TechStack } from '@/components/TechStack';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import { MotionConfig } from 'motion/react';
 
 export default function Home() {
 	return (
-		<>
-			<main className="min-h-screen">
-				<Nav />
+		<MotionConfig reducedMotion="user">
+			<ScrollProgress />
+			<Nav />
 
-				<ScrollToNextSection />
-
+			<main className="relative min-h-screen">
 				<Hero />
-				<Hr />
-
+				<LogoMarquee />
+				<LevelsSection />
 				<ProblemSolutionSection />
-				<Hr />
-
 				<CaseStudiesSection />
-				<Hr />
-
-				<ServicesShowcase />
-				<Hr />
-
+				<EngagementsSection />
+				<ProcessSection />
 				<TestimonialsSection />
-				<Hr />
-
 				<TechStack />
-				<Hr />
-
 				<FaqSection />
-
 				<ReadyToTrySection />
 			</main>
-		</>
+		</MotionConfig>
 	);
 }

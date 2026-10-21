@@ -4,6 +4,7 @@ import React from 'react';
 
 import Text from './Text';
 import Title from './Title';
+import { Reveal, Stagger, StaggerItem } from './motion/Reveal';
 
 type ServiceCategory = 'Serverless & Cloud' | 'AI & Automation';
 
@@ -104,7 +105,7 @@ export const ServicesShowcase: React.FC = () => {
 			</header> */}
 
 			{/* Section heading */}
-			<div className="space-y-3 mb-6">
+			<Reveal className="space-y-3 mb-6">
 				<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
 					<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
 					Services to accelerate your team’s growth
@@ -120,20 +121,20 @@ export const ServicesShowcase: React.FC = () => {
 					Practical, business-focused suite of AWS, Serverless, and AI solutions designed to eliminate bottlenecks, cut costs, and accelerate your
 					team’s growth.
 				</p>
-			</div>
+			</Reveal>
 
 			{Object.entries(grouped).map(([category, items], index) => (
 				<div key={category} className={classNames(index < Object.entries(grouped).length - 1 ? 'mb-6' : '')}>
 					{/* Category heading */}
-					<div className="mb-6 flex items-center gap-3">
+					<Reveal direction="left" className="mb-6 flex items-center gap-3">
 						<span className="h-px w-10 bg-linear-to-r from-teal-500 to-teal-300" />
 						<h3 className="text-xl font-semibold bg-linear-to-r from-slate-800 to-slate-500 bg-clip-text text-transparent">{category}</h3>
-					</div>
+					</Reveal>
 
 					{/* Grid */}
-					<div className="mt-8 grid gap-6 md:grid-cols-2">
+					<Stagger className="mt-8 grid gap-6 md:grid-cols-2">
 						{items.map((service) => (
-							<div
+							<StaggerItem hover
 								key={service.id}
 								className="
 									relative rounded-3xl p-[2px] 
@@ -164,9 +165,9 @@ export const ServicesShowcase: React.FC = () => {
 										<Text>{service.description}</Text>
 									</div>
 								</article>
-							</div>
+							</StaggerItem>
 						))}
-					</div>
+					</Stagger>
 				</div>
 			))}
 		</section>

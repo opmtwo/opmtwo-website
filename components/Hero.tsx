@@ -1,199 +1,150 @@
 'use client';
 
 import FiverrIcon from '@/icons/FiverrIcon';
-import WhatsappIcon from '@/icons/WhatsappIcon';
 import { MailIcon } from 'lucide-react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react';
+import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 
-const phrases = [
-	// 'sorting emails', 'writing replies', 'taking notes', 'scheduling',
-	'AWS Serverless',
-	'AI Automation',
-	'LLM Integration',
-	'Backend Optimization',
-	'Cost Reduction',
-	'Workflow Automation',
-];
+import { fiverrUrl, hero, mailto } from '@/content/site';
 
-interface ReelsSectionProps {
-	emailLabel?: string;
-	emailLabelMobile?: string;
-	whatsappLabel?: string;
-	whatsappLabelMobile?: string;
-	fiverrLabel?: string;
-	fiverrLabelMobile?: string;
-	email?: string;
-	whatsapp?: string;
-	fiverr?: string;
-}
+import { MagneticButton } from './ui/Buttons';
+import CountUp from './ui/CountUp';
 
-export const Hero: React.FC<ReelsSectionProps> = ({
-	emailLabel = 'Book a Free 15-Minute Call',
-	emailLabelMobile = 'Free 15-Min Call',
-	whatsappLabel = 'Chat on WhatsApp',
-	whatsappLabelMobile = 'WhatsApp',
-	fiverrLabel = 'View My Fiverr Profile',
-	fiverrLabelMobile = 'Fiverr Profile',
-	email = 'connect@opmtwo.com',
-	whatsapp,
-	fiverr = 'onepunchmantwo',
-}) => {
+// WebGL only runs in the browser
+const HeroScene = dynamic(() => import('./three/HeroScene'), { ssr: false });
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const fadeUp = {
+	hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
+	visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1, ease: EASE } },
+};
+
+export const Hero: React.FC = () => {
 	const [index, setIndex] = useState(0);
-	const [visible, setVisible] = useState(true);
+	const { scrollY } = useScroll();
+	const contentY = useTransform(scrollY, [0, 600], [0, -80]);
+	const contentOpacity = useTransform(scrollY, [0, 500], [1, 0]);
 
 	useEffect(() => {
-		const interval = setInterval(() => {
-			// fade out
-			setVisible(false);
-
-			// after fade-out, switch text and fade in
-			setTimeout(() => {
-				setIndex((prev) => (prev + 1) % phrases.length);
-				setVisible(true);
-			}, 250);
-		}, 2500);
-
+		const interval = setInterval(() => setIndex((prev) => (prev + 1) % hero.rotating.length), 2600);
 		return () => clearInterval(interval);
 	}, []);
 
+	const phrase = hero.rotating[index];
+
 	return (
-		<section id="hero" className="flex flex-col items-center text-slate-900 pt-32">
-			{/* Hero */}
-			<main className="mx-auto my-auto flex w-full max-w-4xl flex-col items-center text-center px-4 sm:px-8">
-				{/* <div
-					className="absolute top-0 right-0 bottom-0 left-0 w-full h-full bg-cover md:w-[40%] ml-auto"
+		<section id="hero" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
+			{/* Ambient light */}
+			<div aria-hidden className="pointer-events-none absolute inset-0 -z-20">
+				<div className="absolute left-1/2 top-[-20%] h-[60rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.14),transparent_60%)]" />
+				<div className="absolute right-[-10%] top-[20%] h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.14),transparent_60%)]" />
+				<div
+					className="absolute inset-0 opacity-[0.18] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"
 					style={{
-						// backgroundColor: '#fbf5e3',
-						// backgroundBlendMode: 'hard-light',
-						// backgroundBlendMode: 'color-dodge',
-						// backgroundColor: '#1d27bd',
-						backgroundImage: 'url(/sketch.png)',
-						backgroundPosition: 'top right',
-						backgroundRepeat: 'no-repeat',
-						// filter: 'blur(1px)',
-						// filter: 'opacity(60%)',
-						// filter: 'grayscale(50%)',
+						backgroundImage:
+							'linear-gradient(to right, rgb(255 255 255 / 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.12) 1px, transparent 1px)',
+						backgroundSize: '72px 72px',
 					}}
-				></div> */}
+				/>
+			</div>
 
-				{/* Badge */}
-				{/* <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-medium text-slate-600 shadow-sm">
-					<span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-					<span>Trusted by 100,000+ professionals</span>
-				</div> */}
+			{/* 3D scene: full-bleed behind on mobile, right half on desktop */}
+			<motion.div
+				initial={{ opacity: 0, scale: 0.9 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 2, ease: EASE, delay: 0.3 }}
+				className="absolute inset-0 -z-10 opacity-60 lg:left-[38%] lg:opacity-100"
+			>
+				<HeroScene />
+			</motion.div>
+			<div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-background via-background/70 to-transparent lg:via-background/40" />
+			<div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-linear-to-t from-background to-transparent" />
 
-				{/* Rating */}
-				<a className="cursor-pointer" href="https://www.fiverr.com/onepunchmantwo" target="_blank" rel="noreferrer">
-					<div className="inline-flex items-center gap-3 rounded-full bg-white/70 px-4 py-2 text-sm shadow-sm backdrop-blur">
-						<div className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-semibold text-white">
-							<span>★</span>
-						</div>
-						<div className="space-y-0.5 leading-snug">
-							<p className="text-xs font-medium uppercase tracking-[0.16em] text-slate-600">120+ Five-Star Reviews</p>
-							<button className="pointer-events-none text-xs font-semibold text-slate-900 underline decoration-slate-400 underline-offset-2">
-								Read Client Success Stories
-							</button>
-						</div>
-					</div>
-				</a>
+			<motion.div style={{ y: contentY, opacity: contentOpacity }} className="mx-auto flex w-full max-w-7xl flex-1 items-center px-5 pb-24 pt-36 sm:px-8">
+				<motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.4 } } }} className="max-w-2xl">
+					{/* Eyebrow */}
+					<motion.a variants={fadeUp} href={fiverrUrl} target="_blank" rel="noreferrer" className="glass group inline-flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-xs">
+						<span className="rounded-full bg-emerald-400/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-emerald-300">★ 5.0</span>
+						<span className="text-white/80">{hero.eyebrow}</span>
+						<span className="text-muted transition-transform group-hover:translate-x-0.5">→</span>
+					</motion.a>
 
-				{/* Heading */}
-				<h1 className="mb-3 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl mt-8">
-					{/* Your white-label partner for */}
-					<span className="bg-linear-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent">Fiverrs Pick&nbsp;</span>
-					AWS & AI Consultant Specializing in
-				</h1>
+					{/* Headline */}
+					<motion.h1 variants={fadeUp} className="mt-8 text-[clamp(2.75rem,7vw,5.75rem)] font-medium leading-[0.95] text-shine">
+						{hero.titleLead}{' '}
+						<span className="font-serif font-normal italic tracking-normal text-gradient pr-2">{hero.titleAccent}</span>
+						<br className="hidden sm:block" /> {hero.titleTail}
+					</motion.h1>
 
-				{/* Animated second line */}
-				<div className="mb-6 flex min-h-[3.2rem] items-center justify-center sm:min-h-[3.8rem] md:min-h-[4.2rem]">
-					<span
-						className={`inline-block text-4xl font-semibold  tracking-tight text-slate-900 sm:text-5xl md:text-6xl transition-opacity duration-300 ${
-							visible ? 'opacity-100' : 'opacity-0'
-						}`}
-					>
-						<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent">{phrases[index]}</span>
-					</span>
-				</div>
+					{/* Rotating level */}
+					<motion.div variants={fadeUp} className="mt-7 flex h-9 items-center gap-3 font-mono text-sm text-muted sm:text-base">
+						<span className="flex gap-1" aria-hidden>
+							{hero.rotating.map((_, i) => (
+								<span key={i} className={`h-1.5 w-5 rounded-full transition-colors duration-500 ${i <= index ? 'bg-emerald-400' : 'bg-white/10'}`} />
+							))}
+						</span>
+						<span>L{index + 1}</span>
+						<span className="relative block h-[1.6em] min-w-[18ch] overflow-hidden">
+							<AnimatePresence mode="wait">
+								<motion.span
+									key={phrase}
+									className="absolute inset-x-0 top-0 block whitespace-nowrap leading-[1.6em] text-white"
+									initial={{ y: '110%', opacity: 0 }}
+									animate={{ y: '0%', opacity: 1 }}
+									exit={{ y: '-110%', opacity: 0 }}
+									transition={{ duration: 0.45, ease: EASE }}
+								>
+									{phrase}
+								</motion.span>
+							</AnimatePresence>
+						</span>
+					</motion.div>
 
-				{/* Heading */}
-				<div className="space-y-5">
-					{/* <h1 className="font-serif text-6xl leading-none text-slate-900 sm:text-7xl">Serverless</h1> */}
-					{/* <h1 className="text-6xl leading-none text-slate-900 bg-linear-to-r from-emerald-300 via-cyan-300 to-sky-300 bg-clip-text text-transparent">
-							Serverless AWS &amp; AI Automation
-						</h1> */}
+					<motion.p variants={fadeUp} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+						{hero.description}
+					</motion.p>
 
-					<p className="max-w-lg text-base leading-relaxed text-slate-700 dark:text-white sm:text-lg">
-						Optimize, automate, and scale your backend with AWS Serverless Architecture & AI —{' '}
-						<span className="font-semibold">10× faster and up to 70% cheaper.</span>
-					</p>
-				</div>
+					<motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-3">
+						<MagneticButton href={mailto} icon={<MailIcon className="h-4 w-4" />}>
+							{hero.primaryCta}
+						</MagneticButton>
+						<MagneticButton href={fiverrUrl} target="_blank" rel="noreferrer" variant="ghost" icon={<FiverrIcon className="h-4 w-4" />}>
+							{hero.secondaryCta}
+						</MagneticButton>
+					</motion.div>
 
-				{/* Stats */}
-				<div className="space-y-4 mt-8">
-					<div className="h-px w-full bg-linear-to-r from-slate-200/80 via-slate-300/70 to-transparent" />
-					<div className="flex flex-wrap items-center gap-6 text-sm text-slate-800 dark:text-white">
-						{/* Cost Savings */}
-						<div className="flex items-center gap-3 text-slate-900 dark:text-white">
-							<div className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-400/40 bg-white">
-								<span className="text-lg">💰</span>
+					{/* Stats */}
+					<motion.dl variants={fadeUp} className="mt-14 grid max-w-xl grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-8 sm:grid-cols-4">
+						{hero.stats.map((s) => (
+							<div key={s.label}>
+								<dt className="sr-only">{s.label}</dt>
+								<dd className="text-2xl font-medium text-white sm:text-3xl">
+									<CountUp value={s.value} decimals={s.decimals} suffix={s.suffix} />
+								</dd>
+								<p className="mt-1 text-xs text-muted">
+									{s.prefix}
+									{s.label}
+								</p>
 							</div>
-							<div className="leading-tight">
-								<p className="text-xs font-medium uppercase tracking-[0.18em] ">AWS Cost Reduction</p>
-								<p className="text-sm font-semibold">Up to 70% Savings</p>
-							</div>
-						</div>
+						))}
+					</motion.dl>
+				</motion.div>
+			</motion.div>
 
-						{/* Rating */}
-						<div className="flex items-center gap-2 text-sm">
-							<span className="text-lg">⭐</span>
-							<span className="font-semibold">5.0</span>
-							<span className="text-xs">Average Rating</span>
-						</div>
-					</div>
-					<div className="h-px w-full bg-linear-to-r from-slate-200/80 via-slate-300/70 to-transparent" />
-				</div>
-
-				{/* Buttons */}
-				<div className="flex flex-wrap items-center gap-4 pt-2 mt-8">
-					{/* Email Button */}
-					{email && (
-						<a
-							href={`mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}
-							className="inline-flex items-center gap-2 rounded-full bg-black dark:bg-white px-5 py-2.5 text-sm font-semibold text-white dark:text-black border-2 border-transparent transition hover:bg-transparent dark:hover:bg-transparent hover:text-black dark:hover:text-white hover:border-black dark:hover:bg-black dark:hover:border-white"
-						>
-							<MailIcon className="h-4 w-4" />
-							<div className="sm:hidden">{emailLabelMobile}</div>
-							<div className="hidden sm:block">{emailLabel}</div>
-						</a>
-					)}
-					{/* WhatsApp Button */}
-					{whatsapp && (
-						<a
-							href={`https://wa.me/${whatsapp}`}
-							target="_blank"
-							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border-2 border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:border-[#25D366]"
-						>
-							<WhatsappIcon className="h-4 w-4" />
-							<div className="sm:hidden">{whatsappLabelMobile}</div>
-							<div className="hidden sm:block">{whatsappLabel}</div>
-						</a>
-					)}
-					{/* Fiverr Button */}
-					{fiverr && (
-						<a
-							href={`https://www.fiverr.com/${fiverr}`}
-							target="_blank"
-							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-white dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
-						>
-							<FiverrIcon className="h-4 w-4" />
-							<div className="sm:hidden">{fiverrLabelMobile}</div>
-							<div className="hidden sm:block">{fiverrLabel}</div>
-						</a>
-					)}
-				</div>
-			</main>
+			{/* Scroll cue */}
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ delay: 2 }}
+				className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted sm:flex"
+			>
+				Scroll
+				<span className="relative h-10 w-px overflow-hidden bg-white/10">
+					<motion.span className="absolute inset-x-0 top-0 h-4 bg-emerald-400" animate={{ y: [-16, 40] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }} />
+				</span>
+			</motion.div>
 		</section>
 	);
 };

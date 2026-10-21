@@ -1,117 +1,110 @@
-// app/components/ReadyToTrySection.tsx
 'use client';
 
 import FiverrIcon from '@/icons/FiverrIcon';
-import MailIcon from '@/icons/MailIcon';
 import WhatsappIcon from '@/icons/WhatsappIcon';
-import React from 'react';
+import { MailIcon } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import React, { useRef } from 'react';
 
-interface ReadyToTrySectionProps {
-	headline?: string;
-	subheadline?: string;
-	emailLabel?: string;
-	whatsappLabel?: string;
-	fiverrLabel?: string;
-	email?: string;
-	whatsapp?: string;
-	fiverr?: string;
-	description?: string;
-}
+import { contact, cta, fiverrUrl, mailto, nav } from '@/content/site';
 
-export const ReadyToTrySection: React.FC<ReadyToTrySectionProps> = ({
-	headline = 'Ready to explore',
-	subheadline = 'AI & Serverless',
-	emailLabel = 'Email Me Your Use Case',
-	whatsappLabel = 'Chat on WhatsApp',
-	fiverrLabel = 'View My Fiverr Profile',
-	email = 'you@example.com',
-	whatsapp,
-	fiverr = 'onepunchmantwo',
-	description = "Send a quick note with your current stack and challenges.\nI'll reply with a short, actionable plan and possible next steps.",
-}) => {
+import { MagneticButton } from './ui/Buttons';
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+export const ReadyToTrySection: React.FC = () => {
+	const ref = useRef<HTMLElement>(null);
+	const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] });
+	const gridTilt = useTransform(scrollYProgress, [0, 1], [75, 62]);
+	const glow = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+
 	return (
-		<section id="contact" className="relative overflow-hidden bg-[#EEF3FB] dark:bg-slate-950">
-			{/* Soft cloud-ish background */}
-			<div className="relative mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:px-8">
-				<h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-					<span>{headline}</span>
-					{/* serverless & AI  */}
-					<span className="bg-linear-to-r from-sky-400 via-emerald-400 to-violet-400 bg-clip-text text-transparent dark:from-sky-500 dark:via-emerald-500 dark:to-violet-500">
-						{' '}
-						{subheadline}{' '}
-					</span>
-					<span>for your team?</span>
-				</h2>
-
-				{/* Main CTAs */}
-				{/* <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-					<button className="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#EEF3FB] dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 dark:focus-visible:ring-slate-700 dark:focus-visible:ring-offset-slate-950"
-						onClick={() => window.location.href = `mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}>
-						<span className="mr-3 flex h-6 w-6 items-center justify-center rounded-md bg-white dark:bg-slate-900">
-							<span className="text-[13px] leading-none">✉️</span>
-						</span>
-						{emailLabel}
-					</button>
-					<button className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-8 py-4 text-base font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-[#1ebe57] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22b356]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#EEF3FB] dark:focus-visible:ring-[#25D366] dark:focus-visible:ring-offset-slate-950"
-						onClick={() => window.open(`https://wa.me/${whatsapp}`, '_blank')}>
-						<span className="mr-3 flex h-6 w-6 items-center justify-center rounded-md bg-white/95 dark:bg-slate-900/90">
-							<span className="text-[13px] leading-none">💬</span>
-						</span>
-						{whatsappLabel}
-					</button>
-					<button className="rounded-full border border-slate-300 bg-white/70 px-5 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-white dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100 dark:hover:bg-slate-900"
-						onClick={() => window.open(`https://www.fiverr.com/${fiverr}`, '_blank')}>
-						<span>{fiverrLabel}</span>
-					</button>
-				</div> */}
-
-				<div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-					{/* Email Button */}
-					{email && (
-						<a
-							href={`mailto:${email}?subject=Serverless%20%2B%20AI%20Consultation`}
-							className="inline-flex items-center gap-2 rounded-full bg-black dark:bg-white px-5 py-2.5 text-sm font-semibold text-white dark:text-black border-2 border-transparent transition hover:bg-transparent dark:hover:bg-transparent hover:text-black dark:hover:text-white hover:border-black dark:hover:bg-black dark:hover:border-white"
-						>
-							<MailIcon className="h-4 w-4" />
-							{emailLabel}
-						</a>
-					)}
-					{/* WhatsApp Button */}
-					{whatsapp && (
-						<a
-							href={`https://wa.me/${whatsapp}`}
-							target="_blank"
-							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border-2 border-emerald-400/60 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-600 transition hover:bg-[#25D366] hover:text-white hover:border-[#25D366] dark:bg-slate-950 dark:text-emerald-300 dark:hover:bg-[#25D366] dark:hover:border-[#25D366]"
-						>
-							<WhatsappIcon className="h-4 w-4" />
-							{whatsappLabel}
-						</a>
-					)}
-					{/* Fiverr Button */}
-					{fiverr && (
-						<a
-							href={`https://www.fiverr.com/${fiverr}`}
-							target="_blank"
-							rel="noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] dark:border-white dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-[#1DBF73] dark:hover:text-white dark:hover:border-[#1DBF73]"
-						>
-							<FiverrIcon className="h-4 w-4" />
-							{fiverrLabel}
-						</a>
-					)}
-				</div>
-
-				{/* Subtext */}
-				<p className="mt-6 text-sm text-slate-500 dark:text-slate-300">
-					{description.split('\n').map((line, i) => (
-						<React.Fragment key={i}>
-							{line}
-							<br />
-						</React.Fragment>
-					))}
-				</p>
+		<section id="contact" ref={ref} className="relative overflow-hidden pt-32">
+			{/* 3D perspective grid floor */}
+			<div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] [perspective:600px]">
+				<motion.div
+					style={{ rotateX: gridTilt }}
+					className="absolute inset-x-[-50%] bottom-[-30%] h-[160%] origin-bottom animate-grid-flow [mask-image:linear-gradient(to_top,black_10%,transparent_70%)]"
+				>
+					<div
+						className="h-full w-full"
+						style={{
+							backgroundImage:
+								'linear-gradient(to right, rgba(52,211,153,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(34,211,238,0.35) 1px, transparent 1px)',
+							backgroundSize: '64px 64px',
+						}}
+					/>
+				</motion.div>
 			</div>
+			<motion.div
+				aria-hidden
+				style={{ opacity: glow }}
+				className="pointer-events-none absolute bottom-[-20rem] left-1/2 h-[40rem] w-[70rem] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(52,211,153,0.25),rgba(34,211,238,0.1)_40%,transparent_70%)]"
+			/>
+
+			<motion.div
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true, amount: 0.4 }}
+				variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
+				className="relative mx-auto flex max-w-4xl flex-col items-center px-5 pb-40 text-center sm:px-8"
+			>
+				<motion.p
+					variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
+					className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted"
+				>
+					<span className="relative flex h-2 w-2">
+						<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+						<span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+					</span>
+					Taking new projects
+				</motion.p>
+
+				<motion.h2
+					variants={{ hidden: { opacity: 0, y: 30, filter: 'blur(10px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1, ease: EASE } } }}
+					className="mt-8 text-[clamp(2.5rem,6vw,5rem)] font-medium leading-[0.98] text-shine"
+				>
+					{cta.title} <span className="font-serif font-normal italic tracking-normal text-gradient pr-2">{cta.titleAccent}</span>
+				</motion.h2>
+
+				<motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+					{cta.description}
+				</motion.p>
+
+				<motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mt-10 flex flex-wrap justify-center gap-3">
+					<MagneticButton href={mailto} icon={<MailIcon className="h-4 w-4" />}>
+						{cta.primary}
+					</MagneticButton>
+					{contact.whatsapp && (
+						<MagneticButton href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer" variant="ghost" icon={<WhatsappIcon className="h-4 w-4" />}>
+							Chat on WhatsApp
+						</MagneticButton>
+					)}
+					<MagneticButton href={fiverrUrl} target="_blank" rel="noreferrer" variant="ghost" icon={<FiverrIcon className="h-4 w-4" />}>
+						{cta.secondary}
+					</MagneticButton>
+				</motion.div>
+
+				<motion.p variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="mt-6 font-mono text-xs text-muted">
+					{contact.email}
+				</motion.p>
+			</motion.div>
+
+			{/* Footer bar */}
+			<footer className="relative border-t border-line bg-background/60 backdrop-blur-md">
+				<div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-8 text-xs text-muted sm:flex-row sm:px-8">
+					<p>
+						© {new Date().getFullYear()} {contact.name}. AI Consultant across all five levels of AI.
+					</p>
+					<nav className="flex flex-wrap justify-center gap-5">
+						{nav.map((item) => (
+							<a key={item.id} href={`#${item.id}`} className="transition-colors hover:text-white">
+								{item.label}
+							</a>
+						))}
+					</nav>
+				</div>
+			</footer>
 		</section>
 	);
 };

@@ -1,228 +1,130 @@
-// app/components/CustomerTestimonials.tsx
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-type Testimonial = {
-	id: number;
-	name: string;
-	role: string;
-	company: string;
-	avatar: string;
-	quote: string;
-};
+import { fiverrUrl, testimonials } from '@/content/site';
 
-const testimonials: Testimonial[] = [
-	{
-		id: 3,
-		name: 'Colby/USA',
-		// name: 'USA',
-		role: 'Founder',
-		company: 'FinEdge',
-		avatar: '/koko.webp',
-		quote: `Sam is great to work with. I have worked with him on multiple apps over the last two years and I couldn't recommend him highly enough. Thank you and I look forward to continued work together in the very near future!`,
-	},
-	{
-		id: 5,
-		name: 'Danielle/Macau',
-		// name: 'USA',
-		role: 'Co-founder',
-		company: 'FinEdge',
-		avatar: '/koko.webp',
-		quote: `We enjoyed working again with Sam on a new feature for our product. He has always met all of our requirements 100% and has gone above and beyond to ensure everything works properly.`,
-	},
-	{
-		id: 4,
-		name: 'Liorz/Isreal',
-		// name: 'USA',
-		role: 'CTO',
-		company: 'FinEdge',
-		avatar: '/koko.webp',
-		quote: `onepunchmantwo is a great professional. highly responsive, and very service oriented. would definitely work with him again!`,
-	},
-	{
-		id: 2,
-		name: 'Kshijit/Australia',
-		// name: 'Australia',
-		role: 'Founder',
-		company: 'SaaSly',
-		avatar: '/koko.webp',
-		quote: `Sam is amazing developer, he deliver everything on time and excellent manner. He is my go to guy. Sam just finished and delivered pase #3 of my project and he is very accomodative of any minor changes and enhancement. Thanks Sam.`,
-	},
-	{
-		id: 1,
-		name: 'Vikas/Japan',
-		// name: 'Japan',
-		role: 'CTO',
-		company: 'Retail',
-		avatar: '/koko.webp',
-		quote: `Another great experience with Sam! He is PROFESSIONAL, responsive, and delivers high-quality work. His attention to detail and proactive communication make working with him a breeze. As a repeat customer, I highly recommend him. Thank you, Sam! 🙌`,
-	},
-];
+import SectionHeading from './ui/SectionHeading';
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+const INTERVAL = 7000;
 
 export const CustomerTestimonials: React.FC = () => {
-	const [activeIndex, setActiveIndex] = React.useState(0);
+	const [[index, direction], setState] = useState([0, 1]);
+	const [paused, setPaused] = useState(false);
+	const touchX = useRef<number | null>(null);
 	const len = testimonials.length;
-	const active = testimonials[activeIndex];
-	const prev = testimonials[(activeIndex - 1 + len) % len];
-	const next = testimonials[(activeIndex + 1) % len];
+	const t = testimonials[index];
 
-	const goPrev = () => setActiveIndex((i) => (i - 1 + len) % len);
-	const goNext = () => setActiveIndex((i) => (i + 1) % len);
+	const go = useCallback((dir: number) => setState(([i]) => [(i + dir + len) % len, dir]), [len]);
 
-	// Swiping support
-	const touchStartX = React.useRef<number | null>(null);
-	const touchEndX = React.useRef<number | null>(null);
-
-	const handleTouchStart = (e: React.TouchEvent) => {
-		touchStartX.current = e.changedTouches[0].clientX;
-	};
-	const handleTouchMove = (e: React.TouchEvent) => {
-		touchEndX.current = e.changedTouches[0].clientX;
-	};
-	const handleTouchEnd = () => {
-		if (touchStartX.current !== null && touchEndX.current !== null) {
-			const distance = touchStartX.current - touchEndX.current;
-			if (distance > 50) {
-				goNext(); // swipe left
-			} else if (distance < -50) {
-				goPrev(); // swipe right
-			}
-		}
-		touchStartX.current = null;
-		touchEndX.current = null;
-	};
+	useEffect(() => {
+		if (paused) return;
+		const id = setTimeout(() => go(1), INTERVAL);
+		return () => clearTimeout(id);
+	}, [index, paused, go]);
 
 	return (
-		<section id="testimonials" className="relative overflow-hidden px-4 flex flex-col items-center justify-center">
-			<div className="mx-auto xl:w-6xl">
-				{/* Header */}
-				{/* Updated Heading + Subtitle */}
-				<header className="text-center px-2 p-[2px] ">
-					<h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl dark:text-slate-50">
-						<span className="relative">
-							<span className="relative z-10 bg-linear-to-r from-sky-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
-								Testimonials
-								<br />
-							</span>
-						</span>
-						{/* Trusted by teams worldwideTrusted by teams worldwide for Serverless & AI transformation */}
-						Trusted by teams worldwide
-					</h2>
+		<section id="testimonials" className="relative overflow-hidden py-32">
+			<div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.1),transparent_60%)]" />
 
-					<p className="md:max-w-2xl mx-auto mt-3 text-xs text-slate-500 sm:text-sm md:text-base dark:text-slate-400">
-						From maximizing AWS efficiency to engineering powerful AI automations, here’s what I’ve delivered for modern SaaS founders and teams.
-					</p>
-				</header>
+			<div className="relative mx-auto max-w-5xl px-5 sm:px-8">
+				<SectionHeading
+					eyebrow="120+ five-star reviews"
+					title="Trusted by founders"
+					accent="& CTOs worldwide."
+					align="center"
+				/>
 
-				{/* Slider area */}
 				<div
-					className="relative mt-10 sm:mt-12 overflow-hidden"
-					onTouchStart={handleTouchStart}
-					onTouchMove={handleTouchMove}
-					onTouchEnd={handleTouchEnd}
+					className="relative mt-16 [perspective:1400px]"
+					onMouseEnter={() => setPaused(true)}
+					onMouseLeave={() => setPaused(false)}
+					onTouchStart={(e) => (touchX.current = e.changedTouches[0].clientX)}
+					onTouchEnd={(e) => {
+						if (touchX.current === null) return;
+						const d = touchX.current - e.changedTouches[0].clientX;
+						if (Math.abs(d) > 50) go(d > 0 ? 1 : -1);
+						touchX.current = null;
+					}}
 				>
-					{/* Left side card (fixed height, ~25% visible, only on md+) */}
-					<div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 -translate-x-[65%] opacity-40 xl:block">
-						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
-							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">{prev.quote}</p>
-						</div>
-					</div>
+					<div className="glass relative min-h-[22rem] overflow-hidden rounded-[2rem] px-6 py-12 sm:px-14 sm:py-16">
+						<span aria-hidden className="absolute left-6 top-2 font-serif text-[10rem] leading-none text-white/[0.04] sm:left-10">
+							“
+						</span>
 
-					{/* Right side card (fixed height, ~25% visible, only on md+) */}
-					<div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[65%] opacity-40 xl:block">
-						<div className="flex h-64 w-[360px] items-center rounded-4xl border border-slate-100 bg-white/80 dark:border-slate-700 dark:bg-slate-900/70">
-							<p className="line-clamp-5 px-8 text-sm leading-relaxed text-slate-400 dark:text-slate-500">{next.quote}</p>
-						</div>
-					</div>
-
-					{/* Gradient border wrapper for main card */}
-					<div className="relative mx-auto max-w-3xl bg-linear-to-r from-emerald-300 via-lime-300 to-emerald-400 rounded-[34px] dark:from-emerald-500 dark:via-emerald-400 dark:to-lime-400 p-[2px]">
-						{/* Main center card */}
-						<div className="relative min-h-[300px] rounded-4xl bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:px-10 md:py-14 dark:bg-(--background-dark)">
-							{/* Stars pill */}
-							<div className="mx-auto mb-6 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-5 py-2 text-emerald-500 sm:mb-8 sm:px-7 sm:py-3 dark:bg-emerald-500/10 dark:text-emerald-300">
-								{Array.from({ length: 5 }).map((_, i) => (
-									<svg key={i} className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.383 2.46a1 1 0 00-.364 1.118l1.294 3.997c.3.925-.755 1.688-1.54 1.118L10.5 14.86a1 1 0 00-1.175 0l-3.36 2.23c-.784.57-1.838-.193-1.539-1.118l1.293-3.997a1 1 0 00-.364-1.118L1.972 9.397c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.361-3.97z" />
-									</svg>
-								))}
-							</div>
-
-							{/* Quote */}
-							<p className="min-h-[140px] md:min-h-[100px] mx-auto text-sm leading-relaxed text-slate-900 sm:text-base md:text-lg md:leading-relaxed dark:text-slate-100">
-								{active.quote}
-							</p>
-
-							{/* Person */}
-							<div className="mt-8 flex flex-col items-center gap-2 sm:mt-10">
-								{/* <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-emerald-200 sm:h-24 sm:w-24 dark:border-emerald-400/70">
-									<Image src={active.avatar} alt={active.name} fill sizes="96px" className="object-cover" />
-								</div> */}
-								<div className="text-xs sm:text-sm">
-									<div className="font-semibold text-slate-900 dark:text-slate-50">{active.name}</div>
-									<div className="text-[11px] text-slate-500 sm:text-xs dark:text-slate-400">
-										{active.role}
-										{/* of <span className="text-emerald-500 dark:text-emerald-300">{active.company}</span> */}
-									</div>
+						<AnimatePresence mode="wait" custom={direction}>
+							<motion.figure
+								key={index}
+								custom={direction}
+								initial={{ opacity: 0, rotateY: direction * 25, x: direction * 60, filter: 'blur(8px)' }}
+								animate={{ opacity: 1, rotateY: 0, x: 0, filter: 'blur(0px)' }}
+								exit={{ opacity: 0, rotateY: direction * -25, x: direction * -60, filter: 'blur(8px)' }}
+								transition={{ duration: 0.6, ease: EASE }}
+								className="relative"
+							>
+								<div className="flex gap-1 text-emerald-300" aria-label="5 out of 5 stars">
+									{Array.from({ length: 5 }).map((_, i) => (
+										<span key={i}>★</span>
+									))}
 								</div>
-							</div>
+								<blockquote className="mt-6 font-serif text-2xl leading-snug text-white sm:text-3xl md:text-[2.1rem]">{t.quote}</blockquote>
+								<figcaption className="mt-10 flex items-center gap-4">
+									<span className="flex h-11 w-11 items-center justify-center rounded-full bg-linear-to-br from-emerald-400/30 via-cyan-400/20 to-violet-400/30 text-sm font-medium text-white">
+										{t.name[0]}
+									</span>
+									<div>
+										<div className="text-sm font-medium text-white">{t.name}</div>
+										<div className="text-xs text-muted">
+											{t.role} · {t.location}
+										</div>
+									</div>
+								</figcaption>
+							</motion.figure>
+						</AnimatePresence>
+					</div>
 
-							{/* Pagination dots */}
-							<div className="mt-8 flex justify-center gap-2 sm:mt-10">
-								{testimonials.map((t, i) => (
-									<button
-										key={t.id}
-										type="button"
-										onClick={() => setActiveIndex(i)}
-										className={`h-2 rounded-full transition-all ${
-											i === activeIndex ? 'w-6 bg-emerald-500' : 'w-2 bg-emerald-200 dark:bg-emerald-500/40'
-										}`}
-										aria-label={`Go to testimonial ${i + 1}`}
-									/>
-								))}
-							</div>
-
-							{/* Desktop arrows (overlapping sides) */}
-							<button
-								type="button"
-								onClick={goPrev}
-								className="absolute left-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-xl cursor-pointer text-black dark:text-white transition hover:scale-105 md:flex"
-								aria-label="Previous testimonial"
-							>
-								←
+					{/* Controls + progress */}
+					<div className="mt-6 flex items-center justify-between gap-4">
+						<div className="flex flex-1 gap-2">
+							{testimonials.map((item, i) => (
+								<button
+									key={item.name}
+									onClick={() => setState([i, i > index ? 1 : -1])}
+									aria-label={`Show review from ${item.name}`}
+									className="relative h-1 flex-1 cursor-pointer overflow-hidden rounded-full bg-white/10"
+								>
+									{i === index && (
+										<motion.span
+											key={`${index}-${paused}`}
+											className="absolute inset-y-0 left-0 bg-emerald-400"
+											initial={{ width: '0%' }}
+											animate={{ width: paused ? '0%' : '100%' }}
+											transition={{ duration: paused ? 0 : INTERVAL / 1000, ease: 'linear' }}
+										/>
+									)}
+									{i < index && <span className="absolute inset-0 bg-white/30" />}
+								</button>
+							))}
+						</div>
+						<div className="flex gap-2">
+							<button aria-label="Previous review" onClick={() => go(-1)} className="glass flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition hover:bg-white/10">
+								<ArrowLeft className="h-4 w-4" />
 							</button>
-							<button
-								type="button"
-								onClick={goNext}
-								className="absolute right-[-2.8rem] top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-2xl text-xl cursor-pointer text-black dark:text-white transition hover:scale-105 md:flex"
-								aria-label="Next testimonial"
-							>
-								→
+							<button aria-label="Next review" onClick={() => go(1)} className="glass flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition hover:bg-white/10">
+								<ArrowRight className="h-4 w-4" />
 							</button>
 						</div>
 					</div>
 
-					{/* Mobile arrows (below card) */}
-					<div className="mt-6 flex justify-center gap-4 xl:hidden">
-						<button
-							type="button"
-							onClick={goPrev}
-							className="flex h-10 w-10 items-center justify-center rounded-2xl text-black dark:text-white active:scale-95"
-							aria-label="Previous testimonial"
-						>
-							←
-						</button>
-						<button
-							type="button"
-							onClick={goNext}
-							className="flex h-10 w-10 items-center justify-center rounded-2xl text-black dark:text-white active:scale-95"
-							aria-label="Next testimonial"
-						>
-							→
-						</button>
-					</div>
+					<p className="mt-8 text-center text-sm text-muted">
+						Read every review on{' '}
+						<a href={fiverrUrl} target="_blank" rel="noreferrer" className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-emerald-400">
+							Fiverr
+						</a>
+					</p>
 				</div>
 			</div>
 		</section>

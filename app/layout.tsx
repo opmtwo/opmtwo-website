@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 
 const geistSans = Geist({
@@ -10,6 +10,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
 	variable: '--font-geist-mono',
 	subsets: ['latin'],
+});
+
+const instrumentSerif = Instrument_Serif({
+	variable: '--font-instrument-serif',
+	subsets: ['latin'],
+	weight: '400',
+	style: ['normal', 'italic'],
 });
 
 export const metadata: Metadata = {
@@ -24,15 +31,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
-				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link rel="preconnect" href="https://fonts.gstatic.com" />
-				<link
-					href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-					rel="stylesheet"
-				/>
-			</head>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+			<body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} grain antialiased`}>
 				{/* SVG filter defs */}
 				<svg width="0" height="0" style={{ position: 'absolute' }}>
 					<defs>

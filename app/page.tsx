@@ -3,12 +3,9 @@ import type { Metadata } from 'next';
 import HomeClient from '@/app/pages/Home';
 
 export const metadata: Metadata = {
-	title: 'Fiverrs Pick AWS & AI Consultant | Cloud Modernization, AI Integrations & Serverless Engineering',
-	description: `
-		Modernize legacy systems, eliminate bottlenecks, automate workflows, reduce costs and accelerate delivery.
-		From architecture to automation — launch world-class cloud solutions effortlessly with a seasoned AWS architect.
-		Trusted by global teams.
-	`,
+	title: 'Aditya Samanta | AI Consultant Across All 5 Levels of AI — Chatbots, Reasoning, Agents & Autonomous AI',
+	description:
+		'From conversational assistants to reasoning systems, autonomous agents and multi-agent operations — AI strategy, development and scaling on secure, cost-efficient AWS. 120+ five-star reviews.',
 };
 
 export default function HomePage() {

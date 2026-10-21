@@ -1,68 +1,98 @@
+'use client';
+
+import classNames from 'classnames';
+import { Menu, X } from 'lucide-react';
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react';
+import { useState } from 'react';
+
+import { contact, mailto, nav } from '@/content/site';
+
+const scrollToEle = (id: string) => {
+	const el = document.getElementById(id);
+	if (el) window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - 80, behavior: 'smooth' });
+};
+
 const Nav = () => {
-	const scrollToEle = (id: string) => {
-		const nextSection = document.getElementById(id);
-		if (nextSection) {
-			const scrollY = window.scrollY + nextSection.getBoundingClientRect().top - 100;
-			window.scrollTo({
-				top: scrollY,
-				behavior: 'smooth',
-			});
-		}
-	};
+	const { scrollY } = useScroll();
+	const [scrolled, setScrolled] = useState(false);
+	const [open, setOpen] = useState(false);
+
+	useMotionValueEvent(scrollY, 'change', (v) => setScrolled(v > 40));
 
 	return (
-		<>
-			{/* Top nav */}
-			<header className="z-50 fixed top-0 right-0 left-0 bg-white dark:bg-(--background-dark)">
-				<div className="flex items-center justify-between mx-auto w-full px-4 py-5 sm:px-8">
-					<div className="cursor-pointer flex items-center gap-2" onClick={() => scrollToEle('hero')}>
-						<span className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-300 text-xs font-semibold uppercase">
-							AS
-						</span>
-						<span className="text-lg font-semibold tracking-tight">Aditya Samanta</span>
-					</div>
+		<motion.header
+			initial={{ y: -40, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+			className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-[calc(env(safe-area-inset-top,0px)+16px)]"
+		>
+			<div
+				className={classNames(
+					'flex w-full items-center justify-between rounded-full py-2 pl-3 pr-2 transition-all duration-500',
+					scrolled ? 'glass max-w-4xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)]' : 'max-w-6xl border border-transparent'
+				)}
+			>
+				<button className="flex cursor-pointer items-center gap-2.5" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+					<span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-br from-emerald-400 via-cyan-400 to-violet-400 text-[11px] font-bold text-black">
+						{contact.initials}
+					</span>
+					<span className="text-sm font-medium tracking-tight text-white">{contact.name}</span>
+				</button>
 
-					<nav className="hidden items-center gap-8 text-sm text-black dark:text-white lg:flex">
-						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('problem-solution')}>
-							Solution
-						</button>
-						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('case-studies')}>
-							Case Studies
-						</button>
-						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('services')}>
-							Services
-						</button>
-						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('testimonials')}>
-							Testimonials
-						</button>
-						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('tech')}>
-							Tech
-						</button>
-						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('faq')}>
-							FAQ
-						</button>
-						<button className="cursor-pointer hover:underline" onClick={() => scrollToEle('contact')}>
-							Contact
-						</button>
-					</nav>
-
-					<div className="flex items-center gap-3">
-						{/* <button className="hidden text-sm text-slate-700 cursor-pointer hover:text-slate-900 md:inline">Log in</button> */}
-						{/* <button className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-slate-800">
-							Start free trial
-						</button> */}
-						<a
-							href={`mailto:connect@opmtwo.com?subject=Serverless%20%2B%20AI%20Consultation`}
-							// onClick={() => setMenuOpen(false)}
-							className="flex w-full items-center justify-center rounded-full bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-emerald-500/30 transition hover:bg-emerald-400"
+				<nav className="hidden items-center gap-1 lg:flex">
+					{nav.map((item) => (
+						<button
+							key={item.id}
+							onClick={() => scrollToEle(item.id)}
+							className="cursor-pointer rounded-full px-3.5 py-2 text-[13px] text-muted transition-colors hover:bg-white/5 hover:text-white"
 						>
-							<div className="sm:hidden">Book Consultation</div>
-							<div className="hidden sm:block">Book a Free 15-Min Consultation</div>
-						</a>
-					</div>
+							{item.label}
+						</button>
+					))}
+				</nav>
+
+				<div className="flex items-center gap-2">
+					<a
+						href={mailto}
+						className="rounded-full bg-white px-4 py-2 text-[13px] font-medium text-black transition hover:bg-emerald-300"
+					>
+						Book a call
+					</a>
+					<button
+						aria-label={open ? 'Close menu' : 'Open menu'}
+						onClick={() => setOpen((o) => !o)}
+						className="glass flex h-9 w-9 cursor-pointer items-center justify-center rounded-full lg:hidden"
+					>
+						{open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+					</button>
 				</div>
-			</header>
-		</>
+			</div>
+
+			<AnimatePresence>
+				{open && (
+					<motion.nav
+						initial={{ opacity: 0, y: -10, scale: 0.98 }}
+						animate={{ opacity: 1, y: 0, scale: 1 }}
+						exit={{ opacity: 0, y: -10, scale: 0.98 }}
+						transition={{ duration: 0.25 }}
+						className="glass absolute inset-x-4 top-[calc(env(safe-area-inset-top,0px)+76px)] rounded-3xl p-3 lg:hidden"
+					>
+						{nav.map((item) => (
+							<button
+								key={item.id}
+								onClick={() => {
+									setOpen(false);
+									scrollToEle(item.id);
+								}}
+								className="block w-full cursor-pointer rounded-2xl px-4 py-3 text-left text-sm text-white/80 hover:bg-white/5"
+							>
+								{item.label}
+							</button>
+						))}
+					</motion.nav>
+				)}
+			</AnimatePresence>
+		</motion.header>
 	);
 };
 

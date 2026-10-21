@@ -1,6 +1,7 @@
+'use client';
+
 import React from 'react';
 
-// components/TechStackShowcase.tsx
 import { AmplifyIcon } from '@/icons/AmplifyIcon';
 import { ApiGatewayIcon } from '@/icons/ApiGatewayIcon';
 import { BedrockIcon } from '@/icons/BedrockIcon';
@@ -10,6 +11,8 @@ import CloudWatchIcon from '@/icons/CloudWatchIcon';
 import { CognitoIcon } from '@/icons/CognitoIcon';
 import { DynamoDbIcon } from '@/icons/DynamoDbIcon';
 import { ElasticsearchIcon } from '@/icons/ElasticsearchIcon';
+import { GeminiIcon } from '@/icons/GeminiIcon';
+import { LlamaIcon } from '@/icons/LlamaIcon';
 import { EventBridgeIcon } from '@/icons/EventBridgeIcon';
 import JestIcon from '@/icons/JestIcon';
 import KinesisIcon from '@/icons/KinesisIcon';
@@ -32,8 +35,8 @@ import { StepFunctionsIcon } from '@/icons/StepFunctionsIcon';
 import { TailwindIcon } from '@/icons/TailwindIcon';
 import { TypeScriptIcon } from '@/icons/TypeScriptIcon';
 
-import Text from './Text';
-import Title from './Title';
+import TechSphere from './three/TechSphere';
+import SectionHeading from './ui/SectionHeading';
 
 type TechIcon = React.ComponentType<{ className?: string }>;
 
@@ -52,6 +55,39 @@ type TechSection = {
 };
 
 const techSections: TechSection[] = [
+	{
+		id: 'ai',
+		label: 'AI Models & Platforms',
+		title: 'AI Models & AI Platforms',
+		description: 'I combine the best LLMs on the market to power chatbots, copilots, automation, and internal tools that actually move the needle.',
+		items: [
+			{
+				name: 'OpenAI ChatGPT',
+				Icon: OpenAiIcon,
+				description: 'Production-ready GPT workflows for chatbots, agents, content pipelines, and smart internal tools.',
+			},
+			{
+				name: 'Anthropic Claude',
+				Icon: ClaudeIcon,
+				description: 'Great for long-context reasoning, safer assistants, and complex knowledge-heavy use-cases.',
+			},
+			{
+				name: 'Google Gemini',
+				Icon: GeminiIcon,
+				description: 'Multi-modal AI (text, image, code) ideal for product features that need Google ecosystem strength.',
+			},
+			{
+				name: 'Meta Llama',
+				Icon: LlamaIcon,
+				description: 'Open-weight models tuned for private, self-hosted, or hybrid AI deployments at scale.',
+			},
+			{
+				name: 'Amazon Bedrock',
+				Icon: BedrockIcon,
+				description: 'Unified AWS-native platform to orchestrate multiple foundation models with enterprise security.',
+			},
+		],
+	},
 	{
 		id: 'serverless',
 		label: 'AWS Serverless & Cloud',
@@ -123,39 +159,6 @@ const techSections: TechSection[] = [
 			// 	Icon: AppSyncIcon,
 			// 	description: 'Fully managed GraphQL APIs with real-time subscriptions and automatic data orchestration.',
 			// },
-		],
-	},
-	{
-		id: 'ai',
-		label: 'AI Models & Platforms',
-		title: 'AI Models & AI Platforms',
-		description: 'I combine the best LLMs on the market to power chatbots, copilots, automation, and internal tools that actually move the needle.',
-		items: [
-			{
-				name: 'OpenAI ChatGPT',
-				Icon: OpenAiIcon,
-				description: 'Production-ready GPT workflows for chatbots, agents, content pipelines, and smart internal tools.',
-			},
-			{
-				name: 'Anthropic Claude',
-				Icon: ClaudeIcon,
-				description: 'Great for long-context reasoning, safer assistants, and complex knowledge-heavy use-cases.',
-			},
-			// {
-			// 	name: 'Google Gemini',
-			// 	Icon: GeminiIcon,
-			// 	description: 'Multi-modal AI (text, image, code) ideal for product features that need Google ecosystem strength.',
-			// },
-			// {
-			// 	name: 'Meta Llama',
-			// 	Icon: LlamaIcon,
-			// 	description: 'Open-weight models tuned for private, self-hosted, or hybrid AI deployments at scale.',
-			// },
-			{
-				name: 'Amazon Bedrock',
-				Icon: BedrockIcon,
-				description: 'Unified AWS-native platform to orchestrate multiple foundation models with enterprise security.',
-			},
 		],
 	},
 	{
@@ -346,70 +349,54 @@ const techSections: TechSection[] = [
 ];
 
 export const TechStack: React.FC = () => {
-	return (
-		<section id="tech" className="relative mx-auto max-w-6xl">
-			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-20">
-				{/* Section heading */}
-				<div className="space-y-3 mb-6">
-					<p className="inline-flex items-center rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium tracking-wide text-slate-700 dark:border-slate-700/80 dark:bg-slate-900/80 dark:text-slate-200">
-						<span className="mr-2 inline-block h-2 w-2 rounded-full bg-linear-to-r from-emerald-400 to-sky-500" />
-						Tech Stack for nextgen apps
-					</p>
-					<Title>
-						Powering Innovation:&nbsp;
-						<span className="bg-linear-to-r from-emerald-400 via-sky-400 to-purple-500 bg-clip-text text-transparent">
-							The Modern AI & Cloud Tech Stack
-						</span>
-					</Title>
-					<p className="text-sm text-slate-600 sm:text-base dark:text-slate-400">
-						Explore the cutting-edge tools and platforms I use to build fast, scalable, and intelligent AI solutions—from cloud to code, and
-						everything in between.
-					</p>
-				</div>
+	const [activeId, setActiveId] = React.useState(techSections[0].id);
+	const active = techSections.find((s) => s.id === activeId) ?? techSections[0];
+	const sphereItems = techSections.flatMap((s) => s.items.map((i) => ({ name: i.name, Icon: i.Icon, group: s.id })));
 
-				<div className="space-y-12">
-					{techSections.map((section) => (
-						<div key={section.id} className="rounded-2xl">
-							<div className="mb-4">
-								<h4 className="text-xl font-semibold bg-linear-to-r from-cyan-600 to-cyan-400 bg-clip-text text-transparent">
-									{section.title}
-								</h4>
-								<p className="text-lg">{section.description}</p>
-							</div>
-							<div className="mt-8 grid gap-6 md:grid-cols-2">
-								{section.items.map((item) => (
-									<div
-										key={item.name}
-										className="
-									relative rounded-3xl p-[2px] 
-									bg-linear-to-br from-cyan-500/40 via-cyan-300/40 to-cyan-500/40
-									hover:from-cyan-400 hover:via-cyan-200 hover:to-cyan-500 
-									transition-all duration-300
-								"
-									>
-										<article
-											className="
-											flex items-center gap-3
-										h-full rounded-3xl bg-background dark:bg-(--background-dark) p-6 lg:p-8
-										backdrop-blur-sm
-										hover:shadow-[0_0_28px_rgba(255,0,0,0.14)]
-										transition-all duration-300
-									"
-										>
-											<div className="flex min-h-10 min-w-10 items-center justify-center rounded-full border border-slate-400">
-												<item.Icon className="h-6 w-6 text-sky-500 dark:text-violet-300" />
-											</div>
-											<div className="space-y-2">
-												<h4 className="font-medium">{item.name}</h4>
-												{/* <p className="text-xs mt-1">{item.description}</p> */}
-												<Text>{item.description}</Text>
-											</div>
-										</article>
+	return (
+		<section id="tech" className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
+			<SectionHeading
+				eyebrow="The stack"
+				title="Best-in-class models,"
+				accent="serverless foundations."
+				description="The models, data layers and AWS services I combine to take AI from prototype to production — chosen per use case for quality, latency and cost."
+			/>
+
+			<div className="mt-16 grid items-center gap-10 lg:grid-cols-2">
+				<TechSphere items={sphereItems} highlight={activeId} />
+
+				<div>
+					<div className="flex flex-wrap gap-2">
+						{techSections.map((s) => (
+							<button
+								key={s.id}
+								onClick={() => setActiveId(s.id)}
+								className={`cursor-pointer rounded-full border px-3.5 py-1.5 text-xs transition ${
+									s.id === activeId ? 'border-emerald-400/50 bg-emerald-400/10 text-emerald-200' : 'border-line text-muted hover:text-white'
+								}`}
+							>
+								{s.label}
+							</button>
+						))}
+					</div>
+
+					<div key={active.id} className="mt-8 animate-[fade-in_0.5s_ease]">
+						<h3 className="text-2xl font-medium text-white">{active.title}</h3>
+						<p className="mt-2 text-sm leading-relaxed text-muted">{active.description}</p>
+						<ul className="mt-6 grid gap-3 sm:grid-cols-2">
+							{active.items.map((item) => (
+								<li key={item.name} className="glass flex gap-3 rounded-2xl p-4">
+									<span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/5">
+										<item.Icon className="h-5 w-5 text-white" />
+									</span>
+									<div>
+										<p className="text-sm font-medium text-white">{item.name}</p>
+										<p className="mt-1 text-xs leading-relaxed text-muted">{item.description}</p>
 									</div>
-								))}
-							</div>
-						</div>
-					))}
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</section>
