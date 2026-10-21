@@ -1,5 +1,7 @@
 'use client';
 
+import { ArrowUpRight } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import React from 'react';
 
 import { AmplifyIcon } from '@/icons/AmplifyIcon';
@@ -36,6 +38,8 @@ import { TailwindIcon } from '@/icons/TailwindIcon';
 import { TypeScriptIcon } from '@/icons/TypeScriptIcon';
 
 import TechSphere from './three/TechSphere';
+import { mailto } from '@/content/site';
+
 import SectionHeading from './ui/SectionHeading';
 
 type TechIcon = React.ComponentType<{ className?: string }>;
@@ -348,57 +352,191 @@ const techSections: TechSection[] = [
 	},
 ];
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const pad = (n: number) => String(n).padStart(2, '0');
+
 export const TechStack: React.FC = () => {
 	const [activeId, setActiveId] = React.useState(techSections[0].id);
-	const active = techSections.find((s) => s.id === activeId) ?? techSections[0];
+	const activeIndex = Math.max(
+		0,
+		techSections.findIndex((s) => s.id === activeId)
+	);
+	const active = techSections[activeIndex];
 	const sphereItems = techSections.flatMap((s) => s.items.map((i) => ({ name: i.name, Icon: i.Icon, group: s.id })));
+	const totalTools = sphereItems.length;
+	const slug = active.label.toLowerCase().replace(/&/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
 
 	return (
 		<section id="tech" className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
-			<SectionHeading
-				eyebrow="The stack"
-				title="Best-in-class models,"
-				accent="serverless foundations."
-				description="The models, data layers and AWS services I combine to take AI from prototype to production — chosen per use case for quality, latency and cost."
-			/>
-
-			<div className="mt-16 grid items-center gap-10 lg:grid-cols-2">
-				<TechSphere items={sphereItems} highlight={activeId} />
-
+			<div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
 				<div>
-					<div className="flex flex-wrap gap-2">
-						{techSections.map((s) => (
-							<button
-								key={s.id}
-								onClick={() => setActiveId(s.id)}
-								className={`cursor-pointer rounded-full border px-3.5 py-1.5 text-xs transition ${
-									s.id === activeId ? 'border-emerald-400/50 bg-emerald-400/10 text-emerald-200' : 'border-line text-muted hover:text-white'
-								}`}
-							>
-								{s.label}
-							</button>
-						))}
+					<SectionHeading
+						eyebrow="The stack"
+						title="Best-in-class models,"
+						accent="serverless foundations."
+						description="The models, data layers and AWS services I combine to take AI from prototype to production — chosen per use case for quality, latency and cost."
+					/>
+					<dl className="mt-10 flex gap-10 border-t border-line pt-6">
+						<div>
+							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Tools</dt>
+							<dd className="mt-1 text-3xl font-medium text-white">{totalTools}</dd>
+						</div>
+						<div>
+							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Disciplines</dt>
+							<dd className="mt-1 text-3xl font-medium text-white">{pad(techSections.length)}</dd>
+						</div>
+						<div>
+							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Model vendors</dt>
+							<dd className="mt-1 text-3xl font-medium text-white">05</dd>
+						</div>
+					</dl>
+				</div>
+				<TechSphere items={sphereItems} highlight={activeId} />
+			</div>
+
+			{/* Stack explorer */}
+			<motion.div
+				initial={{ opacity: 0, y: 40 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, amount: 0.15 }}
+				transition={{ duration: 0.9, ease: EASE }}
+				className="relative mt-20 rounded-[28px] bg-linear-to-b from-white/[0.12] via-white/[0.04] to-white/[0.02] p-px"
+			>
+				<div aria-hidden className="pointer-events-none absolute -top-px left-1/2 h-px w-1/2 -translate-x-1/2 bg-linear-to-r from-transparent via-emerald-300/70 to-transparent" />
+
+				<div className="overflow-hidden rounded-[27px] bg-[#06080d]/95">
+					{/* chrome bar */}
+					<div className="flex items-center justify-between gap-4 border-b border-line px-5 py-3.5 sm:px-6">
+						<div className="flex min-w-0 items-center gap-3">
+							<span className="flex gap-1.5" aria-hidden>
+								<span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+								<span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+								<span className="h-2.5 w-2.5 rounded-full bg-white/10" />
+							</span>
+							<span className="truncate font-mono text-[11px] text-muted">
+								~/stack/<span className="text-white/80">{slug}</span>
+							</span>
+						</div>
+						<span className="hidden shrink-0 items-center gap-2 font-mono text-[11px] text-muted sm:flex">
+							<span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
+							{pad(active.items.length)} tools · production-tested
+						</span>
 					</div>
 
-					<div key={active.id} className="mt-8 animate-[fade-in_0.5s_ease]">
-						<h3 className="text-2xl font-medium text-white">{active.title}</h3>
-						<p className="mt-2 text-sm leading-relaxed text-muted">{active.description}</p>
-						<ul className="mt-6 grid gap-3 sm:grid-cols-2">
-							{active.items.map((item) => (
-								<li key={item.name} className="glass flex gap-3 rounded-2xl p-4">
-									<span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/5">
-										<item.Icon className="h-5 w-5 text-white" />
-									</span>
-									<div>
-										<p className="text-sm font-medium text-white">{item.name}</p>
-										<p className="mt-1 text-xs leading-relaxed text-muted">{item.description}</p>
+					<div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[18rem_minmax(0,1fr)]">
+						{/* Category index: horizontal scroller on mobile, sidebar on desktop */}
+						<nav aria-label="Tech categories" className="min-w-0 border-b border-line lg:border-b-0 lg:border-r">
+							<ul className="mask-fade-x flex snap-x gap-1 overflow-x-auto p-3 [scrollbar-width:none] lg:flex-col lg:overflow-visible lg:[mask-image:none] [&::-webkit-scrollbar]:hidden">
+								{techSections.map((s, i) => {
+									const isActive = s.id === activeId;
+									return (
+										<li key={s.id} className="shrink-0 snap-start">
+											<button
+												onClick={() => setActiveId(s.id)}
+												aria-pressed={isActive}
+												className={`group relative flex w-full cursor-pointer items-center gap-3 rounded-xl px-3.5 py-2.5 text-left text-sm transition-colors lg:py-3 ${
+													isActive ? 'text-white' : 'text-muted hover:text-white'
+												}`}
+											>
+												{isActive && (
+													<motion.span
+														layoutId="tech-active"
+														transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+														className="absolute inset-0 rounded-xl border border-white/10 bg-white/[0.06]"
+													>
+														<span className="absolute left-0 top-1/2 hidden h-5 w-0.5 -translate-y-1/2 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399] lg:block" />
+													</motion.span>
+												)}
+												<span className={`relative font-mono text-[10px] ${isActive ? 'text-emerald-300' : 'text-white/30'}`}>{pad(i + 1)}</span>
+												<span className="relative whitespace-nowrap lg:flex-1 lg:whitespace-normal">{s.label}</span>
+												<span className="relative hidden font-mono text-[10px] text-white/30 lg:inline">{s.items.length}</span>
+											</button>
+										</li>
+									);
+								})}
+							</ul>
+						</nav>
+
+						{/* Active category */}
+						<div className="relative min-h-[28rem] p-5 sm:p-8 lg:p-10">
+							<div aria-hidden className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(52,211,153,0.10),transparent_70%)]" />
+
+							<AnimatePresence mode="wait">
+								<motion.div
+									key={active.id}
+									initial="hidden"
+									animate="visible"
+									exit="exit"
+									variants={{
+										hidden: {},
+										visible: { transition: { staggerChildren: 0.05 } },
+										exit: { opacity: 0, transition: { duration: 0.15 } },
+									}}
+									className="relative"
+								>
+									<motion.div
+										variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } } }}
+										className="flex flex-wrap items-end justify-between gap-4"
+									>
+										<div className="max-w-xl">
+											<p className="font-mono text-[11px] uppercase tracking-[0.25em] text-emerald-300/90">
+												{pad(activeIndex + 1)} / {pad(techSections.length)}
+											</p>
+											<h3 className="mt-3 text-3xl font-medium text-white sm:text-4xl">{active.title}</h3>
+											<p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">{active.description}</p>
+										</div>
+									</motion.div>
+
+									{/* hairline grid of tools */}
+									<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-px overflow-hidden rounded-2xl border border-line bg-white/[0.06] sm:grid-cols-2">
+										{active.items.map((item, i) => (
+											<motion.div
+												key={item.name}
+												variants={{
+													hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
+													visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: EASE } },
+												}}
+												className="group relative bg-[#06080d] p-5 transition-colors sm:p-6 duration-300 hover:bg-[#0a0d14]"
+											>
+												<div className="flex items-start justify-between">
+													<span className="relative flex h-11 w-11 items-center justify-center">
+														<span aria-hidden className="absolute inset-0 rounded-xl bg-white/[0.04] ring-1 ring-white/10 transition duration-300 group-hover:ring-emerald-400/40 group-hover:shadow-[0_0_24px_-6px_rgba(52,211,153,0.6)]" />
+														<item.Icon className="relative h-5 w-5 text-white" />
+													</span>
+													<span className="font-mono text-[10px] text-white/25 transition-colors group-hover:text-emerald-300/80">{pad(i + 1)}</span>
+												</div>
+												<p className="mt-6 text-base font-medium text-white">{item.name}</p>
+												<p className="mt-1.5 text-sm leading-relaxed text-muted">{item.description}</p>
+												<span aria-hidden className="absolute inset-x-6 bottom-0 h-px origin-left scale-x-0 bg-linear-to-r from-emerald-400 via-cyan-400 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
+											</motion.div>
+										))}
+
+										{/* fill the empty cell on odd counts with a prompt */}
+										{active.items.length % 2 === 1 && (
+											<motion.a
+												href={mailto}
+												variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.5 } } }}
+												className="group relative hidden flex-col justify-between bg-[#06080d] p-6 transition-colors hover:bg-[#0a0d14] sm:flex"
+											>
+												<span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Not listed?</span>
+												<span className="mt-6 flex items-end justify-between gap-4">
+													<span className="text-base text-white/80">
+														I pick tools per use case.
+														<br />
+														<span className="text-muted">Ask about yours.</span>
+													</span>
+													<ArrowUpRight className="h-5 w-5 text-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-300" />
+												</span>
+											</motion.a>
+										)}
 									</div>
-								</li>
-							))}
-						</ul>
+								</motion.div>
+							</AnimatePresence>
+						</div>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</section>
 	);
 };
