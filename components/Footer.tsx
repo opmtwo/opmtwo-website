@@ -6,7 +6,9 @@ import { MailIcon } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import React, { useRef } from 'react';
 
-import { contact, cta, fiverrUrl, mailto, nav } from '@/content/site';
+import { contact, cta, fiverrUrl, mailto } from '@/content/site';
+
+import SiteFooter from './SiteFooter';
 
 import { MagneticButton } from './ui/Buttons';
 
@@ -90,21 +92,7 @@ export const ReadyToTrySection: React.FC = () => {
 				</motion.p>
 			</motion.div>
 
-			{/* Footer bar */}
-			<footer className="relative border-t border-line bg-background/60 backdrop-blur-md">
-				<div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-8 text-xs text-muted sm:flex-row sm:px-8">
-					<p>
-						© {new Date().getFullYear()} {contact.name}. AI Consultant across all five levels of AI.
-					</p>
-					<nav className="flex flex-wrap justify-center gap-5">
-						{nav.map((item) => (
-							<a key={item.id} href={`#${item.id}`} className="transition-colors hover:text-white">
-								{item.label}
-							</a>
-						))}
-					</nav>
-				</div>
-			</footer>
+			<SiteFooter />
 		</section>
 	);
 };
