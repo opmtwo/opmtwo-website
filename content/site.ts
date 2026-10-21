@@ -271,7 +271,7 @@ export const faqs = [
 	},
 	{
 		question: 'Which models and platforms do you work with?',
-		answer: 'OpenAI, Anthropic Claude, Google Gemini, Meta Llama and Amazon Bedrock — chosen per use case for quality, latency and cost — with vector search on Pinecone, OpenSearch or Elasticsearch and serverless AWS underneath.',
+		answer: 'Every frontier lab — OpenAI, Anthropic, Google, Meta and Mistral, plus Amazon Bedrock — chosen per workload for quality, latency and cost. Agents run on MCP, LangGraph and Temporal, retrieval on Pinecone or pgvector, and every system ships with evals in LangSmith or Braintrust on serverless AWS and edge infrastructure.',
 	},
 	{
 		question: 'How do you keep our data private and costs under control?',

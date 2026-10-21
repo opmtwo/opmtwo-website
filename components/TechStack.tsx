@@ -3,43 +3,59 @@
 import { ArrowUpRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import React from 'react';
+import {
+	siApachekafka,
+	siBraintrust,
+	siClickhouse,
+	siCloudflareworkers,
+	siDatabricks,
+	siDatadog,
+	siDocker,
+	siFastapi,
+	siHuggingface,
+	siKubernetes,
+	siLangchain,
+	siLanggraph,
+	siMistralai,
+	siModal,
+	siModelcontextprotocol,
+	siNextdotjs,
+	siOllama,
+	siOpentelemetry,
+	siPostgresql,
+	siPython,
+	siPytorch,
+	siRedis,
+	siSentry,
+	siSnowflake,
+	siSupabase,
+	siTailwindcss,
+	siTemporal,
+	siTerraform,
+	siTypescript,
+	siVercel,
+	siVitest,
+	siVllm,
+	siWeightsandbiases,
+} from 'simple-icons';
 
-import { AmplifyIcon } from '@/icons/AmplifyIcon';
-import { ApiGatewayIcon } from '@/icons/ApiGatewayIcon';
+// components/TechStack.tsx
 import { BedrockIcon } from '@/icons/BedrockIcon';
 import { ClaudeIcon } from '@/icons/ClaudeIcon';
-import CloudFrontIcon from '@/icons/CloudFrontIcon';
-import CloudWatchIcon from '@/icons/CloudWatchIcon';
-import { CognitoIcon } from '@/icons/CognitoIcon';
 import { DynamoDbIcon } from '@/icons/DynamoDbIcon';
 import { ElasticsearchIcon } from '@/icons/ElasticsearchIcon';
-import { GeminiIcon } from '@/icons/GeminiIcon';
-import { LlamaIcon } from '@/icons/LlamaIcon';
 import { EventBridgeIcon } from '@/icons/EventBridgeIcon';
-import JestIcon from '@/icons/JestIcon';
-import KinesisIcon from '@/icons/KinesisIcon';
+import { GeminiIcon } from '@/icons/GeminiIcon';
 import { LambdaIcon } from '@/icons/LambdaIcon';
-import MongoIcon from '@/icons/MongoIcon';
-import { NextJsIcon } from '@/icons/NextJsIcon';
-import { NodeIcon } from '@/icons/NodeIcon';
+import { LlamaIcon } from '@/icons/LlamaIcon';
 import { OpenAiIcon } from '@/icons/OpenAiIcon';
-import { OpensearchIcon } from '@/icons/OpensearchIcon';
 import { PineconeIcon } from '@/icons/PineconeIcon';
-import PostgresIcon from '@/icons/PostgresIcon';
-import PostmanIcon from '@/icons/PostmanIcon';
-import { PythonIcon } from '@/icons/PythonIcon';
-import { ReactIcon } from '@/icons/ReactIcon';
-import { S3Icon } from '@/icons/S3Icon';
-import { ServerlessIcon } from '@/icons/ServerlessIcon';
-import SNSIcon from '@/icons/SNSIcon';
-import SQSIcon from '@/icons/SQSIcon';
 import { StepFunctionsIcon } from '@/icons/StepFunctionsIcon';
-import { TailwindIcon } from '@/icons/TailwindIcon';
-import { TypeScriptIcon } from '@/icons/TypeScriptIcon';
 
-import TechSphere from './three/TechSphere';
 import { mailto } from '@/content/site';
 
+import TechSphere from './three/TechSphere';
+import { brandIcon } from './ui/brandIcon';
 import SectionHeading from './ui/SectionHeading';
 
 type TechIcon = React.ComponentType<{ className?: string }>;
@@ -60,293 +76,313 @@ type TechSection = {
 
 const techSections: TechSection[] = [
 	{
-		id: 'ai',
-		label: 'AI Models & Platforms',
-		title: 'AI Models & AI Platforms',
-		description: 'I combine the best LLMs on the market to power chatbots, copilots, automation, and internal tools that actually move the needle.',
+		id: 'models',
+		label: 'Frontier Models',
+		title: 'Every frontier lab. No allegiance.',
+		description:
+			'I route each workload to whichever model wins on accuracy, latency and cost today — and re-benchmark the moment the frontier moves. Your roadmap never hinges on a single vendor.',
 		items: [
 			{
-				name: 'OpenAI ChatGPT',
+				name: 'OpenAI',
 				Icon: OpenAiIcon,
-				description: 'Production-ready GPT workflows for chatbots, agents, content pipelines, and smart internal tools.',
+				description: 'GPT and reasoning models for agents, tool use and high-stakes decision support.',
 			},
 			{
 				name: 'Anthropic Claude',
 				Icon: ClaudeIcon,
-				description: 'Great for long-context reasoning, safer assistants, and complex knowledge-heavy use-cases.',
+				description: 'Long-context analysis, agentic coding and careful, policy-aware behaviour for regulated work.',
 			},
 			{
 				name: 'Google Gemini',
 				Icon: GeminiIcon,
-				description: 'Multi-modal AI (text, image, code) ideal for product features that need Google ecosystem strength.',
+				description: 'Native multimodality across text, image, audio and video at massive context lengths.',
 			},
 			{
 				name: 'Meta Llama',
 				Icon: LlamaIcon,
-				description: 'Open-weight models tuned for private, self-hosted, or hybrid AI deployments at scale.',
+				description: 'Open weights for sovereign, self-hosted AI where data never leaves your perimeter.',
+			},
+			{
+				name: 'Mistral AI',
+				Icon: brandIcon(siMistralai),
+				description: 'Efficient European models for latency-sensitive and data-residency-bound deployments.',
 			},
 			{
 				name: 'Amazon Bedrock',
 				Icon: BedrockIcon,
-				description: 'Unified AWS-native platform to orchestrate multiple foundation models with enterprise security.',
+				description: 'One governed gateway to leading models — private, audited and inside your AWS account.',
 			},
 		],
 	},
 	{
-		id: 'serverless',
-		label: 'AWS Serverless & Cloud',
-		title: 'AWS Serverless & Cloud',
-		description: 'Fully managed, event-driven backends built to scale automatically while keeping your AWS bill under control.',
+		id: 'agents',
+		label: 'Agents & Orchestration',
+		title: 'Agents that finish the job.',
+		description:
+			'Level 3–5 systems need more than a prompt loop. Durable state, tool protocols and recovery from failure are what turn agents into a dependable digital workforce.',
+		items: [
+			{
+				name: 'Model Context Protocol',
+				Icon: brandIcon(siModelcontextprotocol),
+				description: 'The open standard for wiring agents into your tools, data and internal systems — securely.',
+			},
+			{
+				name: 'LangGraph',
+				Icon: brandIcon(siLanggraph),
+				description: 'Stateful, multi-agent graphs with branching, memory and human-in-the-loop checkpoints.',
+			},
+			{
+				name: 'Claude Agent SDK',
+				Icon: ClaudeIcon,
+				description: 'Production agent harness for long-running, tool-using autonomous work.',
+			},
+			{
+				name: 'Vercel AI SDK',
+				Icon: brandIcon(siVercel),
+				description: 'Streaming, tool calls and generative UI — the fastest path from model to product.',
+			},
+			{
+				name: 'Temporal',
+				Icon: brandIcon(siTemporal),
+				description: 'Durable execution so multi-day agent workflows survive crashes, retries and deploys.',
+			},
+		],
+	},
+	{
+		id: 'retrieval',
+		label: 'Retrieval & Memory',
+		title: 'Grounded in your truth.',
+		description:
+			'Hybrid retrieval and long-term memory that anchor every answer in your own data — the difference between a clever chatbot and a trusted expert.',
+		items: [
+			{
+				name: 'Pinecone',
+				Icon: PineconeIcon,
+				description: 'Serverless vector search at billion scale with zero infrastructure to babysit.',
+			},
+			{
+				name: 'pgvector',
+				Icon: brandIcon(siPostgresql),
+				description: 'Vectors beside your transactional data in Postgres — one engine, one source of truth.',
+			},
+			{
+				name: 'Redis',
+				Icon: brandIcon(siRedis),
+				description: 'Sub-millisecond semantic caching and agent memory that slash latency and token spend.',
+			},
+			{
+				name: 'Elasticsearch',
+				Icon: ElasticsearchIcon,
+				description: 'Hybrid keyword-plus-semantic search with reranking across millions of documents.',
+			},
+		],
+	},
+	{
+		id: 'evals',
+		label: 'Evals & LLMOps',
+		title: 'Measured, not guessed.',
+		description:
+			'If it isn’t evaluated, it isn’t production. Every system ships with test suites, tracing and cost dashboards — so quality rises while spend falls.',
+		items: [
+			{
+				name: 'LangSmith',
+				Icon: brandIcon(siLangchain),
+				description: 'End-to-end tracing and regression datasets for every chain, agent and tool call.',
+			},
+			{
+				name: 'Braintrust',
+				Icon: brandIcon(siBraintrust),
+				description: 'Eval-driven development: score every prompt and model change before it reaches users.',
+			},
+			{
+				name: 'Weights & Biases',
+				Icon: brandIcon(siWeightsandbiases),
+				description: 'Experiment tracking and model lineage for fine-tuning and training runs.',
+			},
+			{
+				name: 'Datadog LLM Observability',
+				Icon: brandIcon(siDatadog),
+				description: 'Latency, cost, quality and security signals for AI — beside the rest of your stack.',
+			},
+		],
+	},
+	{
+		id: 'serving',
+		label: 'Model Serving & Fine-tuning',
+		title: 'Own your intelligence.',
+		description:
+			'When off-the-shelf isn’t enough: fine-tuned and self-hosted models that cut inference cost, lock in quality and keep your IP yours.',
+		items: [
+			{
+				name: 'Hugging Face',
+				Icon: brandIcon(siHuggingface),
+				description: 'The open model ecosystem — curated checkpoints, datasets and fine-tuning tooling.',
+			},
+			{
+				name: 'PyTorch',
+				Icon: brandIcon(siPytorch),
+				description: 'The research-grade framework behind custom training and parameter-efficient fine-tuning.',
+			},
+			{
+				name: 'vLLM',
+				Icon: brandIcon(siVllm),
+				description: 'High-throughput inference serving that squeezes maximum tokens from every GPU.',
+			},
+			{
+				name: 'Modal',
+				Icon: brandIcon(siModal),
+				description: 'Serverless GPUs that spin up in seconds — pay for inference, not idle hardware.',
+			},
+			{
+				name: 'Ollama',
+				Icon: brandIcon(siOllama),
+				description: 'Private, on-device models for prototyping and air-gapped environments.',
+			},
+		],
+	},
+	{
+		id: 'cloud',
+		label: 'Serverless & Edge',
+		title: 'Infrastructure that scales itself.',
+		description:
+			'Event-driven, pay-per-use architecture that absorbs any peak without a pager — and without a cloud bill that outpaces revenue.',
 		items: [
 			{
 				name: 'AWS Lambda',
 				Icon: LambdaIcon,
-				description: 'Event-driven compute that scales from zero to peak traffic without managing servers or containers.',
+				description: 'Compute that scales from zero to peak in milliseconds. You pay for work, never idle.',
 			},
 			{
-				name: 'API Gateway',
-				Icon: ApiGatewayIcon,
-				description: 'Highly available API front-door for REST, WebSocket, and HTTP APIs with built-in security and throttling.',
-			},
-			{
-				name: 'Step Functions',
+				name: 'AWS Step Functions',
 				Icon: StepFunctionsIcon,
-				description: 'Visual workflows to orchestrate complex business logic, retries, and long-running AI/ETL jobs.',
+				description: 'Visual, auditable orchestration for long-running AI pipelines and approvals.',
 			},
 			{
-				name: 'Cognito',
-				Icon: CognitoIcon,
-				description: 'Secure, scalable user auth (email, social, enterprise SSO) without rolling your own identity system.',
-			},
-			{
-				name: 'S3',
-				Icon: S3Icon,
-				description: 'Durable, cost-effective storage for uploads, backups, data lakes, and static asset hosting.',
-			},
-			{
-				name: 'CloudFront',
-				Icon: CloudFrontIcon,
-				description: 'Global CDN for blazing-fast delivery of APIs, websites, and media with built-in security layers.',
-			},
-			{
-				name: 'EventBridge',
+				name: 'Amazon EventBridge',
 				Icon: EventBridgeIcon,
-				description: 'Serverless event bus for decoupled, scalable integrations across AWS services.',
+				description: 'The event backbone of a decoupled business — systems react instead of waiting.',
 			},
 			{
-				name: 'CloudWatch',
-				Icon: CloudWatchIcon,
-				description: 'Monitoring, logging & alerting for AWS resources & applications to keep everything running smoothly.',
+				name: 'Amazon DynamoDB',
+				Icon: DynamoDbIcon,
+				description: 'Single-digit-millisecond state at any scale, with zero capacity planning.',
 			},
 			{
-				name: 'SQS',
-				Icon: SQSIcon,
-				description: 'Highly reliable message queue for decoupled microservices and asynchronous workloads.',
+				name: 'Cloudflare Workers',
+				Icon: brandIcon(siCloudflareworkers),
+				description: 'Code and inference at 300+ edge locations — near-zero latency for global users.',
 			},
 			{
-				name: 'SNS',
-				Icon: SNSIcon,
-				description: 'Pub/sub messaging for fan-out notifications, microservice events, and system-wide broadcasts.',
-			},
-			// {
-			// 	name: 'Kinesis',
-			// 	Icon: KinesisIcon,
-			// 	description: 'Real-time streaming platform for ingesting event data, analytics, and continuous pipelines.',
-			// },
-			{
-				name: 'Kinesis',
-				Icon: KinesisIcon,
-				description: 'Fully managed streaming service for ingesting, processing, and analyzing real-time data.',
-			},
-			// {
-			// 	name: 'AppSync',
-			// 	Icon: AppSyncIcon,
-			// 	description: 'Fully managed GraphQL APIs with real-time subscriptions and automatic data orchestration.',
-			// },
-		],
-	},
-	{
-		id: 'vibe',
-		label: 'Vibe Coding & Prompt Engineering',
-		title: 'Vibe Coding & Prompt Engineering',
-		description: 'Crafting powerful prompts, creative workflows, and LLM ops for next-level AI experiences—where code meets creativity.',
-		items: [
-			{
-				name: 'Prompt Engineering',
-				Icon: OpenAiIcon,
-				description: 'Designing, testing, and refining prompts for LLMs to maximize accuracy, creativity, and reliability.',
-			},
-			{
-				name: 'LLM Ops',
-				Icon: BedrockIcon,
-				description: 'Managing, evaluating, and deploying large language models in production workflows.',
-			},
-			{
-				name: 'Creative Coding',
-				Icon: ReactIcon,
-				description: 'Building interactive, generative, and AI-driven user experiences with modern frameworks.',
+				name: 'Vercel',
+				Icon: brandIcon(siVercel),
+				description: 'Frontend cloud with preview deploys on every change and instant global rollback.',
 			},
 		],
 	},
 	{
 		id: 'data',
-		label: 'Vector & Data Layer',
-		title: 'Vector Databases & Search',
-		description: 'Search, recommendations, and RAG (Retrieval-Augmented Generation) powered by fast, scalable data stores.',
+		label: 'Data Platform',
+		title: 'Data as a competitive moat.',
+		description:
+			'AI is only as good as the data beneath it. Modern platforms that unify analytics, streaming and AI on one governed foundation.',
 		items: [
 			{
-				name: 'DynamoDB',
-				Icon: DynamoDbIcon,
-				description: 'Serverless NoSQL backbone for low-latency, auto-scaling data workloads across millions of users.',
+				name: 'Snowflake',
+				Icon: brandIcon(siSnowflake),
+				description: 'Elastic, governed data cloud with AI functions running right where the data lives.',
 			},
 			{
-				name: 'Elasticsearch',
-				Icon: ElasticsearchIcon,
-				description: 'High-performance full-text and structured search for logs, analytics, and smart query experiences.',
+				name: 'Databricks',
+				Icon: brandIcon(siDatabricks),
+				description: 'Lakehouse for unified data engineering, ML and model serving at enterprise scale.',
 			},
 			{
-				name: 'OpenSearch',
-				Icon: OpensearchIcon,
-				description: 'AWS-native search and analytics engine built for scale, offering vector search and embeddings.',
+				name: 'ClickHouse',
+				Icon: brandIcon(siClickhouse),
+				description: 'Real-time analytics over billions of rows in milliseconds — ideal for AI telemetry.',
 			},
 			{
-				name: 'Pinecone',
-				Icon: PineconeIcon,
-				description: 'Managed vector database for lightning-fast semantic search and enterprise-grade RAG systems.',
+				name: 'Supabase',
+				Icon: brandIcon(siSupabase),
+				description: 'Postgres, auth, storage and vectors in one platform for products that ship this week.',
+			},
+			{
+				name: 'Apache Kafka',
+				Icon: brandIcon(siApachekafka),
+				description: 'The event-streaming standard for real-time pipelines between every system you run.',
 			},
 		],
 	},
 	{
-		id: 'databases',
-		label: 'Databases',
-		title: 'Databases',
-		description: 'Designing, optimizing, and scaling modern databases for fast, reliable, and high-performance applications.',
+		id: 'platform',
+		label: 'Platform & Reliability',
+		title: 'Enterprise-grade by default.',
+		description:
+			'Infrastructure as code, containerised workloads and full-stack observability — the controls your security team and your board expect.',
 		items: [
 			{
-				name: 'MongoDB Architecture',
-				Icon: MongoIcon, // your MongoDB SVG component
-				description: 'Schema design, indexing strategies, aggregation pipelines, and performance tuning for high-scale workloads.',
+				name: 'Terraform',
+				Icon: brandIcon(siTerraform),
+				description: 'Every environment declared in code — reviewable, reproducible and reversible.',
 			},
 			{
-				name: 'PostgreSQL & SQL Optimization',
-				Icon: PostgresIcon,
-				description: 'Relational modeling, query optimization, indexing, partitioning, and building scalable transactional systems.',
-			},
-			// {
-			// 	name: 'Distributed Databases',
-			// 	Icon: DynamoDbIcon, // DynamoDB or any distributed DB icon
-			// 	description: 'Designing highly reliable, globally distributed data layers using DynamoDB, Cassandra, and cloud-native NoSQL systems.',
-			// },
-		],
-	},
-
-	// {
-	// 	id: 'streaming',
-	// 	label: 'Event Streaming & Queues',
-	// 	title: 'Real-Time Data Streams & Messaging',
-	// 	description: 'High-throughput event pipelines and message brokers for real-time apps, data ingestion, and asynchronous microservices.',
-	// 	items: [
-	// 		{
-	// 			name: 'Amazon MSK',
-	// 			Icon: MskIcon,
-	// 			description: 'Fully managed Apache Kafka service that simplifies setup, scaling, and operations for real-time event streaming workloads.',
-	// 		},
-	// 		{
-	// 			name: 'Amazon Kinesis',
-	// 			Icon: KinesisIcon,
-	// 			description: 'Fully managed streaming service for ingesting, processing, and analyzing real-time data without managing clusters.',
-	// 		},
-	// 		// {
-	// 		// 	name: 'RabbitMQ',
-	// 		// 	Icon: RabbitMqIcon,
-	// 		// 	description: 'Lightweight, reliable message broker for queues, pub/sub, and background job processing across distributed systems.',
-	// 		// },
-	// 	],
-	// },
-	{
-		id: 'devops',
-		label: 'DevOps & Infra as Code',
-		title: 'DevOps & Infrastructure',
-		description: 'Automated delivery pipelines and infrastructure-as-code to keep deployments consistent and reversible.',
-		items: [
-			{
-				name: 'AWS Amplify',
-				Icon: AmplifyIcon,
-				description: 'Rapidly connect frontends to AWS backends with CI/CD, hosting, and auth baked in.',
+				name: 'Kubernetes',
+				Icon: brandIcon(siKubernetes),
+				description: 'Orchestration for GPU workloads and services that outgrow serverless.',
 			},
 			{
-				name: 'Serverless Framework',
-				Icon: ServerlessIcon,
-				description: 'Infrastructure-as-code for Lambda-first architectures that stay organized.',
+				name: 'Docker',
+				Icon: brandIcon(siDocker),
+				description: 'Identical, portable builds from a laptop to production — no surprises.',
 			},
-			// {
-			// 	name: 'Terraform',
-			// 	Icon: TerraformIcon,
-			// 	description: 'Cloud-agnostic IaC to define and version infrastructure across AWS and beyond.',
-			// },
+			{
+				name: 'OpenTelemetry',
+				Icon: brandIcon(siOpentelemetry),
+				description: 'Vendor-neutral tracing across services, agents and model calls.',
+			},
+			{
+				name: 'Sentry',
+				Icon: brandIcon(siSentry),
+				description: 'Errors and performance regressions caught and triaged before customers notice.',
+			},
 		],
 	},
 	{
-		id: 'dev',
-		label: 'Developer Tools',
-		title: 'Developer Tools',
-		description: 'Modern languages and runtimes to ship backend and automation logic quickly, safely, and maintainably.',
+		id: 'product',
+		label: 'Product Engineering',
+		title: 'Experiences that sell the intelligence.',
+		description:
+			'The most capable AI is worthless if it feels clumsy. Type-safe, tested products built to earn trust in the first five seconds.',
 		items: [
-			{
-				name: 'Node.js',
-				Icon: NodeIcon,
-				description: 'Great for high-throughput APIs, event handlers, and integrations with the JavaScript ecosystem.',
-			},
 			{
 				name: 'TypeScript',
-				Icon: TypeScriptIcon,
-				description: 'Type-safe foundation for more reliable, refactor-friendly codebases across frontend and backend.',
+				Icon: brandIcon(siTypescript),
+				description: 'Type-safe codebases that stay maintainable as teams and ambitions grow.',
 			},
 			{
 				name: 'Python',
-				Icon: PythonIcon,
-				description: 'Perfect for data-heavy scripts, AI/ML workflows, and glue logic on top of AWS services.',
+				Icon: brandIcon(siPython),
+				description: 'The lingua franca of AI — pipelines, model integrations and evaluation tooling.',
 			},
-		],
-	},
-	{
-		id: 'frontend',
-		label: 'Frontend Experience',
-		title: 'Frontend & UX',
-		description: 'Clean, fast, and responsive frontends that make complex AI + serverless systems feel simple and delightful.',
-		items: [
 			{
 				name: 'Next.js',
-				Icon: NextJsIcon,
-				description: 'Full-stack React framework for SEO-friendly, lightning-fast web apps with server components.',
+				Icon: brandIcon(siNextdotjs),
+				description: 'Server-rendered, edge-fast web apps with first-class SEO and streaming UI.',
 			},
 			{
-				name: 'React',
-				Icon: ReactIcon,
-				description: 'Battle-tested UI library to build highly interactive, component-driven interfaces.',
+				name: 'FastAPI',
+				Icon: brandIcon(siFastapi),
+				description: 'High-performance Python APIs with automatic docs — the default for AI backends.',
 			},
 			{
 				name: 'Tailwind CSS',
-				Icon: TailwindIcon,
-				description: 'Utility-first styling for rapid iteration and consistently modern visual design.',
-			},
-		],
-	},
-	{
-		id: 'testing',
-		label: 'Software Testing',
-		title: 'Software Testing & Quality Assurance',
-		description: 'High-confidence releases powered by automated testing, API validation, and end-to-end quality checks across modern tools and workflows.',
-		items: [
-			{
-				name: 'Postman',
-				Icon: PostmanIcon,
-				description: 'Design, run, automate, and monitor API tests using collections, environments, and scripted workflows.',
+				Icon: brandIcon(siTailwindcss),
+				description: 'Pixel-precise design systems, consistent on every screen and shipped fast.',
 			},
 			{
-				name: 'Jest',
-				Icon: JestIcon,
-				description: 'Fast, reliable unit and integration testing framework for JavaScript and TypeScript applications.',
+				name: 'Vitest',
+				Icon: brandIcon(siVitest),
+				description: 'Lightning-fast test suites that catch regressions long before production does.',
 			},
 		],
 	},
@@ -372,14 +408,14 @@ export const TechStack: React.FC = () => {
 			<div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
 				<div>
 					<SectionHeading
-						eyebrow="The stack"
-						title="Best-in-class models,"
-						accent="serverless foundations."
-						description="The models, data layers and AWS services I combine to take AI from prototype to production — chosen per use case for quality, latency and cost."
+						eyebrow="The arsenal"
+						title="The stack behind AI"
+						accent="that pays for itself."
+						description="Vendor-neutral and model-agnostic. Every tool here has earned its place in production — selected per engagement for accuracy, latency, security and unit economics. Never for hype."
 					/>
 					<dl className="mt-10 flex gap-10 border-t border-line pt-6">
 						<div>
-							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Tools</dt>
+							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Production-tested tools</dt>
 							<dd className="mt-1 text-3xl font-medium text-white">{totalTools}</dd>
 						</div>
 						<div>
@@ -387,7 +423,7 @@ export const TechStack: React.FC = () => {
 							<dd className="mt-1 text-3xl font-medium text-white">{pad(techSections.length)}</dd>
 						</div>
 						<div>
-							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Model vendors</dt>
+							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Frontier model labs</dt>
 							<dd className="mt-1 text-3xl font-medium text-white">05</dd>
 						</div>
 					</dl>
@@ -420,7 +456,7 @@ export const TechStack: React.FC = () => {
 						</div>
 						<span className="hidden shrink-0 items-center gap-2 font-mono text-[11px] text-muted sm:flex">
 							<span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]" />
-							{pad(active.items.length)} tools · production-tested
+							{pad(active.items.length)} tools · battle-tested in production
 						</span>
 					</div>
 
@@ -519,12 +555,12 @@ export const TechStack: React.FC = () => {
 												variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.5 } } }}
 												className="group relative hidden flex-col justify-between bg-[#06080d] p-6 transition-colors hover:bg-[#0a0d14] sm:flex"
 											>
-												<span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Not listed?</span>
+												<span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Your stack, my playbook</span>
 												<span className="mt-6 flex items-end justify-between gap-4">
 													<span className="text-base text-white/80">
-														I pick tools per use case.
+														Already invested elsewhere?
 														<br />
-														<span className="text-muted">Ask about yours.</span>
+														<span className="text-muted">I integrate with what you run.</span>
 													</span>
 													<ArrowUpRight className="h-5 w-5 text-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-300" />
 												</span>
