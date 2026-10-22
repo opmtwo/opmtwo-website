@@ -423,7 +423,7 @@ const tileVariants = {
 
 // App-icon style glass tile with a brand-coloured halo behind it
 const IconTile = ({ item, large }: { item: TechItem; large?: boolean }) => (
-	<span className={`relative flex shrink-0 items-center justify-center ${large ? 'h-[76px] w-[76px]' : 'h-14 w-14'}`}>
+	<span className={`relative flex shrink-0 items-center justify-center ${large ? 'h-14 w-14 sm:h-[76px] sm:w-[76px]' : 'h-11 w-11 sm:h-14 sm:w-14'}`}>
 		<span
 			aria-hidden
 			className="absolute -inset-2 rounded-[28px] bg-(--accent) opacity-[0.14] blur-xl transition-opacity duration-700 group-hover:opacity-[0.32]"
@@ -431,11 +431,11 @@ const IconTile = ({ item, large }: { item: TechItem; large?: boolean }) => (
 		<span
 			aria-hidden
 			className={`absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02))] shadow-[inset_0_1px_0_rgba(255,255,255,0.14),inset_0_0_0_1px_rgba(255,255,255,0.08),0_12px_28px_-12px_rgba(0,0,0,0.9)] ${
-				large ? 'rounded-[22px]' : 'rounded-2xl'
+				large ? 'rounded-2xl sm:rounded-[22px]' : 'rounded-xl sm:rounded-2xl'
 			}`}
 		/>
 		<item.Icon
-			className={`relative transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:scale-110 ${large ? 'h-9 w-9' : 'h-6 w-6'} text-white`}
+			className={`relative transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:scale-110 ${large ? 'h-7 w-7 sm:h-9 sm:w-9' : 'h-5 w-5 sm:h-6 sm:w-6'} text-white`}
 		/>
 	</span>
 );
@@ -447,7 +447,7 @@ const ToolTile = ({ item, index, featured }: { item: TechItem; index: number; fe
 		onPointerMove={trackPointer}
 		style={{ '--accent': accentOf(item) } as React.CSSProperties}
 		className={`group relative overflow-hidden bg-[#05070c] transition-colors duration-700 hover:bg-[#070a10] ${
-			featured ? 'p-6 sm:col-span-2 sm:p-9' : 'p-6 sm:p-7'
+			featured ? 'p-5 sm:col-span-2 sm:p-9' : 'p-5 sm:p-7'
 		}`}
 	>
 		{/* brand-tinted spotlight that follows the cursor */}
@@ -467,30 +467,49 @@ const ToolTile = ({ item, index, featured }: { item: TechItem; index: number; fe
 			<>
 				{/* oversized watermark of the logo */}
 				<item.Icon className="pointer-events-none absolute -bottom-16 -right-10 hidden h-64 w-64 opacity-[0.045] transition-transform duration-1000 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-2 group-hover:scale-105 sm:block" />
-				<div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-9">
+				<div className="relative flex items-start gap-4 sm:items-center sm:gap-9">
 					<IconTile item={item} large />
-					<div className="max-w-lg">
+					<div className="min-w-0 max-w-lg">
 						<p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
 							<span className="h-1.5 w-1.5 rounded-full bg-(--accent) shadow-[0_0_10px_var(--accent)]" />
 							{pad(index + 1)} · Featured
 						</p>
-						<p className="mt-3 text-2xl font-medium tracking-tight text-white sm:text-[28px]">{item.name}</p>
-						<p className="mt-2 text-[15px] leading-relaxed text-white/55">{item.description}</p>
+						<p className="mt-2 text-xl font-medium tracking-tight text-white sm:mt-3 sm:text-[28px]">{item.name}</p>
+						<p className="mt-1.5 text-sm leading-relaxed text-white/55 sm:mt-2 sm:text-[15px]">{item.description}</p>
 					</div>
 				</div>
 			</>
 		) : (
-			<div className="relative">
+			<div className="relative flex items-start gap-4 sm:block">
 				<div className="flex items-start justify-between">
 					<IconTile item={item} />
-					<span className="font-mono text-[10px] text-white/25 transition-colors duration-700 group-hover:text-(--accent)">{pad(index + 1)}</span>
+					<span className="hidden font-mono text-[10px] text-white/25 transition-colors duration-700 group-hover:text-(--accent) sm:inline">{pad(index + 1)}</span>
 				</div>
-				<p className="mt-7 text-[17px] font-medium tracking-tight text-white">{item.name}</p>
-				<p className="mt-2 max-w-sm text-sm leading-relaxed text-white/50">{item.description}</p>
+				<div className="min-w-0">
+					<p className="flex items-baseline justify-between gap-3 text-base font-medium tracking-tight text-white sm:mt-7 sm:text-[17px]">
+						{item.name}
+						<span className="font-mono text-[10px] font-normal text-white/25 sm:hidden">{pad(index + 1)}</span>
+					</p>
+					<p className="mt-1 max-w-sm text-[13px] leading-relaxed text-white/50 sm:mt-2 sm:text-sm">{item.description}</p>
+				</div>
 			</div>
 		)}
 	</motion.div>
 );
+
+const PHONE_QUERY = '(max-width: 639px)';
+
+// true below the `sm` breakpoint; false during server render
+const useIsPhone = () =>
+	React.useSyncExternalStore(
+		(onChange) => {
+			const mq = window.matchMedia(PHONE_QUERY);
+			mq.addEventListener('change', onChange);
+			return () => mq.removeEventListener('change', onChange);
+		},
+		() => window.matchMedia(PHONE_QUERY).matches,
+		() => false
+	);
 
 export const TechStack: React.FC = () => {
 	const [activeId, setActiveId] = React.useState(techSections[0].id);
@@ -501,11 +520,14 @@ export const TechStack: React.FC = () => {
 	const active = techSections[activeIndex];
 	const sphereItems = techSections.flatMap((s) => s.items.map((i) => ({ name: i.name, Icon: i.Icon, group: s.id })));
 	const totalTools = sphereItems.length;
+	// the full 46-chip sphere is too dense on a phone, so show two per discipline there
+	const phoneSphereItems = techSections.flatMap((s) => s.items.slice(0, 2).map((i) => ({ name: i.name, Icon: i.Icon, group: s.id })));
+	const isPhone = useIsPhone();
 	const slug = active.label.toLowerCase().replace(/&/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
 
 	return (
-		<section id="tech" className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
-			<div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
+		<section id="tech" className="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
+			<div className="grid items-center gap-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
 				<div>
 					<SectionHeading
 						eyebrow="The arsenal"
@@ -513,9 +535,12 @@ export const TechStack: React.FC = () => {
 						accent="that pays for itself."
 						description="Vendor-neutral and model-agnostic. Every tool here has earned its place in production — selected per engagement for accuracy, latency, security and unit economics. Never for hype."
 					/>
-					<dl className="mt-10 flex gap-10 border-t border-line pt-6">
+					<dl className="mt-8 grid grid-cols-3 gap-4 border-t border-line pt-6 sm:mt-10 sm:flex sm:gap-10">
 						<div>
-							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Production-tested tools</dt>
+							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+								<span className="sm:hidden">Tools</span>
+								<span className="hidden sm:inline">Production-tested tools</span>
+							</dt>
 							<dd className="mt-1 text-3xl font-medium text-white">{totalTools}</dd>
 						</div>
 						<div>
@@ -523,12 +548,15 @@ export const TechStack: React.FC = () => {
 							<dd className="mt-1 text-3xl font-medium text-white">{pad(techSections.length)}</dd>
 						</div>
 						<div>
-							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Frontier model labs</dt>
+							<dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+								<span className="sm:hidden">Model labs</span>
+								<span className="hidden sm:inline">Frontier model labs</span>
+							</dt>
 							<dd className="mt-1 text-3xl font-medium text-white">05</dd>
 						</div>
 					</dl>
 				</div>
-				<TechSphere items={sphereItems} highlight={activeId} />
+				<TechSphere items={isPhone ? phoneSphereItems : sphereItems} highlight={activeId} />
 			</div>
 
 			{/* Stack explorer */}
@@ -537,7 +565,7 @@ export const TechStack: React.FC = () => {
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true, amount: 0.15 }}
 				transition={{ duration: 0.9, ease: EASE }}
-				className="relative mt-20 rounded-[28px] bg-linear-to-b from-white/[0.12] via-white/[0.04] to-white/[0.02] p-px"
+				className="relative mt-14 rounded-[28px] bg-linear-to-b sm:mt-20 from-white/[0.12] via-white/[0.04] to-white/[0.02] p-px"
 			>
 				<div aria-hidden className="pointer-events-none absolute -top-px left-1/2 h-px w-1/2 -translate-x-1/2 bg-linear-to-r from-transparent via-emerald-300/70 to-transparent" />
 
@@ -595,7 +623,7 @@ export const TechStack: React.FC = () => {
 						</nav>
 
 						{/* Active category */}
-						<div className="relative min-h-[28rem] p-5 sm:p-8 lg:p-10">
+						<div className="relative p-4 sm:min-h-[28rem] sm:p-8 lg:p-10">
 							<div aria-hidden className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(52,211,153,0.10),transparent_70%)]" />
 
 							<AnimatePresence mode="wait">
@@ -625,7 +653,7 @@ export const TechStack: React.FC = () => {
 									</motion.div>
 
 									{/* hairline grid of tools: first one featured, the rest in pairs */}
-									<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-px overflow-hidden rounded-[22px] border border-white/[0.07] bg-white/[0.06] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] sm:grid-cols-2">
+									<div className="mt-7 grid grid-cols-[minmax(0,1fr)] gap-px overflow-hidden rounded-[22px] sm:mt-10 border border-white/[0.07] bg-white/[0.06] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] sm:grid-cols-2">
 										{active.items.map((item, i) => (
 											<ToolTile key={item.name} item={item} index={i} featured={i === 0} />
 										))}
