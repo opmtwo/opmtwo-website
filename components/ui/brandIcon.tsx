@@ -21,6 +21,8 @@ export const brandIcon = (icon: SimpleIcon) => {
 		</svg>
 	);
 	Icon.displayName = `${icon.title.replace(/\W/g, '')}Icon`;
+	// brand colour, used for glows and highlights around the icon
+	Icon.accent = fill;
 
-	return Icon as React.ComponentType<{ className?: string }>;
+	return Icon as React.ComponentType<{ className?: string }> & { accent: string };
 };

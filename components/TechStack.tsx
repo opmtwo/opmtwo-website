@@ -392,6 +392,106 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
+// Brand colours for icons that ship as local SVGs (simple-icons carry their own)
+const localAccents: Record<string, string> = {
+	OpenAI: '#ffffff',
+	'Anthropic Claude': '#D97757',
+	'Claude Agent SDK': '#D97757',
+	'Google Gemini': '#8E75B2',
+	'Meta Llama': '#0467DF',
+	'Amazon Bedrock': '#8B5CF6',
+	Pinecone: '#ffffff',
+	Elasticsearch: '#FEC514',
+	'AWS Lambda': '#FA7E14',
+	'AWS Step Functions': '#E7157B',
+	'Amazon EventBridge': '#E7157B',
+	'Amazon DynamoDB': '#4D72F3',
+};
+
+const accentOf = (item: TechItem) => (item.Icon as { accent?: string }).accent ?? localAccents[item.name] ?? '#34d399';
+
+const trackPointer = (e: React.PointerEvent<HTMLElement>) => {
+	const rect = e.currentTarget.getBoundingClientRect();
+	e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+	e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`);
+};
+
+const tileVariants = {
+	hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
+	visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: EASE } },
+};
+
+// App-icon style glass tile with a brand-coloured halo behind it
+const IconTile = ({ item, large }: { item: TechItem; large?: boolean }) => (
+	<span className={`relative flex shrink-0 items-center justify-center ${large ? 'h-[76px] w-[76px]' : 'h-14 w-14'}`}>
+		<span
+			aria-hidden
+			className="absolute -inset-2 rounded-[28px] bg-(--accent) opacity-[0.14] blur-xl transition-opacity duration-700 group-hover:opacity-[0.32]"
+		/>
+		<span
+			aria-hidden
+			className={`absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.02))] shadow-[inset_0_1px_0_rgba(255,255,255,0.14),inset_0_0_0_1px_rgba(255,255,255,0.08),0_12px_28px_-12px_rgba(0,0,0,0.9)] ${
+				large ? 'rounded-[22px]' : 'rounded-2xl'
+			}`}
+		/>
+		<item.Icon
+			className={`relative transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:scale-110 ${large ? 'h-9 w-9' : 'h-6 w-6'} text-white`}
+		/>
+	</span>
+);
+
+const ToolTile = ({ item, index, featured }: { item: TechItem; index: number; featured?: boolean }) => (
+	<motion.div
+		variants={tileVariants}
+		onPointerEnter={trackPointer}
+		onPointerMove={trackPointer}
+		style={{ '--accent': accentOf(item) } as React.CSSProperties}
+		className={`group relative overflow-hidden bg-[#05070c] transition-colors duration-700 hover:bg-[#070a10] ${
+			featured ? 'p-6 sm:col-span-2 sm:p-9' : 'p-6 sm:p-7'
+		}`}
+	>
+		{/* brand-tinted spotlight that follows the cursor */}
+		<span
+			aria-hidden
+			className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+			style={{ background: 'radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 13%, transparent), transparent 70%)' }}
+		/>
+		{/* accent edge */}
+		<span
+			aria-hidden
+			className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-700 group-hover:opacity-70"
+			style={{ background: 'linear-gradient(90deg, transparent, var(--accent), transparent)' }}
+		/>
+
+		{featured ? (
+			<>
+				{/* oversized watermark of the logo */}
+				<item.Icon className="pointer-events-none absolute -bottom-16 -right-10 hidden h-64 w-64 opacity-[0.045] transition-transform duration-1000 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-2 group-hover:scale-105 sm:block" />
+				<div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-9">
+					<IconTile item={item} large />
+					<div className="max-w-lg">
+						<p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+							<span className="h-1.5 w-1.5 rounded-full bg-(--accent) shadow-[0_0_10px_var(--accent)]" />
+							{pad(index + 1)} · Featured
+						</p>
+						<p className="mt-3 text-2xl font-medium tracking-tight text-white sm:text-[28px]">{item.name}</p>
+						<p className="mt-2 text-[15px] leading-relaxed text-white/55">{item.description}</p>
+					</div>
+				</div>
+			</>
+		) : (
+			<div className="relative">
+				<div className="flex items-start justify-between">
+					<IconTile item={item} />
+					<span className="font-mono text-[10px] text-white/25 transition-colors duration-700 group-hover:text-(--accent)">{pad(index + 1)}</span>
+				</div>
+				<p className="mt-7 text-[17px] font-medium tracking-tight text-white">{item.name}</p>
+				<p className="mt-2 max-w-sm text-sm leading-relaxed text-white/50">{item.description}</p>
+			</div>
+		)}
+	</motion.div>
+);
+
 export const TechStack: React.FC = () => {
 	const [activeId, setActiveId] = React.useState(techSections[0].id);
 	const activeIndex = Math.max(
@@ -524,45 +624,32 @@ export const TechStack: React.FC = () => {
 										</div>
 									</motion.div>
 
-									{/* hairline grid of tools */}
-									<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-px overflow-hidden rounded-2xl border border-line bg-white/[0.06] sm:grid-cols-2">
+									{/* hairline grid of tools: first one featured, the rest in pairs */}
+									<div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-px overflow-hidden rounded-[22px] border border-white/[0.07] bg-white/[0.06] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] sm:grid-cols-2">
 										{active.items.map((item, i) => (
-											<motion.div
-												key={item.name}
-												variants={{
-													hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
-													visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: EASE } },
-												}}
-												className="group relative bg-[#06080d] p-5 transition-colors sm:p-6 duration-300 hover:bg-[#0a0d14]"
-											>
-												<div className="flex items-start justify-between">
-													<span className="relative flex h-11 w-11 items-center justify-center">
-														<span aria-hidden className="absolute inset-0 rounded-xl bg-white/[0.04] ring-1 ring-white/10 transition duration-300 group-hover:ring-emerald-400/40 group-hover:shadow-[0_0_24px_-6px_rgba(52,211,153,0.6)]" />
-														<item.Icon className="relative h-5 w-5 text-white" />
-													</span>
-													<span className="font-mono text-[10px] text-white/25 transition-colors group-hover:text-emerald-300/80">{pad(i + 1)}</span>
-												</div>
-												<p className="mt-6 text-base font-medium text-white">{item.name}</p>
-												<p className="mt-1.5 text-sm leading-relaxed text-muted">{item.description}</p>
-												<span aria-hidden className="absolute inset-x-6 bottom-0 h-px origin-left scale-x-0 bg-linear-to-r from-emerald-400 via-cyan-400 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
-											</motion.div>
+											<ToolTile key={item.name} item={item} index={i} featured={i === 0} />
 										))}
 
-										{/* fill the empty cell on odd counts with a prompt */}
-										{active.items.length % 2 === 1 && (
+										{/* fill the empty cell when the paired tiles leave a gap */}
+										{(active.items.length - 1) % 2 === 1 && (
 											<motion.a
 												href={mailto}
-												variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.5 } } }}
-												className="group relative hidden flex-col justify-between bg-[#06080d] p-6 transition-colors hover:bg-[#0a0d14] sm:flex"
+												variants={tileVariants}
+												className="group relative hidden flex-col justify-between overflow-hidden bg-[#05070c] p-7 transition-colors duration-700 hover:bg-[#070a10] sm:flex"
 											>
-												<span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">Your stack, my playbook</span>
-												<span className="mt-6 flex items-end justify-between gap-4">
-													<span className="text-base text-white/80">
+												<span
+													aria-hidden
+													className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.025)_0_1px,transparent_1px_12px)]"
+												/>
+												<span className="relative font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">Your stack, my playbook</span>
+												<span className="relative mt-8 flex items-end justify-between gap-4">
+													<span className="text-[17px] font-medium tracking-tight text-white/85">
 														Already invested elsewhere?
-														<br />
-														<span className="text-muted">I integrate with what you run.</span>
+														<span className="mt-1 block text-sm font-normal text-white/50">I integrate with what you run.</span>
 													</span>
-													<ArrowUpRight className="h-5 w-5 text-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-300" />
+													<span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] transition-colors duration-500 group-hover:bg-white group-hover:text-[#05060a]">
+														<ArrowUpRight className="h-4 w-4" />
+													</span>
 												</span>
 											</motion.a>
 										)}
