@@ -25,7 +25,7 @@ const SectionHeading = ({ eyebrow, title, accent, description, align = 'left', c
 			whileInView="visible"
 			viewport={{ once: true, amount: 0.4 }}
 			variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-			className={classNames('max-w-3xl', centered && 'mx-auto text-center', className)}
+			className={classNames('max-w-3xl 3xl:max-w-4xl', centered && 'mx-auto text-center', className)}
 		>
 			<motion.p
 				variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}
@@ -37,7 +37,7 @@ const SectionHeading = ({ eyebrow, title, accent, description, align = 'left', c
 
 			<motion.h2
 				variants={{ hidden: { opacity: 0, y: 24, filter: 'blur(8px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: EASE } } }}
-				className="mt-5 text-4xl font-medium text-shine sm:text-5xl md:text-6xl"
+				className="mt-4 text-4xl font-medium text-shine sm:mt-5 sm:text-5xl md:text-6xl 3xl:text-7xl"
 			>
 				{title}
 				{accent && (
@@ -51,7 +51,7 @@ const SectionHeading = ({ eyebrow, title, accent, description, align = 'left', c
 			{description && (
 				<motion.p
 					variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } } }}
-					className={classNames('mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg', centered && 'mx-auto')}
+					className={classNames('mt-4 max-w-xl text-base leading-relaxed text-muted sm:mt-5 sm:text-lg 3xl:max-w-2xl 3xl:text-xl', centered && 'mx-auto')}
 				>
 					{description}
 				</motion.p>

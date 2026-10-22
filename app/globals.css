@@ -39,6 +39,63 @@
 	--animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
 	--animate-spin-slow: spin 6s linear infinite;
 	--animate-grid-flow: grid-flow 1.6s linear infinite;
+
+	/* large monitors */
+	--breakpoint-3xl: 120rem;
+}
+
+/* ---------- Shared layout scale (used by every section) ---------- */
+
+/* Page container: one max-width and gutter scale for nav, sections and footer */
+@utility container-page {
+	margin-inline: auto;
+	width: 100%;
+	padding-inline: 1.25rem;
+
+	@media (width >= 40rem) {
+		padding-inline: 2rem;
+	}
+	@media (width >= 64rem) {
+		max-width: 80rem;
+		padding-inline: 3rem;
+	}
+	@media (width >= 96rem) {
+		max-width: 88rem;
+	}
+	@media (width >= 120rem) {
+		max-width: 96rem;
+		padding-inline: 4rem;
+	}
+}
+
+/* Vertical rhythm between sections */
+@utility section-y {
+	padding-block: 5rem;
+
+	@media (width >= 40rem) {
+		padding-block: 6rem;
+	}
+	@media (width >= 64rem) {
+		padding-block: 8rem;
+	}
+	@media (width >= 120rem) {
+		padding-block: 10rem;
+	}
+}
+
+/* Gap between a section heading and its content */
+@utility section-gap {
+	margin-top: 3rem;
+
+	@media (width >= 40rem) {
+		margin-top: 3.5rem;
+	}
+	@media (width >= 64rem) {
+		margin-top: 4rem;
+	}
+	@media (width >= 120rem) {
+		margin-top: 5rem;
+	}
 }
 
 html {

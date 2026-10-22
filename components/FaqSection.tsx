@@ -56,7 +56,7 @@ export const FaqSection: React.FC = () => {
 	const baseId = useId();
 
 	return (
-		<section id="faq" className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
+		<section id="faq" className="container-page section-y relative">
 			<div aria-hidden className="pointer-events-none absolute left-0 top-1/3 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.07),transparent_65%)]" />
 
 			<div className="relative grid gap-14 lg:grid-cols-[0.9fr_1.3fr] lg:gap-20">

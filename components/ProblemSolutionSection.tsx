@@ -125,7 +125,7 @@ const LedgerRow = ({ problem, solution, index }: { problem: string; solution: st
 
 export const ProblemSolutionSection: React.FC = () => {
 	return (
-		<section id="why" className="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
+		<section id="why" className="container-page section-y relative">
 			<div aria-hidden className="pointer-events-none absolute right-0 top-40 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.06),transparent_65%)]" />
 			<div aria-hidden className="pointer-events-none absolute bottom-20 left-0 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(52,211,153,0.07),transparent_65%)]" />
 
@@ -145,7 +145,7 @@ export const ProblemSolutionSection: React.FC = () => {
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true, amount: 0.1 }}
 				transition={{ duration: 0.9, ease: EASE }}
-				className="relative mt-14 rounded-[28px] bg-linear-to-b from-white/[0.12] via-white/[0.04] to-white/[0.02] p-px sm:mt-20"
+				className="section-gap relative rounded-[28px] bg-linear-to-b from-white/[0.12] via-white/[0.04] to-white/[0.02] p-px"
 			>
 				<div aria-hidden className="absolute -top-px left-1/2 h-px w-1/2 -translate-x-1/2 bg-linear-to-r from-rose-300/50 via-white/40 to-emerald-300/60" />
 

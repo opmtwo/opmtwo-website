@@ -16,16 +16,16 @@ const ProcessSection = () => {
 	const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
 	return (
-		<section id="process" className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
+		<section id="process" className="container-page section-y relative">
 			<SectionHeading eyebrow="How it works" title="From first call to" accent="production." align="center" />
 
-			<div ref={ref} className="relative mt-20">
+			<div ref={ref} className="section-gap relative">
 				{/* connecting line (desktop) */}
 				<div className="absolute left-0 right-0 top-6 hidden h-px bg-white/10 lg:block">
 					<motion.div className="h-full origin-left bg-linear-to-r from-emerald-400 via-cyan-400 to-violet-400" style={{ scaleX }} />
 				</div>
 
-				<div className="grid gap-12 lg:grid-cols-4 lg:gap-8">
+				<div className="grid gap-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-14 lg:grid-cols-4 lg:gap-8">
 					{process.map((p, i) => (
 						<motion.div
 							key={p.step}

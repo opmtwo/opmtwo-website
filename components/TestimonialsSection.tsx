@@ -52,10 +52,11 @@ export const CustomerTestimonials: React.FC = () => {
 	}, [index, paused, go]);
 
 	return (
-		<section id="testimonials" className="relative overflow-hidden py-32">
+		<section id="testimonials" className="section-y relative overflow-hidden">
 			<div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(167,139,250,0.1),transparent_60%)]" />
 
-			<div className="relative mx-auto max-w-5xl px-5 sm:px-8">
+			<div className="container-page relative">
+				<div className="mx-auto max-w-5xl 3xl:max-w-6xl">
 				<SectionHeading
 					eyebrow="120+ five-star reviews"
 					title="Trusted by founders"
@@ -64,7 +65,7 @@ export const CustomerTestimonials: React.FC = () => {
 				/>
 
 				<div
-					className="relative mt-16 [perspective:1400px]"
+					className="section-gap relative [perspective:1400px]"
 					onMouseEnter={() => setPaused(true)}
 					onMouseLeave={() => setPaused(false)}
 					onTouchStart={(e) => (touchX.current = e.changedTouches[0].clientX)}
@@ -144,6 +145,7 @@ export const CustomerTestimonials: React.FC = () => {
 							Fiverr
 						</a>
 					</p>
+				</div>
 				</div>
 			</div>
 		</section>

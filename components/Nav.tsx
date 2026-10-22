@@ -26,12 +26,15 @@ const Nav = () => {
 			initial={{ y: -40, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-			className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-[calc(env(safe-area-inset-top,0px)+16px)]"
+			className="fixed inset-x-0 top-0 z-50 flex justify-center px-2 pt-[calc(env(safe-area-inset-top,0px)+16px)] sm:px-5 lg:px-9 3xl:px-[3.25rem]"
 		>
 			<div
 				className={classNames(
 					'flex w-full items-center justify-between rounded-full py-2 pl-3 pr-2 transition-all duration-500',
-					scrolled ? 'glass max-w-4xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)]' : 'max-w-6xl border border-transparent'
+					// unscrolled, the pill's inner edge lines up with the page container (container-page)
+					scrolled
+						? 'glass max-w-4xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)] 3xl:max-w-5xl'
+						: 'border border-transparent lg:max-w-[75.5rem] 2xl:max-w-[83.5rem] 3xl:max-w-[89.5rem]'
 				)}
 			>
 				<button className="flex cursor-pointer items-center gap-2.5" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
@@ -70,7 +73,7 @@ const Nav = () => {
 						animate={{ opacity: 1, y: 0, scale: 1 }}
 						exit={{ opacity: 0, y: -10, scale: 0.98 }}
 						transition={{ duration: 0.25 }}
-						className="glass absolute inset-x-4 top-[calc(env(safe-area-inset-top,0px)+76px)] rounded-3xl p-3 lg:hidden"
+						className="glass absolute inset-x-2 top-[calc(env(safe-area-inset-top,0px)+76px)] rounded-3xl p-3 sm:inset-x-5 lg:hidden"
 					>
 						{nav.map((item) => (
 							<button

@@ -12,7 +12,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 // Isometric stack of five glass plates; the active level lifts out and glows
 const LevelStack = ({ active, onSelect }: { active: number; onSelect: (i: number) => void }) => {
 	return (
-		<div className="relative mx-auto aspect-square w-full max-w-[13rem] [perspective:1600px] sm:max-w-[20rem] lg:max-w-[26rem]">
+		<div className="relative mx-auto aspect-square w-full max-w-[13rem] [perspective:1600px] sm:max-w-[20rem] lg:max-w-[26rem] 3xl:max-w-[32rem]">
 			<div className="absolute inset-0 flex items-center justify-center [transform-style:preserve-3d] [transform:rotateX(58deg)_rotateZ(-40deg)]">
 				{levels.map((l, i) => {
 					const isActive = i === active;
@@ -78,7 +78,7 @@ const LevelsSection = () => {
 
 	return (
 		<section id="levels" className="relative">
-			<div className="mx-auto max-w-7xl px-5 pt-32 sm:px-8">
+			<div className="container-page pt-20 sm:pt-24 lg:pt-32 3xl:pt-40">
 				<SectionHeading
 					eyebrow="The framework"
 					title="Five levels of AI."
@@ -90,7 +90,7 @@ const LevelsSection = () => {
 			{/* Tall wrapper drives the pinned stage below */}
 			<div ref={ref} style={{ height: `${levels.length * 80 + 40}vh` }} className="relative">
 				<div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
-					<div className="mx-auto grid w-full max-w-7xl items-center gap-6 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+					<div className="container-page grid items-center gap-6 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
 						<div className="relative">
 							<LevelStack active={active} onSelect={select} />
 						</div>

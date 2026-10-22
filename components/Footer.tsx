@@ -21,7 +21,7 @@ export const ReadyToTrySection: React.FC = () => {
 	const glow = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
 
 	return (
-		<section id="contact" ref={ref} className="relative overflow-hidden pt-32">
+		<section id="contact" ref={ref} className="relative overflow-hidden pt-20 sm:pt-24 lg:pt-32 3xl:pt-40">
 			{/* 3D perspective grid floor */}
 			<div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] [perspective:600px]">
 				<motion.div
@@ -49,7 +49,7 @@ export const ReadyToTrySection: React.FC = () => {
 				whileInView="visible"
 				viewport={{ once: true, amount: 0.4 }}
 				variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-				className="relative mx-auto flex max-w-4xl flex-col items-center px-5 pb-40 text-center sm:px-8"
+				className="container-page relative flex flex-col items-center pb-28 text-center sm:pb-32 lg:pb-40 3xl:pb-48"
 			>
 				<motion.p
 					variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
@@ -64,7 +64,7 @@ export const ReadyToTrySection: React.FC = () => {
 
 				<motion.h2
 					variants={{ hidden: { opacity: 0, y: 30, filter: 'blur(10px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1, ease: EASE } } }}
-					className="mt-8 text-[clamp(2.5rem,6vw,5rem)] font-medium leading-[0.98] text-shine"
+					className="mt-8 max-w-4xl text-[clamp(2.5rem,6vw,5rem)] font-medium leading-[0.98] text-shine 3xl:max-w-5xl 3xl:text-[6rem]"
 				>
 					{cta.title} <span className="font-serif font-normal italic tracking-normal text-gradient pr-2">{cta.titleAccent}</span>
 				</motion.h2>

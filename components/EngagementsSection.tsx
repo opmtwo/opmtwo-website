@@ -14,7 +14,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const EngagementsSection = () => {
 	return (
-		<section id="engagements" className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
+		<section id="engagements" className="container-page section-y relative">
 			<SectionHeading
 				eyebrow="Ways to work together"
 				title="Start small. Prove value."
@@ -22,7 +22,7 @@ const EngagementsSection = () => {
 				description="Every engagement is scoped to one goal: get you to the next level of AI with measurable results."
 			/>
 
-			<div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+			<div className="section-gap grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 				{engagements.map((e, i) => (
 					<motion.div
 						key={e.name}

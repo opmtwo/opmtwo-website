@@ -27,7 +27,7 @@ const logos = [
 // Infinite strip of model and platform logos
 const LogoMarquee = () => {
 	return (
-		<div className="relative border-y border-line py-8">
+		<div className="relative border-y border-line py-8 lg:py-10">
 			<p className="mb-6 text-center font-mono text-[11px] uppercase tracking-[0.3em] text-muted">Building with the models & platforms that matter</p>
 			<div className="mask-fade-x flex overflow-hidden">
 				<div className="flex shrink-0 animate-marquee items-center gap-14 pr-14 hover:[animation-play-state:paused]">

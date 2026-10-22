@@ -526,7 +526,7 @@ export const TechStack: React.FC = () => {
 	const slug = active.label.toLowerCase().replace(/&/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
 
 	return (
-		<section id="tech" className="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
+		<section id="tech" className="container-page section-y relative">
 			<div className="grid items-center gap-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
 				<div>
 					<SectionHeading
@@ -565,7 +565,7 @@ export const TechStack: React.FC = () => {
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true, amount: 0.15 }}
 				transition={{ duration: 0.9, ease: EASE }}
-				className="relative mt-14 rounded-[28px] bg-linear-to-b sm:mt-20 from-white/[0.12] via-white/[0.04] to-white/[0.02] p-px"
+				className="section-gap relative rounded-[28px] bg-linear-to-b from-white/[0.12] via-white/[0.04] to-white/[0.02] p-px"
 			>
 				<div aria-hidden className="pointer-events-none absolute -top-px left-1/2 h-px w-1/2 -translate-x-1/2 bg-linear-to-r from-transparent via-emerald-300/70 to-transparent" />
 

@@ -62,8 +62,8 @@ export const Hero: React.FC = () => {
 			<div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-background via-background/70 to-transparent lg:via-background/40" />
 			<div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-linear-to-t from-background to-transparent" />
 
-			<motion.div style={{ y: contentY, opacity: contentOpacity }} className="mx-auto flex w-full max-w-7xl flex-1 items-center px-5 pb-24 pt-36 sm:px-8">
-				<motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.4 } } }} className="max-w-2xl">
+			<motion.div style={{ y: contentY, opacity: contentOpacity }} className="container-page flex flex-1 items-center pb-20 pt-32 sm:pb-24 sm:pt-36">
+				<motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.4 } } }} className="max-w-2xl 3xl:max-w-4xl">
 					{/* Eyebrow */}
 					<motion.a variants={fadeUp} href={fiverrUrl} target="_blank" rel="noreferrer" className="glass group relative inline-flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4 text-xs">
 						<span aria-hidden className="border-beam pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
 					</motion.a>
 
 					{/* Headline */}
-					<motion.h1 variants={fadeUp} className="mt-8 text-[clamp(2.75rem,7vw,5.75rem)] font-medium leading-[0.95] text-shine">
+					<motion.h1 variants={fadeUp} className="mt-8 text-[clamp(2.75rem,7vw,5.75rem)] font-medium leading-[0.95] text-shine 3xl:text-[6.75rem]">
 						{hero.titleLead}{' '}
 						<span className="font-serif font-normal italic tracking-normal text-gradient pr-2">{hero.titleAccent}</span>
 						<br className="hidden sm:block" /> {hero.titleTail}
@@ -103,7 +103,7 @@ export const Hero: React.FC = () => {
 						</span>
 					</motion.div>
 
-					<motion.p variants={fadeUp} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+					<motion.p variants={fadeUp} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg 3xl:max-w-2xl 3xl:text-xl">
 						{hero.description}
 					</motion.p>
 
@@ -121,7 +121,7 @@ export const Hero: React.FC = () => {
 						{hero.stats.map((s) => (
 							<div key={s.label}>
 								<dt className="sr-only">{s.label}</dt>
-								<dd className="text-2xl font-medium text-white sm:text-3xl">
+								<dd className="text-2xl font-medium text-white sm:text-3xl 3xl:text-4xl">
 									<CountUp value={s.value} decimals={s.decimals} suffix={s.suffix} />
 								</dd>
 								<p className="mt-1 text-xs text-muted">

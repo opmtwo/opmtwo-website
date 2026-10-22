@@ -16,7 +16,7 @@ const spans = ['lg:col-span-4', 'lg:col-span-2', 'lg:col-span-2', 'lg:col-span-4
 
 export const CaseStudiesSection: React.FC = () => {
 	return (
-		<section id="work" className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
+		<section id="work" className="container-page section-y relative">
 			<SectionHeading
 				eyebrow="Selected work"
 				title="Shipped for real teams,"
@@ -24,7 +24,7 @@ export const CaseStudiesSection: React.FC = () => {
 				description="AI products and the serverless foundations they run on — across FinTech, SaaS, SalesTech, media and IoT."
 			/>
 
-			<div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+			<div className="section-gap grid gap-5 md:grid-cols-2 lg:grid-cols-6">
 				{caseStudies.map((item, i) => {
 					const isAi = item.level.startsWith('Level');
 					return (

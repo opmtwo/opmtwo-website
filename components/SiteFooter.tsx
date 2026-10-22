@@ -41,7 +41,7 @@ const SiteFooter = () => {
 			<div aria-hidden className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-emerald-300/40 to-transparent" />
 			<div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-64 w-[50rem] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(52,211,153,0.07),transparent_70%)]" />
 
-			<div className="relative mx-auto max-w-7xl px-5 pt-14 sm:px-8 lg:pt-20">
+			<div className="container-page relative pt-14 lg:pt-20 3xl:pt-24">
 				<div className="grid grid-cols-2 gap-x-6 gap-y-11 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10">
 					{/* Brand */}
 					<div className="col-span-2 max-w-sm lg:col-span-1">
@@ -106,7 +106,7 @@ const SiteFooter = () => {
 			</div>
 
 			{/* Oversized wordmark, cropped by the bottom bar */}
-			<div aria-hidden className="relative mx-auto mt-12 max-w-7xl select-none overflow-hidden px-5 sm:px-8 lg:mt-20">
+			<div aria-hidden className="container-page relative mt-12 select-none overflow-hidden lg:mt-20">
 				<motion.p
 					initial="hidden"
 					whileInView="visible"
@@ -128,7 +128,7 @@ const SiteFooter = () => {
 
 			{/* Bottom bar */}
 			<div className="relative border-t border-white/[0.06]">
-				<div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] pt-5 sm:px-8 sm:py-6">
+				<div className="container-page flex items-center justify-between gap-4 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)] pt-5 sm:py-6">
 					<p className="font-mono text-[11px] leading-relaxed tracking-wide text-white/35">
 						© {new Date().getFullYear()} {contact.name}.<span className="hidden sm:inline"> All rights reserved.</span>
 					</p>
