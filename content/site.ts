@@ -103,21 +103,14 @@ export const problemSolution = {
 	title: 'Most companies are stuck at',
 	titleAccent: 'Level 1.',
 	description: 'A chatbot pilot is easy. Getting AI that reasons, acts and scales in production is where most teams stall.',
-	problems: [
-		'AI pilots that never make it to production',
-		'Chatbots that hallucinate and erode customer trust',
-		'No data foundation for reasoning or retrieval',
-		'Agents that break the moment they touch real systems',
-		'LLM and AWS bills growing with no visibility',
-		'Senior AI architects cost $200K+ and take months to hire',
-	],
-	solutions: [
-		'A clear map of where you are and the next level to reach',
-		'Grounded, evaluated AI that answers from your own data',
-		'Agentic workflows with guardrails and human approvals',
-		'Serverless, pay-per-use infrastructure that scales on its own',
-		'40–70% leaner AWS spend through focused optimization',
-		'Delivery in days, not months — architecture your team can extend',
+	// each problem sits beside the answer to it
+	pairs: [
+		{ problem: 'AI pilots that never make it to production', solution: 'Production systems in days, not months — built for your team to extend' },
+		{ problem: 'Chatbots that hallucinate and erode customer trust', solution: 'Grounded, evaluated AI that answers from your own data' },
+		{ problem: 'No data foundation for reasoning or retrieval', solution: 'Retrieval and memory designed in from day one' },
+		{ problem: 'Agents that break the moment they touch real systems', solution: 'Agentic workflows with guardrails and human approvals' },
+		{ problem: 'LLM and AWS bills growing with no visibility', solution: '40–70% leaner AWS spend through focused optimization' },
+		{ problem: 'Senior AI architects cost $200K+ and take months to hire', solution: 'Senior AI architecture on demand — without the hire' },
 	],
 };
 
